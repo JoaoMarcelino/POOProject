@@ -5,10 +5,17 @@
  */
 package com.mycompany.projeto;
 
+import java.util.GregorianCalendar;
+
 /**
  *
  * @author hp
  */
 public class Desenvolvimento extends Tarefa{
-    
+        
+    private float taxaEsforco = (float) 1; 
+            
+    public Desenvolvimento(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, int progresso) {
+        super(nome, dataInicio, dataEstimada, progresso);
+    }
 }

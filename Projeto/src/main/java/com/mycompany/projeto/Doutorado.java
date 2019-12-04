@@ -11,8 +11,9 @@ package com.mycompany.projeto;
  */
 public class Doutorado extends Bolseiro{
     
-    protected Doutorado(String nome, String email){
+    private int ordenado = 1200;
+    
+    public Doutorado(String nome, String email){
         super(nome,email);
-        ordenado = 1200;
     }
 }

@@ -10,9 +10,14 @@ package com.mycompany.projeto;
  * @author hp
  */
 public abstract class Bolseiro extends Pessoa{
-    protected int ordenado;
+   
+    private int ordenado;
     
-    protected Bolseiro(String nome, String email){
+    public Bolseiro(String nome, String email){
         super(nome,email);
-    }   
+    }    
+
+    public int getOrdenado() {
+        return ordenado;
+    }
 }

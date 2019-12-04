@@ -5,13 +5,31 @@
  */
 package com.mycompany.projeto;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author hp
  */
 public class Estudante extends Bolseiro{
-    Docente docente;
-    protected Estudante(String nome, String email){
+    
+    protected ArrayList<Docente> arrayDocentes = new ArrayList <>();
+    
+    public Estudante(String nome, String email){
         super(nome,email);
+    }
+    
+    public void addDocente(Docente docente){
+        arrayDocentes.add(docente);
+    }
+    
+    public void removeDocente(Docente docente){
+        
+        int indice = arrayDocentes.indexOf(docente);
+       
+        if (indice != -1)
+            arrayDocentes.remove(indice);
+        else
+            System.out.println("ERRO -- DOCENTE NAO EXISTENTE");
     }
 }

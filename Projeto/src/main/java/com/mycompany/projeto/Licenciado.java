@@ -11,8 +11,9 @@ package com.mycompany.projeto;
  */
 public class Licenciado extends Estudante{
     
-    protected Licenciado(String nome, String email){
-        super(nome,email);
-        ordenado = 800;
+    private int ordenado = 800;
+    
+    public Licenciado(String nome, String email){
+        super(nome,email);   
     }
 }

@@ -12,12 +12,55 @@ import java.util.ArrayList;
  * @author hp
  */
 public abstract class Pessoa {
-    protected String nome;
-    protected String email;
-    protected ArrayList<Tarefa> ArrayTarefa = new ArrayList <Tarefa>();
     
-    protected Pessoa(String nome, String email){
+    protected ArrayList<Tarefa> arrayTarefas = new ArrayList <>();
+        
+    private String nome;
+    private String email;
+    
+    public Pessoa(String nome, String email){
         this.nome = nome;
         this.email = email;
     }
-}
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    
+    public float getCarga(){
+        
+        float carga = 0;
+        
+        for(Tarefa tarefa: arrayTarefas){
+            carga += tarefa.getTaxaEsforco();
+        }
+        
+        return carga;
+    }
+    
+    public void addTarefa(Tarefa tarefa){
+        arrayTarefas.add(tarefa);
+    }
+    
+    public void eliminarTarefa(Tarefa tarefa){
+        int indice = arrayTarefas.indexOf(tarefa);
+        if (indice != -1)
+            arrayTarefas.remove(indice);
+        else
+            System.out.println("ERRO -- TAREFA NAO EXISTENTE!");
+    }
+    
+    public void listarTarefa(){
+        
+        System.out.println("TAREFAS:");
+
+        for(Tarefa tarefa: arrayTarefas) {
+            System.out.println(tarefa);
+        }
+        System.out.println("----");
+    }
+}    

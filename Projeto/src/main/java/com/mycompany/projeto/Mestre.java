@@ -11,9 +11,9 @@ package com.mycompany.projeto;
  */
 public class Mestre extends Estudante{
     
+    private int ordenado = 1000;
+    
     protected Mestre(String nome, String email){
         super(nome,email);
-        ordenado = 1000;
     }
-    
 }
