@@ -1,20 +1,20 @@
-Penguin|21-5-2021|4-7-2022|0|Documentacao
-Giraffe|5-8-2020|16-12-2021|0|Documentacao
-Gazelle|28-10-2019|2-7-2020|0|Design
-Raccoon|9-3-2021|21-2-2022|0|Desenvolvimento
-Jerboa|22-10-2021|26-12-2022|0|Documentacao
-Quagga|19-11-2019|20-7-2020|0|Desenvolvimento
-Cougar|8-1-2021|21-9-2022|0|Design
-Musk|8-10-2021|26-1-2022|0|Desenvolvimento
-Coyote|17-3-2021|20-4-2022|0|Desenvolvimento
-Okapi|5-5-2019|29-5-2020|0|Design
-Turtle|26-8-2019|23-6-2020|0|Design
-Sloth|21-3-2021|1-4-2022|0|Desenvolvimento
-Mouse|3-6-2020|29-3-2021|0|Desenvolvimento
-Anteater|28-6-2021|17-2-2022|0|Desenvolvimento
-Oryx|16-12-2021|26-5-2022|0|Documentacao
-Yak|24-8-2019|10-12-2020|0|Design
-Salamander|20-5-2020|23-4-2021|0|Design
-Canary|5-5-2019|18-2-2020|0|Design
-Ocelot|13-3-2019|28-7-2020|0|Documentacao
-Mandrill|10-5-2019|19-1-2020|0|Design
+Penguin//Feline Labs//21-5-2021//4-7-2022//Documentacao
+Giraffe//BioTio//5-8-2020//16-12-2021//Documentacao
+Gazelle//Growl//28-10-2019//2-7-2020//Design
+Raccoon//Petsly//9-3-2021//21-2-2022//Desenvolvimento
+Jerboa//Animaly//22-10-2021//26-12-2022//Documentacao
+Quagga//Zoo Stocks//19-11-2019//20-7-2020//Desenvolvimento
+Cougar//Zoo Culture//8-1-2021//21-9-2022//Design
+Musk//Chimp Cart//8-10-2021//26-1-2022//Desenvolvimento
+Coyote//Hungry Cub//17-3-2021//20-4-2022//Desenvolvimento
+Okapi//Farm Rabbity//5-5-2019//29-5-2020//Design
+Turtle//Lab Horses//26-8-2019//23-6-2020//Design
+Sloth//Zooxo//21-3-2021//1-4-2022//Desenvolvimento
+Mouse//Tigerd//3-6-2020//29-3-2021//Desenvolvimento
+Anteater//Defense Chimp//28-6-2021//17-2-2022//Desenvolvimento
+Oryx//FishCam//16-12-2021//26-5-2022//Documentacao
+Yak//MMals//24-8-2019//10-12-2020//Design
+Salamander//Venture Hippo//20-5-2020//23-4-2021//Design
+Canary//The Mouse//5-5-2019//18-2-2020//Design
+Ocelot//Croc Island//13-3-2019//28-7-2020//Documentacao
+Mandrill//Hungry Hyena//10-5-2019//19-1-2020//Design

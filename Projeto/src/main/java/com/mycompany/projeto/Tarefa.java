@@ -16,16 +16,15 @@ public abstract class Tarefa {
     private GregorianCalendar dataInicio;
     private GregorianCalendar dataEstimada;
     
-    private int progesso;
+    private int progesso = 0;
     private float taxaEsforco;
     private String nome;
     private Pessoa responsavel;
 
-    public Tarefa(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, int progesso) {
+    public Tarefa(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada) {
         this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataEstimada = dataEstimada;
-        this.progesso = progesso;
     }
 
     public void setResponsavel(Pessoa pessoa) {

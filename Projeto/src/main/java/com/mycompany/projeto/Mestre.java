@@ -5,6 +5,8 @@
  */
 package com.mycompany.projeto;
 
+import java.util.GregorianCalendar;
+
 /**
  *
  * @author hp
@@ -13,7 +15,7 @@ public class Mestre extends Estudante{
     
     private int ordenado = 1000;
     
-    protected Mestre(String nome, String email){
-        super(nome,email);
+    protected Mestre(String nome, String email, GregorianCalendar contrato){
+        super(nome,email, contrato);
     }
 }

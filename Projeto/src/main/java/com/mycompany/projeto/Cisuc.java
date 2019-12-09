@@ -25,6 +25,17 @@ public class Cisuc {
     public GregorianCalendar getDataAtual() {
         return dataAtual;
     }
+
+    public Projeto getProjeto(String nome) {
+        
+        for(Projeto projeto: arrayProjeto) {
+           
+            if (projeto.getNome().equals(nome))
+                return projeto;
+        }
+        Projeto proj = new Projeto();
+        return proj;//IF ERROR
+    }
     
     public void addDocente(Pessoa pessoa){
         arrayDocentes.add(pessoa);
@@ -65,26 +76,51 @@ public class Cisuc {
     
     public void naoConcluidos(){
         
-        System.out.println("PROJETOS NAO CONCLUÍDOS:");
+        System.out.println("PROJETOS NAO CONCLUÍDOS:\n");
 
         for(Projeto projeto: arrayProjeto) {
            
             if (projeto.getAcabado() == 0)
-                System.out.println(projeto);
+                System.out.println(projeto.getNome());
         }
-        System.out.println("----");
+        System.out.println("----\n");
     }
     
     
     public void concluidos(){
 
-        System.out.println("PROJETOS CONCLUÍDOS:");
+        System.out.println("PROJETOS CONCLUÍDOS:\n");
 
         for(Projeto projeto: arrayProjeto) {
 
             if (projeto.getAcabado() == 1)
-                System.out.println(projeto);
+                System.out.println(projeto.getNome());
         }
         System.out.println("----");
+    }
+    
+    public void printPessoas(){
+        
+        System.out.println("PESSOAS:\n");
+
+        for(Pessoa pessoa: arrayBolseiros) {
+            System.out.printf("BOLSEIRO: %s\n", pessoa.getNome());
+        }
+        
+        for(Pessoa pessoa: arrayDocentes) {
+            System.out.printf("DOCENTE: %s\n", pessoa.getNome());
+        }
+        System.out.println("----\n");
+    }
+    
+    public void printTarefas(){
+        
+        System.out.println("PESSOAS:\n");
+
+        for(Projeto projeto: arrayProjeto) {
+            projeto.listarTarefas();
+        }
+        
+        System.out.println("----\n");
     }
 }

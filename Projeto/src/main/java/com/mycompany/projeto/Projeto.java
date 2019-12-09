@@ -19,50 +19,52 @@ public class Projeto {
     protected ArrayList<Docente> arrayDocentes = new ArrayList <>();    
     
     private String nome;
-    private String acrónimo;
+    private String acronimo;
     
     private GregorianCalendar dataInicio;
     private GregorianCalendar dataEstimada;
     private GregorianCalendar dataFinal;
     
     private int acabado = 0;
-    private int custo;
+    private int custo = 0;
     private Docente investigadorPrincipal;
     
-    public Projeto(String nome, String acrónimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, int custo) {
+    public Projeto(String nome, String acronimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada) {
         this.nome = nome;
-        this.acrónimo = acrónimo;
+        this.acronimo = acronimo;
         this.dataInicio = dataInicio;
         this.dataEstimada = dataEstimada;
-        this.custo = custo;
     }
-
+    
+    public Projeto(){
+        this.nome = "NONEXISTANT";
+    }
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
-    public String getAcrónimo() {
-        return acrónimo;
+    public String getAcronimo() {
+        return this.acronimo;
     }
 
     public GregorianCalendar getDataInicio() {
-        return dataInicio;
+        return this.dataInicio;
     }
 
     public GregorianCalendar getDataEstimada() {
-        return dataEstimada;
+        return this.dataEstimada;
     }
     
     public Docente getInvestigadorPrincipal() {
-        return investigadorPrincipal;
+        return this.investigadorPrincipal;
     }
 
     public GregorianCalendar getDataFinal() {
-        return dataFinal;
+        return this.dataFinal;
     }
 
     public int getAcabado() {
-        return acabado;
+        return this.acabado;
     }
 
     public int getCusto(){
@@ -88,21 +90,21 @@ public class Projeto {
         this.acabado = acabado;
     }
     
-    public void criaDocumentacao(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, int progresso){
+    public void criaDocumentacao(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada){
         
-        Tarefa tarefa = new Documentacao(nome, dataInicio, dataEstimada, progresso);
+        Tarefa tarefa = new Documentacao(nome, dataInicio, dataEstimada);
         addTarefa(tarefa);
     }
     
-    public void criaDesign(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, int progresso){
+    public void criaDesign(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada){
         
-        Tarefa tarefa = new Design(nome, dataInicio, dataEstimada, progresso);
+        Tarefa tarefa = new Design(nome, dataInicio, dataEstimada);
         addTarefa(tarefa);
     }
     
-    public void criaDesenvolvimento(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, int progresso){
+    public void criaDesenvolvimento(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada){
         
-        Tarefa tarefa = new Desenvolvimento(nome, dataInicio, dataEstimada, progresso);
+        Tarefa tarefa = new Desenvolvimento(nome, dataInicio, dataEstimada);
         addTarefa(tarefa);
     }
     

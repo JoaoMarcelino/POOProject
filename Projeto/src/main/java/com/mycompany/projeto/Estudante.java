@@ -6,6 +6,7 @@
 package com.mycompany.projeto;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -15,8 +16,8 @@ public class Estudante extends Bolseiro{
     
     protected ArrayList<Docente> arrayDocentes = new ArrayList <>();
     
-    public Estudante(String nome, String email){
-        super(nome,email);
+    public Estudante(String nome, String email, GregorianCalendar contrato){
+        super(nome,email,contrato);
     }
     
     public void addDocente(Docente docente){

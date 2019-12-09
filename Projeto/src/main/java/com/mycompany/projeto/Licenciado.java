@@ -5,6 +5,8 @@
  */
 package com.mycompany.projeto;
 
+import java.util.GregorianCalendar;
+
 /**
  *
  * @author hp
@@ -13,7 +15,7 @@ public class Licenciado extends Estudante{
     
     private int ordenado = 800;
     
-    public Licenciado(String nome, String email){
-        super(nome,email);   
+    public Licenciado(String nome, String email, GregorianCalendar contrato){
+        super(nome,email,contrato);   
     }
 }

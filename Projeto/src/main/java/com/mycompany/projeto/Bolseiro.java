@@ -5,6 +5,8 @@
  */
 package com.mycompany.projeto;
 
+import java.util.GregorianCalendar;
+
 /**
  *
  * @author hp
@@ -12,12 +14,17 @@ package com.mycompany.projeto;
 public abstract class Bolseiro extends Pessoa{
    
     private int ordenado;
+    GregorianCalendar contrato;
     
-    public Bolseiro(String nome, String email){
+    public Bolseiro(String nome, String email, GregorianCalendar contrato){
         super(nome,email);
+        this.contrato = contrato;
     }    
 
     public int getOrdenado() {
-        return ordenado;
+        return this.ordenado;
+    }
+    public GregorianCalendar getContrato(){
+        return this.contrato;
     }
 }

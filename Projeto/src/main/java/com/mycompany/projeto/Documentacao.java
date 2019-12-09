@@ -15,7 +15,7 @@ public class Documentacao extends Tarefa{
     
     private float taxaEsforco = (float) 0.25; 
             
-    public Documentacao(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, int progresso) {
-        super(nome, dataInicio, dataEstimada, progresso);
+    public Documentacao(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada) {
+        super(nome, dataInicio, dataEstimada);
     }
 }
