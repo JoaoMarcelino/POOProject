@@ -29,18 +29,12 @@ public class Projeto {
     private int custo;
     private Docente investigadorPrincipal;
     
-    public Projeto(String nome, String acrónimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, GregorianCalendar dataFinal, int custo, Docente investigadorPrincipal) {
+    public Projeto(String nome, String acrónimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, int custo) {
         this.nome = nome;
         this.acrónimo = acrónimo;
         this.dataInicio = dataInicio;
         this.dataEstimada = dataEstimada;
-        this.dataFinal = dataFinal;
         this.custo = custo;
-        this.investigadorPrincipal = investigadorPrincipal;
-    }
-    
-    public GregorianCalendar getDataFinal(){
-        return this.dataFinal;
     }
 
     public String getNome() {
@@ -62,7 +56,15 @@ public class Projeto {
     public Docente getInvestigadorPrincipal() {
         return investigadorPrincipal;
     }
-    
+
+    public GregorianCalendar getDataFinal() {
+        return dataFinal;
+    }
+
+    public int getAcabado() {
+        return acabado;
+    }
+
     public int getCusto(){
         
         int aux = 0;
@@ -76,6 +78,14 @@ public class Projeto {
 
     public void setInvestigadorPrincipal(Docente investigadorPrincipal) {
         this.investigadorPrincipal = investigadorPrincipal;
+    }
+    
+    public void setDataFinal(GregorianCalendar dataFinal){
+        this.dataFinal = dataFinal;
+    }
+    
+    public void setAcabado(int acabado) {
+        this.acabado = acabado;
     }
     
     public void criaDocumentacao(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, int progresso){

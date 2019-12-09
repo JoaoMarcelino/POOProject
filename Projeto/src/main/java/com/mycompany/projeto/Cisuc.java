@@ -69,7 +69,7 @@ public class Cisuc {
 
         for(Projeto projeto: arrayProjeto) {
            
-            if (projeto.getDataFinal().compareTo(this.dataAtual) < 0)
+            if (projeto.getAcabado() == 0)
                 System.out.println(projeto);
         }
         System.out.println("----");
@@ -82,7 +82,7 @@ public class Cisuc {
 
         for(Projeto projeto: arrayProjeto) {
 
-            if (projeto.getDataFinal().compareTo(this.dataAtual) >= 0)
+            if (projeto.getAcabado() == 1)
                 System.out.println(projeto);
         }
         System.out.println("----");
