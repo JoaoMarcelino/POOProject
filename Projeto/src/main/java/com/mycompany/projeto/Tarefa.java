@@ -17,12 +17,13 @@ public abstract class Tarefa implements Serializable{
     private GregorianCalendar dataInicio;
     private GregorianCalendar dataEstimada;
     
-    private int progesso = 0;
+    private int progesso;
     private float taxaEsforco;
     private String nome;
     private Pessoa responsavel;
 
     public Tarefa(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada) {
+        this.progesso = 0;
         this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataEstimada = dataEstimada;

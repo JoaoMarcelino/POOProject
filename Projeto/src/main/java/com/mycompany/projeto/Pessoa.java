@@ -44,7 +44,8 @@ public abstract class Pessoa implements Serializable{
     }
     
     public void addTarefa(Tarefa tarefa){
-        arrayTarefas.add(tarefa);
+        if (this.getCarga() + tarefa.getTaxaEsforco() <= 1)
+            arrayTarefas.add(tarefa);
     }
     
     public void eliminarTarefa(Tarefa tarefa){

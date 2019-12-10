@@ -26,6 +26,14 @@ public class Docente extends Pessoa{
         this.numMecanografico = numMecanografico;
         this.areaInvestigacao = areaInvestigacao;
     } 
+
+    public int getNumMecanografico() {
+        return numMecanografico;
+    }
+
+    public String getAreaInvestigacao() {
+        return areaInvestigacao;
+    }
     
     public void addEstudante(Estudante estudante){
         arrayEstudantes.add(estudante);
@@ -55,9 +63,8 @@ public class Docente extends Pessoa{
     }
     
     public void delProjeto() {
-        Projeto projeto = new Projeto();
-        
-        this.projeto = projeto;
+
+        this.projeto = null;
         this.ip = 0;
     }
 }

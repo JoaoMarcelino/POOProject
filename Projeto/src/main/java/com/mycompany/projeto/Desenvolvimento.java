@@ -13,9 +13,10 @@ import java.util.GregorianCalendar;
  */
 public class Desenvolvimento extends Tarefa{
         
-    private float taxaEsforco = (float) 1;
+    private float taxaEsforco;
     
     public Desenvolvimento(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada) {
         super(nome, dataInicio, dataEstimada);
+        this.taxaEsforco = 1;
     }
 }

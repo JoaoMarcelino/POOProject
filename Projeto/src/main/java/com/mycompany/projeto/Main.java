@@ -50,17 +50,29 @@ public class Main {
                                     switch (split[0]) {
                                         case "BD":
                                             pessoa = new Doutorado(split[1],split[2],data1);
+                                            cisuc.addBolseiro(pessoa);
                                             break;
-                                        case "BM":
-                                            pessoa = new Mestre(split[1],split[2],data1);
+                                        case "BM":;
+                                            for(Docente docente : cisuc.getArrayDocentes()){
+                                                if (docente.getNome().equals(split[4])){
+                                                    pessoa = new Mestre(split[1],split[2],data1,docente);
+                                                    cisuc.addBolseiro(pessoa);
+                                                    break;
+                                                }
+                                            }
                                             break;
                                         default:
-                                            pessoa = new Licenciado(split[1],split[2],data1);
+                                            for(Docente docente : cisuc.getArrayDocentes()){
+                                                if (docente.getNome().equals(split[4])){
+                                                    pessoa = new Licenciado(split[1],split[2],data1,docente);
+                                                    cisuc.addBolseiro(pessoa);
+                                                    break;
+                                                }
+                                            }                                            
                                             break;
                                     }
-                                    
-                                    cisuc.addBolseiro(pessoa);
-                                }   break;
+                                }  
+                                break;
                                 
                             case 1:
                                 
@@ -87,11 +99,10 @@ public class Main {
                                         break;
                                 }
                                 
-                                projeto = cisuc.getProjeto(split[1]);
-                                if ("NOTEXISTENT".equals(projeto.getNome()))
-                                    break;
-                                projeto.addTarefa(tarefa);
-                                
+                                if ((projeto = cisuc.getProjeto(split[1])).getNome() != null)
+                                    projeto.addTarefa(tarefa);
+                                else
+                                    System.out.println("Erro a adicionar tarefa");
                                 break;
                         }
                     }
@@ -226,19 +237,24 @@ public class Main {
         else
             readTextFiles(cisuc);
         
-        GregorianCalendar data1 = new GregorianCalendar();
-        GregorianCalendar data2 = new GregorianCalendar(2020,2,20);
+      //  GregorianCalendar data1 = new GregorianCalendar();
+      //  GregorianCalendar data2 = new GregorianCalendar(2020,2,20);
         
-        if (cisuc.criaProjeto("Projeto Teste", "PT", data1, data2, "Teste213") == 1)
-            System.out.println("Erro ao criar projeto");
-            
-        cisuc.naoConcluidos();
+       // if (cisuc.criaProjeto("Projeto Teste", "PT", data1, data2, "Teste213") == 1)
+       //     System.out.println("Erro ao criar projeto");
         
-        for (Docente docente : cisuc.getArrayDocentes()){
-            System.out.println(docente.getNome());
-            System.out.println(docente.getProjeto().getNome());
-            System.out.println(docente.getIP());
-        }
+      //  if (cisuc.criaDocente("Docente Teste", "DocenteTeste@sapo.pt",1273812,"AnimalCrossing") == 1)
+          //  System.out.println("ERRO A CRIAR DOCENTE");
+        
+      // if (cisuc.criaDoutorado("Doutor Teste", "Tested@sapo.pt", data2) == 1)
+         //   System.out.println("ERRO A CRIAR DOUTORADO");
+        
+       // if (cisuc.criaEstudante("Teste", "Teste@sapo.pt", data2, "Docente Teste") == 1)
+          //  System.out.println("ERRO A CRIAR ESTUDANTE");
+
+        
+        //cisuc.printPessoas();
+        
         writeObjFiles(cisuc);
     }
 }

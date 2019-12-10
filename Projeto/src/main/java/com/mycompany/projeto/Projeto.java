@@ -123,6 +123,7 @@ public class Projeto implements Serializable{
     
     public void addBolseiro(Bolseiro bolseiro){
         arrayBolseiros.add(bolseiro);
+        this.custo += bolseiro.getOrdenado();
     }
     
     public void eliminarTarefas(Tarefa tarefa){
@@ -180,7 +181,7 @@ public class Projeto implements Serializable{
     }
     
     public void addCusto(int aux) {
-        custo += aux;
+        this.custo += aux;
     }
     
     public void endProjeto(Projeto projeto) {

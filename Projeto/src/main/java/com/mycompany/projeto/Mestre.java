@@ -13,9 +13,10 @@ import java.util.GregorianCalendar;
  */
 public class Mestre extends Estudante{
     
-    private int ordenado = 1000;
+    private int ordenado;
     
-    protected Mestre(String nome, String email, GregorianCalendar contrato){
-        super(nome,email, contrato);
+    protected Mestre(String nome, String email, GregorianCalendar contrato, Docente docente){
+        super(nome,email, contrato, docente);
+        this.ordenado = 1000;
     }
 }

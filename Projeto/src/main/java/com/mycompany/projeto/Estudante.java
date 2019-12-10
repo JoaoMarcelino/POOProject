@@ -16,12 +16,14 @@ public class Estudante extends Bolseiro{
     
     protected ArrayList<Docente> arrayDocentes = new ArrayList <>();
     
-    public Estudante(String nome, String email, GregorianCalendar contrato){
+    public Estudante(String nome, String email, GregorianCalendar contrato, Docente docente){
         super(nome,email,contrato);
+        arrayDocentes.add(docente);
     }
     
     public void addDocente(Docente docente){
         arrayDocentes.add(docente);
+        docente.addEstudante(this);
     }
     
     public void removeDocente(Docente docente){
