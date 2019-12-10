@@ -26,20 +26,24 @@ public class Projeto implements Serializable{
     private GregorianCalendar dataEstimada;
     private GregorianCalendar dataFinal;
     
-    private int acabado = 0;
-    private int custo = 0;
+    private int acabado;
+    private int custo;
     private Docente investigadorPrincipal;
     
-    public Projeto(String nome, String acronimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada) {
+    public Projeto(String nome, String acronimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Docente investigadorPrincipal) {
+        this.custo = 0;
+        this.acabado = 0;
         this.nome = nome;
         this.acronimo = acronimo;
         this.dataInicio = dataInicio;
         this.dataEstimada = dataEstimada;
+        this.investigadorPrincipal = investigadorPrincipal;
     }
     
     public Projeto(){
         this.nome = "NONEXISTANT";
     }
+    
     public String getNome() {
         return this.nome;
     }
@@ -176,7 +180,7 @@ public class Projeto implements Serializable{
     }
     
     public void addCusto(int aux) {
-        this.custo += aux;
+        custo += aux;
     }
     
     public void endProjeto(Projeto projeto) {

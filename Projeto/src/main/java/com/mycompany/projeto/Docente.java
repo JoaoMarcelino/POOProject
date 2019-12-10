@@ -16,11 +16,13 @@ public class Docente extends Pessoa{
     protected ArrayList<Estudante> arrayEstudantes = new ArrayList <>();
     
     private Projeto projeto;
+    private int ip;
     private int numMecanografico;
     private String areaInvestigacao;
     
     public Docente(String nome, String email, int numMecanografico, String areaInvestigacao){
         super(nome, email);
+        this.ip = 0;
         this.numMecanografico = numMecanografico;
         this.areaInvestigacao = areaInvestigacao;
     } 
@@ -42,8 +44,20 @@ public class Docente extends Pessoa{
     public Projeto getProjeto() {
         return projeto;
     }
-
+    
+    public int getIP(){
+        return this.ip;
+    }
+    
     public void setProjeto(Projeto projeto) {
         this.projeto = projeto;
+        this.ip = 1;
+    }
+    
+    public void delProjeto() {
+        Projeto projeto = new Projeto();
+        
+        this.projeto = projeto;
+        this.ip = 0;
     }
 }
