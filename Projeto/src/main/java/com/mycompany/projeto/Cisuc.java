@@ -33,6 +33,7 @@ public class Cisuc {
     public Cisuc(GregorianCalendar dataAtual){
         this.dataAtual = dataAtual;
     }
+
     
     public GregorianCalendar getDataAtual() {
         return dataAtual;
