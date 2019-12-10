@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import static java.util.Collections.list;
+import java.util.GregorianCalendar;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -20,13 +22,22 @@ import javax.swing.*;
  */
 public class mainInterface implements ActionListener {  
     
+    Cisuc cisuc;
+    
+    int x =828;
+    int y = 466;
+        
     JFrame frame;
+    JList list;
     JMenuBar bar;
     JMenu menu1;
     JMenu menu2;
     JMenu menu3;
     
-    JMenuItem itemProjeto1;
+    JMenu itemProjeto1;
+    JMenuItem itemTodos;
+    JMenuItem itemNConc;
+    JMenuItem itemConc;
     JMenuItem itemProjeto2;
     JMenuItem itemProjeto3;
 
@@ -38,8 +49,11 @@ public class mainInterface implements ActionListener {
     JMenuItem itemBolseiro2;
     JMenuItem itemBolseiro3;
 
-    mainInterface() throws IOException{
+    
+    
+    mainInterface(Cisuc cisuc) throws IOException{
        
+        this.cisuc = cisuc;
         frame = new JFrame();
         bar = new JMenuBar();
     
@@ -48,7 +62,7 @@ public class mainInterface implements ActionListener {
         menu2 = new JMenu("Docentes");
         menu3 = new JMenu("Bolseiros");
         
-        itemProjeto1 = new JMenuItem("Ver");
+        itemProjeto1 = new JMenu("Ver");
         itemProjeto2 = new JMenuItem("Criar");
         itemProjeto3 = new JMenuItem("Eliminar");
 
@@ -60,7 +74,10 @@ public class mainInterface implements ActionListener {
         itemBolseiro2 = new JMenuItem("Criar");
         itemBolseiro3 = new JMenuItem("Eliminar");
         
-
+        itemTodos = new JMenuItem("Todos");
+        itemNConc = new JMenuItem("Não Concluidos");
+        itemConc = new JMenuItem("Concluidos");
+        
         itemProjeto1.addActionListener(this);
         itemProjeto2.addActionListener(this);
         itemProjeto3.addActionListener(this);
@@ -71,6 +88,9 @@ public class mainInterface implements ActionListener {
         itemBolseiro2.addActionListener(this);
         itemBolseiro3.addActionListener(this);
         
+        itemTodos.addActionListener(this);
+        itemNConc.addActionListener(this);
+        itemConc.addActionListener(this);
         
         bar.add(menu1);
         bar.add(menu2);
@@ -88,11 +108,15 @@ public class mainInterface implements ActionListener {
         menu3.add(itemBolseiro2);
         menu3.add(itemBolseiro3);
 
+        itemProjeto1.add(itemTodos);
+        itemProjeto1.add(itemNConc);
+        itemProjeto1.add(itemConc);
+        
         
         frame.setJMenuBar(bar);
         frame.setResizable(false);
         frame.setTitle("MENU");
-        frame.setSize(828, 466);
+        frame.setSize(x, y);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         
@@ -111,15 +135,30 @@ public class mainInterface implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {  
         
-        if(e.getSource()==itemProjeto1){
+        if(e.getSource()==itemTodos){
             JPanel p1=new JPanel();
-            JLabel label1 = new JLabel("Valor1");
-            p1.add(label1);
+            p1.setLayout(null);
+
+            DefaultListModel listValues = new DefaultListModel();
+            JLabel label = new JLabel("Lista de valores (selecionar 1)");
+            label.setBounds(x/4,50,x/2,30);
+            for(Projeto projeto: cisuc.arrayProjeto){
+                listValues.addElement(projeto.getNome());
+            }
+            
+
+            list = new JList(listValues);
+            JScrollPane listScroller = new JScrollPane(list);
+            listScroller.setBounds(x/8,y/4, x*3/4, y/2);
+  
+            p1.add(label);
+            p1.add(listScroller);
             frame.getContentPane().removeAll();
             frame.getContentPane().add(p1);
             frame.setVisible(true);
             System.out.println("123");
         }
+        
         else if(e.getSource()==itemProjeto2){
             JPanel p1=new JPanel();
             JLabel label1 = new JLabel("Valor2");
@@ -193,14 +232,9 @@ public class mainInterface implements ActionListener {
             System.out.printf("2");   
         }
 
-        
+     
         
         
     }     
-    
-    public static void main(String[] args) throws IOException {
-        mainInterface mainInterface = new mainInterface();
-    }
-
-
 }
+
