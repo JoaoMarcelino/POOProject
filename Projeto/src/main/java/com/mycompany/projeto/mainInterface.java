@@ -141,7 +141,8 @@ public class mainInterface implements ActionListener {
 
             DefaultListModel listValues = new DefaultListModel();
             JLabel label = new JLabel("Lista de valores (selecionar 1)");
-            label.setBounds(x/4,50,x/2,30);
+            label.getFont();
+            label.setBounds(x/8,50,x/2,30);
             for(Projeto projeto: cisuc.arrayProjeto){
                 listValues.addElement(projeto.getNome());
             }

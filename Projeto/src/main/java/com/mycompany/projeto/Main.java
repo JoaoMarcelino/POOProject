@@ -128,9 +128,9 @@ public class Main {
         
         GregorianCalendar dataAtual = new GregorianCalendar();
         Cisuc cisuc = new Cisuc(dataAtual);
-        /*
+        
         mainInterface mainInterface = new mainInterface(cisuc);
-        */
+        
         readTextFiles(cisuc);
         
         cisuc.printPessoas();
