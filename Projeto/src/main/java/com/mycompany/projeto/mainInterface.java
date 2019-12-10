@@ -50,6 +50,9 @@ public class mainInterface implements ActionListener {
     JMenuItem itemBolseiro3;
 
     
+    JButton buttonProjeto;
+    JButton buttonDocente;
+    JButton buttonBolseiro;
     
     mainInterface(Cisuc cisuc) throws IOException{
        
@@ -136,14 +139,44 @@ public class mainInterface implements ActionListener {
     public void actionPerformed(ActionEvent e) {  
         
         if(e.getSource()==itemTodos){
+            
             JPanel p1=new JPanel();
             p1.setLayout(null);
 
             DefaultListModel listValues = new DefaultListModel();
-            JLabel label = new JLabel("Lista de valores (selecionar 1)");
-            label.getFont();
-            label.setBounds(x/8,50,x/2,30);
-            for(Projeto projeto: cisuc.arrayProjeto){
+            JLabel label = new JLabel("Lista de Todos os Projetos (selecionar 1)");
+            buttonProjeto = new JButton("Selecionar");
+            label.setBounds(x/8,0,x/2,y/4);
+            buttonProjeto.setBounds(x*6/8,y/16,x/8,y/8);
+            buttonProjeto.addActionListener(this);
+            cisuc.arrayProjetos.forEach((projeto) -> { listValues.addElement(projeto.getNome()); });
+            
+
+            list = new JList(listValues);
+            JScrollPane listScroller = new JScrollPane(list);
+            listScroller.setBounds(x/8,y/4, x*3/4, y/2);
+  
+            p1.add(label);
+            p1.add(buttonProjeto);
+            p1.add(listScroller);
+            frame.getContentPane().removeAll();
+            frame.getContentPane().add(p1);
+            frame.setVisible(true);
+        }
+        
+        
+        if(e.getSource()==itemNConc){
+            JPanel p1=new JPanel();
+            p1.setLayout(null);
+
+            DefaultListModel listValues = new DefaultListModel();
+            JLabel label = new JLabel("Lista de Projetos Não Concluidos  (selecionar 1)");
+            buttonProjeto = new JButton("Selecionar");
+            label.setBounds(x/8,0,x/2,y/4);
+            buttonProjeto.setBounds(x*6/8,y/16,x/8,y/8);
+            buttonProjeto.addActionListener(this);
+            for(Projeto projeto: cisuc.arrayProjetos){
+                if (projeto.getAcabado() == 0)
                 listValues.addElement(projeto.getNome());
             }
             
@@ -153,11 +186,40 @@ public class mainInterface implements ActionListener {
             listScroller.setBounds(x/8,y/4, x*3/4, y/2);
   
             p1.add(label);
+            p1.add(buttonProjeto);
             p1.add(listScroller);
             frame.getContentPane().removeAll();
             frame.getContentPane().add(p1);
             frame.setVisible(true);
-            System.out.println("123");
+        }
+        
+        
+        if(e.getSource()==itemConc){
+            JPanel p1=new JPanel();
+            p1.setLayout(null);
+
+            DefaultListModel listValues = new DefaultListModel();
+            JLabel label = new JLabel("Lista de Projetos Concluidos (selecionar 1)");
+            buttonProjeto = new JButton("Selecionar");
+            buttonProjeto.setBounds(x*6/8,y/16,x/8,y/8);
+            label.setBounds(x/8,0,x/2,y/4);
+            buttonProjeto.addActionListener(this);
+            for(Projeto projeto: cisuc.arrayProjetos){
+                if (projeto.getAcabado() == 1)
+                listValues.addElement(projeto.getNome());
+            }
+            
+
+            list = new JList(listValues);
+            JScrollPane listScroller = new JScrollPane(list);
+            listScroller.setBounds(x/8,y/4, x*3/4, y/2);
+  
+            p1.add(label);
+            p1.add(buttonProjeto);
+            p1.add(listScroller);
+            frame.getContentPane().removeAll();
+            frame.getContentPane().add(p1);
+            frame.setVisible(true);
         }
         
         else if(e.getSource()==itemProjeto2){
@@ -180,12 +242,30 @@ public class mainInterface implements ActionListener {
         }
         else if(e.getSource()==itemDocente1){
             JPanel p1=new JPanel();
-            JLabel label1 = new JLabel("Valor4");
-            p1.add(label1);
+            p1.setLayout(null);
+
+            DefaultListModel listValues = new DefaultListModel();
+            JLabel label = new JLabel("Lista de valores (selecionar 1)");
+            buttonDocente = new JButton("Selecionar");
+            label.setBounds(x/8,0,x/2,y/4);
+            buttonDocente.setBounds(x*6/8,y/16,x/8,y/8);
+            buttonDocente.addActionListener(this);
+            for(Pessoa docente: cisuc.arrayDocentes){
+                listValues.addElement(docente.getNome());
+            }
+            
+
+            list = new JList(listValues);
+            JScrollPane listScroller = new JScrollPane(list);
+            listScroller.setBounds(x/8,y/4, x*3/4, y/2);
+  
+            p1.add(label);
+            p1.add(buttonDocente);
+            p1.add(listScroller);
             frame.getContentPane().removeAll();
             frame.getContentPane().add(p1);
             frame.setVisible(true);
-            System.out.printf("2");   
+   
         }
         else if(e.getSource()==itemDocente2){
             JPanel p1=new JPanel();
@@ -207,13 +287,32 @@ public class mainInterface implements ActionListener {
         }
         else if(e.getSource()==itemBolseiro1){
             JPanel p1=new JPanel();
-            JLabel label1 = new JLabel("Valor7");
-            p1.add(label1);
+            p1.setLayout(null);
+
+            DefaultListModel listValues = new DefaultListModel();
+            JLabel label = new JLabel("Lista de valores (selecionar 1)");
+            buttonBolseiro = new JButton("Selecionar");
+            label.setBounds(x/8,0,x/2,y/4);
+            buttonBolseiro.setBounds(x*6/8,y/16,x/8,y/8);
+            buttonBolseiro.addActionListener(this);
+            for(Pessoa bolseiro: cisuc.arrayBolseiros){
+                listValues.addElement(bolseiro.getNome());
+            }
+            
+
+            list = new JList(listValues);
+            JScrollPane listScroller = new JScrollPane(list);
+            listScroller.setBounds(x/8,y/4, x*3/4, y/2);
+  
+            p1.add(label);
+            p1.add(buttonBolseiro);
+            p1.add(listScroller);
             frame.getContentPane().removeAll();
             frame.getContentPane().add(p1);
             frame.setVisible(true);
-            System.out.printf("2");   
+   
         }
+        
         else if(e.getSource()==itemBolseiro2){
             JPanel p1=new JPanel();
             JLabel label1 = new JLabel("Valor8");
@@ -223,6 +322,7 @@ public class mainInterface implements ActionListener {
             frame.setVisible(true);
             System.out.printf("2");   
         } 
+        
         else if(e.getSource()==itemBolseiro3){
             JPanel p1=new JPanel();
             JLabel label1 = new JLabel("Valor9");
@@ -233,6 +333,20 @@ public class mainInterface implements ActionListener {
             System.out.printf("2");   
         }
 
+        else if(e.getSource() == buttonProjeto){
+            
+            Projeto projetoPrincipal = cisuc.getProjeto((String) list.getSelectedValue());
+            ProjetoInterface projeto = new ProjetoInterface(projetoPrincipal);
+        }
+        
+        else if(e.getSource() == buttonDocente){
+            Docente docente = cisuc.getProjeto((String) list.getSelectedValue())
+        }
+        
+        else if(e.getSource() == buttonBolseiro){
+        
+        }
+        
      
         
         

@@ -50,6 +50,26 @@ public class Cisuc {
         return proj;//SE HOUVER ERRO CRIA UM PROJETO COM NOME "NONEXISTANT" PARA RESOLUCAO DE ERROS.
     }
     
+    public Docente getDocente(String nome){
+        for(Docente docente: arrayDocentes) {
+           
+            if (docente.getNome().equals(nome))
+                return docente;
+        }
+        Docente doc = new Docente();
+        return doc;
+    }
+    
+    public Bolseiro getBolseiro(String nome){
+        for(Bolseiro bolseiro: arrayBolseiros) {
+           
+            if (bolseiro.getNome().equals(nome))
+                return bolseiro;
+        }
+        Bolseiro bol = new Bolseiro();
+        return bol;
+    }
+    
     public void addDocente(Pessoa pessoa){
         arrayDocentes.add(pessoa);
     }
