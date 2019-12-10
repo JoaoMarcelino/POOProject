@@ -5,13 +5,14 @@
  */
 package com.mycompany.projeto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author hp
  */
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable{
     
     protected ArrayList<Tarefa> arrayTarefas = new ArrayList <>();
         

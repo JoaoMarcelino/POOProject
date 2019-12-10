@@ -5,13 +5,14 @@
  */
 package com.mycompany.projeto;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 /**
  *
  * @author hp
  */
-public abstract class Tarefa {
+public abstract class Tarefa implements Serializable{
     
     private GregorianCalendar dataInicio;
     private GregorianCalendar dataEstimada;

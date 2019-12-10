@@ -14,7 +14,19 @@ public class Cisuc {
     
     protected ArrayList<Pessoa> arrayDocentes = new ArrayList <>();
     protected ArrayList<Pessoa> arrayBolseiros = new ArrayList <>();
-    protected ArrayList<Projeto> arrayProjeto = new ArrayList <>();
+    protected ArrayList<Projeto> arrayProjetos = new ArrayList <>();
+    
+    public ArrayList<Pessoa> getArrayDocentes() {
+        return arrayDocentes;
+    }
+
+    public ArrayList<Pessoa> getArrayBolseiros() {
+        return arrayBolseiros;
+    }
+
+    public ArrayList<Projeto> getArrayProjetos() {
+        return arrayProjetos;
+    }
     
     private GregorianCalendar dataAtual;     
    
@@ -28,13 +40,13 @@ public class Cisuc {
 
     public Projeto getProjeto(String nome) {
         
-        for(Projeto projeto: arrayProjeto) {
+        for(Projeto projeto: arrayProjetos) {
            
             if (projeto.getNome().equals(nome))
                 return projeto;
         }
         Projeto proj = new Projeto();
-        return proj;//IF ERROR
+        return proj;//SE HOUVER ERRO CRIA UM PROJETO COM NOME "NONEXISTANT" PARA RESOLUCAO DE ERROS.
     }
     
     public void addDocente(Pessoa pessoa){
@@ -70,7 +82,7 @@ public class Cisuc {
     
     
     public void addProjeto(Projeto projeto){
-        arrayProjeto.add(projeto);
+        arrayProjetos.add(projeto);
     }
     
     
@@ -78,7 +90,7 @@ public class Cisuc {
         
         System.out.println("PROJETOS NAO CONCLUÍDOS:\n");
 
-        for(Projeto projeto: arrayProjeto) {
+        for(Projeto projeto: arrayProjetos) {
            
             if (projeto.getAcabado() == 0)
                 System.out.println(projeto.getNome());
@@ -91,7 +103,7 @@ public class Cisuc {
 
         System.out.println("PROJETOS CONCLUÍDOS:\n");
 
-        for(Projeto projeto: arrayProjeto) {
+        for(Projeto projeto: arrayProjetos) {
 
             if (projeto.getAcabado() == 1)
                 System.out.println(projeto.getNome());
@@ -115,9 +127,9 @@ public class Cisuc {
     
     public void printTarefas(){
         
-        System.out.println("PESSOAS:\n");
+        System.out.println("Tarefas:\n");
 
-        for(Projeto projeto: arrayProjeto) {
+        for(Projeto projeto: arrayProjetos) {
             projeto.listarTarefas();
         }
         

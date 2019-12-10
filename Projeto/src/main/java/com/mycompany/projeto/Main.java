@@ -1,11 +1,15 @@
 package com.mycompany.projeto;
 
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.FileReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.GregorianCalendar;
 
 /**
@@ -119,9 +123,92 @@ public class Main {
         readText(tarefas, 2, cisuc);
     }
     
-    public static void readObjFiles(){
+    public static int readObjects(Cisuc cisuc, int aux, File f){
         
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            while(true){ 
+                try{
+                    switch (aux) {
+                        case 0:
+                            cisuc.addProjeto((Projeto)ois.readObject());
+                            break;
+                        case 1:
+                            cisuc.addBolseiro((Pessoa)ois.readObject());
+                            break;
+                        default:
+                            cisuc.addDocente((Pessoa)ois.readObject());
+                            break;
+                    }
+                } 
+                catch (ClassNotFoundException ex) {
+                    System.out.println("Erro a converter objeto");
+                } 
+                catch (EOFException ex){
+                    ois.close();
+                    return 0;
+                }
+            } 
+        } catch (FileNotFoundException ex) {
+            System.out.println("Erro a abrir ficheiro.");
+        } catch (IOException ex) {
+            System.out.println("Erro a ler ficheiro.");      
+        }
+        return 1;
+    }
+    
+    public static void readObjFiles(Cisuc cisuc){
         
+        File projetos = new File("Projetos.obj");
+        File bolseiros = new File("Bolseiros.txt");   
+        File docentes = new File("Docentes.txt");     
+        
+        readObjects(cisuc, 0, projetos);
+        readObjects(cisuc, 1, bolseiros);
+        readObjects(cisuc, 2, docentes);
+    }
+    
+    public static void writeObjFiles(Cisuc cisuc){
+        
+        File projetos = new File("Projetos.obj");
+        File bolseiros = new File("Bolseiros.txt");   
+        File docentes = new File("Docentes.txt");     
+        
+        writeObjects(cisuc, 0, projetos);
+        writeObjects(cisuc, 1, bolseiros);
+        writeObjects(cisuc, 2, docentes);
+    }
+    
+    public static void writeObjects(Cisuc cisuc, int aux, File f){
+            
+        try {
+            FileOutputStream fos = new FileOutputStream(f);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            
+            switch (aux) {
+                case 0:
+                    for (Projeto projeto : cisuc.getArrayProjetos())
+                        oos.writeObject(projeto);
+                    break;
+                case 1:
+                    for (Pessoa bolseiro : cisuc.getArrayBolseiros())
+                        oos.writeObject(bolseiro);
+                    break;
+                default:
+                    for (Pessoa docente : cisuc.getArrayDocentes())
+                        oos.writeObject(docente);
+                    break;
+            }
+            oos.close();
+
+        } catch (FileNotFoundException ex) {
+            System.out.println("Erro a criar ficheiro.");
+
+        } catch (IOException ex) {
+            System.out.println("Erro a escrever para o ficheiro.");
+        }
+
     }
     
     public static void main(String[] args) {
@@ -129,10 +216,20 @@ public class Main {
         GregorianCalendar dataAtual = new GregorianCalendar();
         Cisuc cisuc = new Cisuc(dataAtual);
         
-        readTextFiles(cisuc);
+        File pFile = new File("Projetos.obj");
+        File bFile = new File("Bolseiros.obj");
+        File dFile = new File("Docentes.obj");
         
+        if (pFile.exists() && pFile.isFile() && bFile.exists() && bFile.isFile() && dFile.exists() && dFile.isFile())
+            readObjFiles(cisuc);
+            
+        else
+            readTextFiles(cisuc);
+            
         cisuc.printPessoas();
         cisuc.naoConcluidos();
         cisuc.printTarefas();
+        
+        writeObjFiles(cisuc);
     }
 }

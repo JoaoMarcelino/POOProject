@@ -5,6 +5,7 @@
  */
 package com.mycompany.projeto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
@@ -12,7 +13,7 @@ import java.util.GregorianCalendar;
  *
  * @author hp
  */
-public class Projeto {
+public class Projeto implements Serializable{
     
     protected ArrayList<Tarefa> arrayTarefas = new ArrayList <>();
     protected ArrayList<Bolseiro> arrayBolseiros = new ArrayList <>();
@@ -154,7 +155,7 @@ public class Projeto {
     
     public void listarTarefasConcluidas(){
 
-        System.out.println("TAREFAS:");
+        System.out.printf("TAREFAS DO PROJETO %s:\n", this.nome);
 
         for(Tarefa tarefa: arrayTarefas) {
             if (tarefa.getProgesso() == 100)
