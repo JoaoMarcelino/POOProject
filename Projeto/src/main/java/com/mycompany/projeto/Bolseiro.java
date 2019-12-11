@@ -14,6 +14,7 @@ import java.util.GregorianCalendar;
 public abstract class Bolseiro extends Pessoa{
    
     protected int ordenado;
+    private int used;
     GregorianCalendar inicioBolsa;
     GregorianCalendar fimBolsa;
     
@@ -32,5 +33,9 @@ public abstract class Bolseiro extends Pessoa{
 
     public GregorianCalendar getFimBolsa() {
         return fimBolsa;
+    }
+
+    public int getUsed() {
+        return used;
     }
 }

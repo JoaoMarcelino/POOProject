@@ -101,6 +101,24 @@ public class Projeto implements Serializable{
         return null;
     }
     
+    public Pessoa getPessoa(int index) {
+        
+        
+        for(Bolseiro pessoa: arrayBolseiros) {
+            
+            if (arrayBolseiros.indexOf(pessoa)==index)
+                return pessoa;
+        }
+        
+        for(Docente pessoa: arrayDocentes) {
+
+            if (arrayDocentes.indexOf(pessoa)==index)
+                return pessoa;
+        }
+        
+        return null;
+    }
+    
     public Bolseiro getBolseiro(String nome) {
         
         
@@ -184,6 +202,7 @@ public class Projeto implements Serializable{
             System.out.println("ERRO -- TAREFA NAO EXISTENTE");
     }
     
+    
     public Tarefa getTarefa(String nome){
         
         for (Tarefa tarefa : arrayTarefas){
@@ -245,4 +264,35 @@ public class Projeto implements Serializable{
     public void endProjeto(Projeto projeto) {
         this.acabado = 1;
     }
+    
+    public void removeDocente(Docente pessoa){
+      
+        int indice = arrayDocentes.indexOf(pessoa);
+       
+        if (indice != -1)
+            arrayDocentes.remove(indice);
+        else
+            System.out.println("ERRO -- DOCENTE NAO EXISTENTE");
+    }
+    
+    public void removeBolseiro(Bolseiro pessoa){
+        
+        int indice = arrayBolseiros.indexOf(pessoa);
+        
+        if (indice != -1)
+            arrayBolseiros.remove(indice);
+        else
+            System.out.println("ERRO -- BOLSEIRO NAO EXISTENTE");
+    }
+    
+    public void removeTarefa(Tarefa tarefa){
+      
+        int indice = arrayTarefas.indexOf(tarefa);
+       
+        if (indice != -1)
+            arrayTarefas.remove(indice);
+        else
+            System.out.println("ERRO -- DOCENTE NAO EXISTENTE");
+    }
+    
 }

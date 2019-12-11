@@ -12,7 +12,7 @@ package com.mycompany.projeto;
 public class BolseiroInterface {
     Bolseiro bolseiro;
     
-    public BolseiroInterface(Bolseiro bolseiro){
+    public BolseiroInterface(Bolseiro bolseiro, Cisuc cisuc){
         this.bolseiro = bolseiro;
         
         System.out.printf("%s\n",bolseiro.getNome());

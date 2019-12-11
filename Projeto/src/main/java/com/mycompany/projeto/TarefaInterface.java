@@ -9,12 +9,9 @@ package com.mycompany.projeto;
  *
  * @author hp
  */
-public class DocenteInterface {
-    Docente docente;
-    
-    public DocenteInterface(Docente docente, Cisuc cisuc){
-        this.docente = docente;
-        
-        System.out.printf("%s\n",docente.getNome());
+public class TarefaInterface {
+
+    public TarefaInterface(Tarefa novo, Cisuc cisuc) {
     }
+    
 }

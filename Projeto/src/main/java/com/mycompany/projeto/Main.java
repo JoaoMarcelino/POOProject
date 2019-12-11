@@ -238,6 +238,7 @@ public class Main {
         GregorianCalendar dataAtual = new GregorianCalendar();
         Cisuc cisuc = new Cisuc(dataAtual);
         
+        
         File pFile = new File("Projetos.obj");
         File bFile = new File("Bolseiros.obj");
         File dFile = new File("Docentes.obj");
@@ -278,6 +279,8 @@ public class Main {
         TEMOS DE TER EM CONTA SE É DOCENTE OU BOLSEIRO, usamos o return null para 
         ver se é bolseiro ou docente.(*/
         //cisuc.printPessoas();
+        
+        mainInterface mainInterface = new mainInterface(cisuc);
         
         writeObjFiles(cisuc);
     }

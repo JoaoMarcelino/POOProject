@@ -390,17 +390,17 @@ public class mainInterface implements ActionListener {
 
         else if(e.getSource() == buttonProjeto){
             Projeto projeto = cisuc.getProjeto((String) list.getSelectedValue());
-            ProjetoInterface projetoInt = new ProjetoInterface(projeto);
+            ProjetoInterface projetoInt = new ProjetoInterface(projeto,cisuc);
         }
         
         else if(e.getSource() == buttonDocente){
             Docente docente = cisuc.getDocente((String) list.getSelectedValue());
-            DocenteInterface docenteInt = new DocenteInterface(docente);
+            DocenteInterface docenteInt = new DocenteInterface(docente, cisuc);
         }
         
         else if(e.getSource() == buttonBolseiro){
             Bolseiro bolseiro = cisuc.getBolseiro((String) list.getSelectedValue());
-            BolseiroInterface bolseiroInt = new BolseiroInterface(bolseiro);
+            BolseiroInterface bolseiroInt = new BolseiroInterface(bolseiro, cisuc);
         }
         
         else if (e.getSource() == buttonElProjeto){
@@ -428,14 +428,14 @@ public class mainInterface implements ActionListener {
            
            Projeto novo= new Projeto(nome.getText(),acronimo.getText(), inicio, fim, cisuc.getDocente(jComboBoxAction.getSelectedIndex()));
            cisuc.addProjeto(novo); 
-           ProjetoInterface projetoInt = new ProjetoInterface(novo);
+           ProjetoInterface projetoInt = new ProjetoInterface(novo, cisuc);
         }
         
         else if (e.getSource() == buttonCriarDocente){
             
             Docente novo = new Docente(nome.getText(), email.getText(), Integer.parseInt(nmecan.getText()),area.getText());
             cisuc.addDocente(novo);
-            DocenteInterface docenteInt = new DocenteInterface(novo);
+            DocenteInterface docenteInt = new DocenteInterface(novo, cisuc);
         }
         
         else if(e.getSource() == buttonCriarBolseiro){
@@ -457,7 +457,7 @@ public class mainInterface implements ActionListener {
             }
             
             cisuc.addBolseiro(novo); 
-            BolseiroInterface bolseiroInt = new BolseiroInterface(novo);
+            BolseiroInterface bolseiroInt = new BolseiroInterface(novo, cisuc);
         }
     }
     
