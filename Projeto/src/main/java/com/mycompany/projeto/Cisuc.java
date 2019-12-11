@@ -12,15 +12,15 @@ import java.util.GregorianCalendar;
  */
 public class Cisuc {
     
-    protected ArrayList<Pessoa> arrayDocentes = new ArrayList <>();
-    protected ArrayList<Pessoa> arrayBolseiros = new ArrayList <>();
+    protected ArrayList<Docente> arrayDocentes = new ArrayList <>();
+    protected ArrayList<Bolseiro> arrayBolseiros = new ArrayList <>();
     protected ArrayList<Projeto> arrayProjetos = new ArrayList <>();
     
-    public ArrayList<Pessoa> getArrayDocentes() {
+    public ArrayList<Docente> getArrayDocentes() {
         return arrayDocentes;
     }
 
-    public ArrayList<Pessoa> getArrayBolseiros() {
+    public ArrayList<Bolseiro> getArrayBolseiros() {
         return arrayBolseiros;
     }
 
@@ -46,18 +46,16 @@ public class Cisuc {
             if (projeto.getNome().equals(nome))
                 return projeto;
         }
-        Projeto proj = new Projeto();
-        return proj;//SE HOUVER ERRO CRIA UM PROJETO COM NOME "NONEXISTANT" PARA RESOLUCAO DE ERROS.
+        return null;
     }
-    
+   
     public Docente getDocente(String nome){
         for(Docente docente: arrayDocentes) {
            
             if (docente.getNome().equals(nome))
                 return docente;
         }
-        Docente doc = new Docente();
-        return doc;
+        return null;
     }
     
     public Bolseiro getBolseiro(String nome){
@@ -66,16 +64,26 @@ public class Cisuc {
             if (bolseiro.getNome().equals(nome))
                 return bolseiro;
         }
-        Bolseiro bol = new Bolseiro();
-        return bol;
+        return null;
     }
     
-    public void addDocente(Pessoa pessoa){
+     public void removeProjeto(Projeto projeto){
+        
+        int indice = arrayProjetos.indexOf(projeto);
+       
+        if (indice != -1)
+            arrayProjetos.remove(indice);
+        else
+            System.out.println("ERRO -- PROJETO NAO EXISTENTE");
+    }
+    
+    
+    public void addDocente(Docente pessoa){
         arrayDocentes.add(pessoa);
     }
     
     
-    public void removeDocente(Pessoa pessoa){
+    public void removeDocente(Docente pessoa){
         
         int indice = arrayDocentes.indexOf(pessoa);
        
@@ -86,12 +94,12 @@ public class Cisuc {
     }
     
     
-    public void addBolseiro(Pessoa pessoa){
+    public void addBolseiro(Bolseiro pessoa){
         arrayBolseiros.add(pessoa);
     }
     
     
-    public void removeBolseiro(Pessoa pessoa){
+    public void removeBolseiro(Bolseiro pessoa){
         
         int indice = arrayBolseiros.indexOf(pessoa);
         
@@ -101,9 +109,22 @@ public class Cisuc {
             System.out.println("ERRO -- BOLSEIRO NAO EXISTENTE");
     }
     
-    
     public void addProjeto(Projeto projeto){
         arrayProjetos.add(projeto);
+    }
+    
+    public int criaProjeto(String nome, String acronimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, String investigadorPrincipal){
+              
+        for (Docente docente : arrayDocentes){
+            
+            if (docente.getNome().equals(investigadorPrincipal) && docente.getIP() == 0){
+                Projeto projeto = new Projeto(nome, acronimo, dataInicio, dataEstimada, docente);
+                arrayProjetos.add(projeto);
+                docente.setProjeto(projeto);
+                return 0;
+            }  
+        }
+        return 1;
     }
     
     
@@ -147,13 +168,16 @@ public class Cisuc {
     }
     
     public void printTarefas(){
-        
-        System.out.println("Tarefas:\n");
 
         for(Projeto projeto: arrayProjetos) {
             projeto.listarTarefas();
         }
+    }
+    
+    public void printIP(){
         
-        System.out.println("----\n");
+        for(Projeto projeto: arrayProjetos) {
+            System.out.println(projeto.getInvestigadorPrincipal().getNome());
+        }
     }
 }

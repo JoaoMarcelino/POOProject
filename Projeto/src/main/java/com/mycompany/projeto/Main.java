@@ -29,7 +29,6 @@ public class Main {
                 try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
                     String line;
                     String split[];
-                    Pessoa pessoa;
                     Projeto projeto;
                     Tarefa tarefa;
                     GregorianCalendar data1;
@@ -41,11 +40,12 @@ public class Main {
                         switch (aux) {
                             case 0:
                                 if (split[0].equals("D")){
-                                    pessoa = new Docente(split[1],split[2],Integer.parseInt(split[3]),split[4]);
-                                    cisuc.addDocente(pessoa);
+                                    Docente docente = new Docente(split[1],split[2],Integer.parseInt(split[3]),split[4]);
+                                    cisuc.addDocente(docente);
                                 }
                                 
                                 else{
+                                    Bolseiro pessoa;
                                     data1 = new GregorianCalendar(Integer.parseInt(split[3].split("-")[2]),Integer.parseInt(split[3].split("-")[1]),Integer.parseInt(split[3].split("-")[0]));
                                     switch (split[0]) {
                                         case "BD":
@@ -66,9 +66,9 @@ public class Main {
                                 
                                 data1 = new GregorianCalendar(Integer.parseInt(split[2].split("-")[2]),Integer.parseInt(split[2].split("-")[1]),Integer.parseInt(split[2].split("-")[0]));
                                 data2 = new GregorianCalendar(Integer.parseInt(split[3].split("-")[2]),Integer.parseInt(split[3].split("-")[1]),Integer.parseInt(split[3].split("-")[0]));
-                                projeto = new Projeto(split[0], split[1], data1, data2);
-                                cisuc.addProjeto(projeto);
                                 
+                                if (cisuc.criaProjeto(split[0],split[1],data1,data2,split[4]) == 1)
+                                    System.out.println("Erro a criar projeto");
                                 break;
                                 
                             default:
@@ -135,10 +135,10 @@ public class Main {
                             cisuc.addProjeto((Projeto)ois.readObject());
                             break;
                         case 1:
-                            cisuc.addBolseiro((Pessoa)ois.readObject());
+                            cisuc.addBolseiro((Bolseiro)ois.readObject());
                             break;
                         default:
-                            cisuc.addDocente((Pessoa)ois.readObject());
+                            cisuc.addDocente((Docente)ois.readObject());
                             break;
                     }
                 } 
@@ -161,8 +161,8 @@ public class Main {
     public static void readObjFiles(Cisuc cisuc){
         
         File projetos = new File("Projetos.obj");
-        File bolseiros = new File("Bolseiros.txt");   
-        File docentes = new File("Docentes.txt");     
+        File bolseiros = new File("Bolseiros.obj");   
+        File docentes = new File("Docentes.obj");     
         
         readObjects(cisuc, 0, projetos);
         readObjects(cisuc, 1, bolseiros);
@@ -172,8 +172,8 @@ public class Main {
     public static void writeObjFiles(Cisuc cisuc){
         
         File projetos = new File("Projetos.obj");
-        File bolseiros = new File("Bolseiros.txt");   
-        File docentes = new File("Docentes.txt");     
+        File bolseiros = new File("Bolseiros.obj");   
+        File docentes = new File("Docentes.obj");     
         
         writeObjects(cisuc, 0, projetos);
         writeObjects(cisuc, 1, bolseiros);
@@ -229,11 +229,20 @@ public class Main {
             
         else
             readTextFiles(cisuc);
-            
-        cisuc.printPessoas();
-        cisuc.naoConcluidos();
-        cisuc.printTarefas();
         
+        GregorianCalendar data1 = new GregorianCalendar();
+        GregorianCalendar data2 = new GregorianCalendar(2020,2,20);
+        
+        if (cisuc.criaProjeto("Projeto Teste", "PT", data1, data2, "Teste213") == 1)
+            System.out.println("Erro ao criar projeto");
+            
+        cisuc.naoConcluidos();
+        
+        for (Docente docente : cisuc.getArrayDocentes()){
+            System.out.println(docente.getNome());
+            System.out.println(docente.getProjeto().getNome());
+            System.out.println(docente.getIP());
+        }
         writeObjFiles(cisuc);
     }
 }

@@ -1,40 +1,10 @@
-Feline Labs//FL//29-1-2021//22-4-2022
-BioTio//BT//7-12-2020//24-11-2021
-Growl//GRWL//9-10-2020//27-3-2021
-Petsly//PLY//25-8-2019//6-4-2020
-Animaly//ALY//10-8-2021//2-12-2022
-Zoo Stocks//ZS//29-2-2021//17-5-2022
-Zoo Culture//ZC//28-4-2020//17-6-2021
-Chimp Cart//CC//10-12-2020//4-5-2021
-Hungry Cub//HC//19-3-2020//9-5-2021
-Farm Rabbity//FR//20-11-2021//28-11-2022
-Lab Horses//LH//12-12-2020//24-6-2021
-Zooxo//ZX//1-11-2020//14-3-2021
-Tigerd//TGRD//19-2-2019//4-7-2020
-Defense Chimp//DC//10-7-2019//28-1-2020
-FishCam//FC//17-1-2019//3-9-2020
-MMals//MM//13-2-2020//7-2-2021
-Venture Hippo//VH//23-2-2019//6-6-2020
-The Mouse//TM//15-4-2019//29-12-2020
-Croc Island//CI//13-8-2020//18-2-2021
-Hungry Hyena//HH//28-7-2019//27-5-2020
-**Feline Labs//FL//29-1-2021//22-4-2022
-BioTio//BT//7-12-2020//24-11-2021
-Growl//GRWL//9-10-2020//27-3-2021
-Petsly//PLY//25-8-2019//6-4-2020
-Animaly//ALY//10-8-2021//2-12-2022
-Zoo Stocks//ZS//29-2-2021//17-5-2022
-Zoo Culture//ZC//28-4-2020//17-6-2021
-Chimp Cart//CC//10-12-2020//4-5-2021
-Hungry Cub//HC//19-3-2020//9-5-2021
-Farm Rabbity//FR//20-11-2021//28-11-2022
-Lab Horses//LH//12-12-2020//24-6-2021
-Zooxo//ZX//1-11-2020//14-3-2021
-Tigerd//TGRD//19-2-2019//4-7-2020
-Defense Chimp//DC//10-7-2019//28-1-2020
-FishCam//FC//17-1-2019//3-9-2020
-MMals//MM//13-2-2020//7-2-2021
-Venture Hippo//VH//23-2-2019//6-6-2020
-The Mouse//TM//15-4-2019//29-12-2020
-Croc Island//CI//13-8-2020//18-2-2021
-Hungry Hyena//HH//28-7-2019//27-5-2020
+BioTio//BT//7-12-2020//24-11-2021//Mila Delgado
+Chimp Cart//CC//10-12-2020//4-5-2021//Blanche Duffy
+Farm Rabbity//FR//20-11-2021//28-11-2022//Evelyn Koch
+Lab Horses//LH//12-12-2020//24-6-2021//Lincoln Burris
+Defense Chimp//DC//10-7-2019//28-1-2020//Emil Middleton
+FishCam//FC//17-1-2019//3-9-2020//Mahira Redmond
+MMals//MM//13-2-2020//7-2-2021//Tammy Bautista
+Venture Hippo//VH//23-2-2019//6-6-2020//Victoria Bevan
+Croc Island//CI//13-8-2020//18-2-2021//Corbin West
+Hungry Hyena//HH//28-7-2019//27-5-2020//Hebe Schmitt
