@@ -13,7 +13,7 @@ import java.util.GregorianCalendar;
  */
 public abstract class Bolseiro extends Pessoa{
    
-    private int ordenado;
+    protected int ordenado;
     GregorianCalendar inicioBolsa;
     GregorianCalendar fimBolsa;
     

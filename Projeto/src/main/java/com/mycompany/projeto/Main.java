@@ -29,7 +29,6 @@ public class Main {
                 try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
                     String line;
                     String split[];
-                    Projeto projeto;
                     Tarefa tarefa;
                     GregorianCalendar data1;
                     GregorianCalendar data2;
@@ -88,23 +87,32 @@ public class Main {
                             default:
                                 data1 = new GregorianCalendar(Integer.parseInt(split[2].split("-")[2]),Integer.parseInt(split[2].split("-")[1]),Integer.parseInt(split[2].split("-")[0]));
                                 data2 = new GregorianCalendar(Integer.parseInt(split[3].split("-")[2]),Integer.parseInt(split[3].split("-")[1]),Integer.parseInt(split[3].split("-")[0]));
+                                Projeto proj  = cisuc.getProjeto(split[1]);                                
+                                Pessoa p = proj.getPessoa(split[5]);
                                 
                                 switch (split[4]) {
                                     case "Documentacao":
-                                        tarefa = new Documentacao(split[0],data1,data2);
+                                       if (p.getCarga() <= 0.75){
+                                           tarefa = new Documentacao(split[0],data1,data2,p);
+                                           p.addTarefa(tarefa);
+                                           proj.addTarefa(tarefa);
+                                        }
                                         break;
                                     case "Design":
-                                        tarefa = new Design(split[0],data1,data2);
+                                        if (p.getCarga() <= 0.5){
+                                            tarefa = new Design(split[0],data1,data2,p);
+                                            p.addTarefa(tarefa);
+                                            proj.addTarefa(tarefa);
+                                        }
                                         break;
                                     default:
-                                        tarefa = new Desenvolvimento(split[0],data1,data2);
+                                        if (p.getCarga() == 0){
+                                            tarefa = new Desenvolvimento(split[0],data1,data2,p);
+                                            p.addTarefa(tarefa);
+                                            proj.addTarefa(tarefa);
+                                        }
                                         break;
                                 }
-                                
-                                if ((projeto = cisuc.getProjeto(split[1])).getNome() != null)
-                                    projeto.addTarefa(tarefa);
-                                else
-                                    System.out.println("Erro a adicionar tarefa");
                                 break;
                         }
                     }
@@ -240,8 +248,8 @@ public class Main {
         else
             readTextFiles(cisuc);
         
-      //  GregorianCalendar data1 = new GregorianCalendar();
-      //  GregorianCalendar data2 = new GregorianCalendar(2020,2,20);
+       // GregorianCalendar data1 = new GregorianCalendar();
+        //GregorianCalendar data2 = new GregorianCalendar(2020,2,20);
         
        // if (cisuc.criaProjeto("Projeto Teste", "PT", data1, data2, "Teste213") == 1)
        //     System.out.println("Erro ao criar projeto");
@@ -254,9 +262,22 @@ public class Main {
         
        // if (cisuc.criaEstudante("Teste", "Teste@sapo.pt", data2, "Docente Teste") == 1)
           //  System.out.println("ERRO A CRIAR ESTUDANTE");
-
+        /*
+        Bolseiro b = cisuc.getBolseiro("Mandy Zimmerman");
+        Projeto projeto = cisuc.getProjeto("MMals");
         
-        cisuc.printPessoas();
+        projeto.addBolseiro(b);
+        projeto.listarTarefas();
+        System.out.println(projeto.getPessoa("Mandy Zimmerman").getCarga());
+        
+        if (projeto.getPessoa("Mandy Zimmerman").getCarga() + 0.5 <= 1 && projeto.getPessoa("Mandy Zimmerman") != null){
+            projeto.criaDesign("TESTE12",data1,data2,projeto.getBolseiro("Mandy Zimmerman"));
+        }
+        ISTO E CRIAR TAREFAS REMOVER E ASSOCIAR PESSOAS A TAREFAS / PROJETOS
+        TEMOS DE USAR EM VEZ DESTE GET PESSOA UM GET BOLSEIRO/ GET DOCENTE, PQ 
+        TEMOS DE TER EM CONTA SE É DOCENTE OU BOLSEIRO, usamos o return null para 
+        ver se é bolseiro ou docente.(*/
+        //cisuc.printPessoas();
         
         writeObjFiles(cisuc);
     }

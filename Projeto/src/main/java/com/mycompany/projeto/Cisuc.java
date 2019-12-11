@@ -121,6 +121,7 @@ public class Cisuc {
                 Projeto projeto = new Projeto(nome, acronimo, dataInicio, dataEstimada, docente);
                 arrayProjetos.add(projeto);
                 docente.setProjeto(projeto);
+                projeto.addDocente(docente);
                 return 0;
             }  
         }

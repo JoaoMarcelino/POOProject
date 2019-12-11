@@ -1,10 +1,10 @@
-Giraffe//BioTio//5-8-2020//16-12-2021//Documentacao
-Musk//Chimp Cart//8-10-2021//26-1-2022//Desenvolvimento
-Okapi//Farm Rabbity//5-5-2019//29-5-2020//Design
-Turtle//Lab Horses//26-8-2019//23-6-2020//Design
-Anteater//Defense Chimp//28-6-2021//17-2-2022//Desenvolvimento
-Oryx//FishCam//16-12-2021//26-5-2022//Documentacao
-Yak//MMals//24-8-2019//10-12-2020//Design
-Salamander//Venture Hippo//20-5-2020//23-4-2021//Design
-Ocelot//Croc Island//13-3-2019//28-7-2020//Documentacao
-Mandrill//Hungry Hyena//10-5-2019//19-1-2020//Design
+Giraffe//BioTio//5-8-2020//16-12-2021//Documentacao//Mila Delgado
+Musk//Chimp Cart//8-10-2021//26-1-2022//Desenvolvimento//Blanche Duffy
+Okapi//Farm Rabbity//5-5-2019//29-5-2020//Design//Evelyn Koch
+Turtle//Lab Horses//26-8-2019//23-6-2020//Design//Lincoln Burris
+Anteater//Defense Chimp//28-6-2021//17-2-2022//Desenvolvimento//Emil Middleton
+Oryx//FishCam//16-12-2021//26-5-2022//Documentacao//Mahira Redmond
+Yak//MMals//24-8-2019//10-12-2020//Design//Tammy Bautista
+Salamander//Venture Hippo//20-5-2020//23-4-2021//Design//Victoria Bevan
+Ocelot//Croc Island//13-3-2019//28-7-2020//Documentacao//Corbin West
+Mandrill//Hungry Hyena//10-5-2019//19-1-2020//Design//Hebe Schmitt
