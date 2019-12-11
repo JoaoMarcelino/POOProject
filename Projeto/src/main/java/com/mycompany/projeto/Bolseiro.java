@@ -20,7 +20,7 @@ public abstract class Bolseiro extends Pessoa{
         super(nome,email);
         this.contrato = contrato;
     }    
-
+    
     public int getOrdenado() {
         return this.ordenado;
     }

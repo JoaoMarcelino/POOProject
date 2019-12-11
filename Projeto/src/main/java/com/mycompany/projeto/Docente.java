@@ -26,6 +26,7 @@ public class Docente extends Pessoa{
         this.numMecanografico = numMecanografico;
         this.areaInvestigacao = areaInvestigacao;
     } 
+
     
     public void addEstudante(Estudante estudante){
         arrayEstudantes.add(estudante);
@@ -55,9 +56,9 @@ public class Docente extends Pessoa{
     }
     
     public void delProjeto() {
-        Projeto projeto = new Projeto();
+        Projeto newprojeto = new Projeto();
         
-        this.projeto = projeto;
+        this.projeto = newprojeto;
         this.ip = 0;
     }
 }
