@@ -13,9 +13,10 @@ import java.util.GregorianCalendar;
  */
 public class Licenciado extends Estudante{
     
-    private int ordenado = 800;
+    private int ordenado;
     
-    public Licenciado(String nome, String email, GregorianCalendar contrato){
-        super(nome,email,contrato);   
+    public Licenciado(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa, Docente docente){
+        super(nome,email,inicioBolsa,fimBolsa, docente);   
+        this.ordenado = 800;
     }
 }

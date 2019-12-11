@@ -15,7 +15,8 @@ public class Cisuc {
     protected ArrayList<Docente> arrayDocentes = new ArrayList <>();
     protected ArrayList<Bolseiro> arrayBolseiros = new ArrayList <>();
     protected ArrayList<Projeto> arrayProjetos = new ArrayList <>();
-    
+    private GregorianCalendar dataAtual;     
+   
     public ArrayList<Docente> getArrayDocentes() {
         return arrayDocentes;
     }
@@ -28,8 +29,6 @@ public class Cisuc {
         return arrayProjetos;
     }
     
-    private GregorianCalendar dataAtual;     
-   
     public Cisuc(GregorianCalendar dataAtual){
         this.dataAtual = dataAtual;
     }
@@ -75,6 +74,9 @@ public class Cisuc {
             arrayProjetos.remove(indice);
         else
             System.out.println("ERRO -- PROJETO NAO EXISTENTE");
+       
+        return null;
+
     }
     
     
@@ -127,6 +129,46 @@ public class Cisuc {
         return 1;
     }
     
+    public int criaDocente(String nome, String email, int numero, String area){   
+        
+        for (Docente docente : arrayDocentes){
+            if (docente.getNome().equals(nome) || docente.getEmail().equals(email) || docente.getNumMecanografico() == numero)
+                return 1;
+        }
+            
+        Docente docente = new Docente(nome, email, numero, area);
+        this.addDocente(docente);
+        return 0;
+    }
+    
+    public int criaDoutorado(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa){
+        
+        for ( Bolseiro bolseiro : arrayBolseiros){
+            if (bolseiro.getNome().equals(nome) || bolseiro.getEmail().equals(email))
+                return 1;
+        }
+        
+        Doutorado doutorado = new Doutorado(nome, email, inicioBolsa, fimBolsa);
+        this.addBolseiro(doutorado);
+        return 0;
+    }
+    
+    public int criaEstudante(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa, String nomeDocente){
+        
+        for (Bolseiro bolseiro : arrayBolseiros){
+            if (bolseiro.getNome().equals(nome) || bolseiro.getEmail().equals(email))
+                return 1;
+        }
+        
+        for (Docente docente : arrayDocentes){
+            if (docente.getNome().equals(nomeDocente)){
+                Doutorado doutorado = new Doutorado(nome, email, inicioBolsa, fimBolsa);
+                this.addBolseiro(doutorado);
+                return 0;
+            }
+        }
+        return 1;
+    }
     
     public void naoConcluidos(){
         

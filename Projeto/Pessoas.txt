@@ -1,21 +1,20 @@
 D//Mila Delgado//md@sapo.pt//12365//Vegetacao
+D//Lincoln Burris//lb@sapo.pt//12199//Desflorestacao
 D//Blanche Duffy//bd@sapo.pt//15312//Reproducao
 D//Evelyn Koch//ek@sapo.pt//1239//Informatica
-BL//Mandy Zimmerman//mz@sapo.pt//2-3-2025
-D//Lincoln Burris//lb@sapo.pt//12199//Saude
-BM//Hanan Greig//hg@sapo.pt//9-11-2023
-D//Emil Middleton//em@sapo.pt//9822//Saude
-BM//Monika Sutherland//ms@sapo.pt//8-1-2020
-BD//Elisabeth Philip//ep@sapo.pt//16-5-2021
-D//Mahira Redmond//mr@sapo.pt//71234//Estudos Animais
-BD//Kelsi Burks//kb@sapo.pt//24-9-2020
-D//Tammy Bautista//tb@sapo.pt//19283//Estudos Animais
-BL//Kurtis Walter//kw@sapo.pt//24-8-2021
-BL//Shahid Walker//sw@sapo.pt//6-3-2022
-BM//Dominykas Gonzales//dg@sapo.pt//27-12-2019
 D//Victoria Bevan//vb@sapo.pt//8888//Matematica
-BD//Kaylie Carrillo//kc@sapo.pt//12-5-2021
-BM//Bella Lacey//bl@sapo.pt//26-7-2020
-D//Corbin West//cw@sapo.pt//12376//Estudos Animais
 D//Hebe Schmitt//hs@sapo.pt//99911//Saude
-D//Teste213//hs@sapo.pt//123//Sad
+D//Emil Middleton//em@sapo.pt//9822//Saude
+D//Corbin West//cw@sapo.pt//12376//Estudos Animais
+D//Mahira Redmond//mr@sapo.pt//71234//Estudos Animais
+D//Tammy Bautista//tb@sapo.pt//19283//Estudos Animais
+BD//Elisabeth Philip//ep@sapo.pt//16-5-2015//16-5-2021
+BD//Kelsi Burks//kb@sapo.pt//24-9-2015//24-9-2020
+BD//Kaylie Carrillo//kc@sapo.pt//12-5-2018//12-5-2021
+BM//Hanan Greig//hg@sapo.pt//9-11-2019//9-11-2023//Blanche Duffy
+BM//Monika Sutherland//ms@sapo.pt//8-1-2019//8-1-2020//Blanche Duffy
+BM//Dominykas Gonzales//dg@sapo.pt//27-12-2019//17-12-2019//Hebe Schmitt
+BM//Bella Lacey//bl@sapo.pt//26-7-2018//26-7-2020//Hebe Schmitt
+BL//Kurtis Walter//kw@sapo.pt//24-8-2019//24-8-2021//Evelyn Koch
+BL//Shahid Walker//sw@sapo.pt//6-3-2018//6-3-2022//Lincoln Burris
+BL//Mandy Zimmerman//mz@sapo.pt//2-3-2016//2-3-2025//Mila Delgado

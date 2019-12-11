@@ -20,7 +20,7 @@ import java.util.GregorianCalendar;
 public class Main {
     
     public static void readText(File f, int aux, Cisuc cisuc){
-           
+        
         if(f.exists() && f.isFile()) {
             
             try {
@@ -45,22 +45,36 @@ public class Main {
                                 }
                                 
                                 else{
-                                    Bolseiro pessoa;
                                     data1 = new GregorianCalendar(Integer.parseInt(split[3].split("-")[2]),Integer.parseInt(split[3].split("-")[1]),Integer.parseInt(split[3].split("-")[0]));
+                                    data2 = new GregorianCalendar(Integer.parseInt(split[4].split("-")[2]),Integer.parseInt(split[4].split("-")[1]),Integer.parseInt(split[4].split("-")[0]));
                                     switch (split[0]) {
                                         case "BD":
-                                            pessoa = new Doutorado(split[1],split[2],data1);
+                                            Bolseiro bolseiro = new Doutorado(split[1],split[2],data1,data2);
+                                            cisuc.addBolseiro(bolseiro);
                                             break;
-                                        case "BM":
-                                            pessoa = new Mestre(split[1],split[2],data1);
+                                        case "BM":;
+                                            for(Docente docente : cisuc.getArrayDocentes()){
+                                                if (docente.getNome().equals(split[4])){
+                                                    Mestre mestre = new Mestre(split[1],split[2],data1,data2,docente);
+                                                    docente.addEstudante(mestre);
+                                                    cisuc.addBolseiro(mestre);
+                                                    break;
+                                                }
+                                            }
                                             break;
                                         default:
-                                            pessoa = new Licenciado(split[1],split[2],data1);
+                                            for(Docente docente : cisuc.getArrayDocentes()){
+                                                if (docente.getNome().equals(split[4])){
+                                                    Licenciado licenciado = new Licenciado(split[1],split[2],data1,data2,docente);
+                                                    docente.addEstudante(licenciado);
+                                                    cisuc.addBolseiro(licenciado);
+                                                    break;
+                                                }
+                                            }                                            
                                             break;
                                     }
-                                    
-                                    cisuc.addBolseiro(pessoa);
-                                }   break;
+                                }  
+                                break;
                                 
                             case 1:
                                 
@@ -87,11 +101,10 @@ public class Main {
                                         break;
                                 }
                                 
-                                projeto = cisuc.getProjeto(split[1]);
-                                if ("NOTEXISTENT".equals(projeto.getNome()))
-                                    break;
-                                projeto.addTarefa(tarefa);
-                                
+                                if ((projeto = cisuc.getProjeto(split[1])).getNome() != null)
+                                    projeto.addTarefa(tarefa);
+                                else
+                                    System.out.println("Erro a adicionar tarefa");
                                 break;
                         }
                     }
@@ -121,6 +134,7 @@ public class Main {
         readText(pessoas, 0, cisuc);
         readText(projetos, 1, cisuc);
         readText(tarefas, 2, cisuc);
+        
     }
     
     public static int readObjects(Cisuc cisuc, int aux, File f){
@@ -230,19 +244,24 @@ public class Main {
         else
             readTextFiles(cisuc);
         
-        GregorianCalendar data1 = new GregorianCalendar();
-        GregorianCalendar data2 = new GregorianCalendar(2020,2,20);
+      //  GregorianCalendar data1 = new GregorianCalendar();
+      //  GregorianCalendar data2 = new GregorianCalendar(2020,2,20);
         
-        if (cisuc.criaProjeto("Projeto Teste", "PT", data1, data2, "Teste213") == 1)
-            System.out.println("Erro ao criar projeto");
-            
-        cisuc.naoConcluidos();
+       // if (cisuc.criaProjeto("Projeto Teste", "PT", data1, data2, "Teste213") == 1)
+       //     System.out.println("Erro ao criar projeto");
         
-        for (Docente docente : cisuc.getArrayDocentes()){
-            System.out.println(docente.getNome());
-            System.out.println(docente.getProjeto().getNome());
-            System.out.println(docente.getIP());
-        }
+      //  if (cisuc.criaDocente("Docente Teste", "DocenteTeste@sapo.pt",1273812,"AnimalCrossing") == 1)
+          //  System.out.println("ERRO A CRIAR DOCENTE");
+        
+      // if (cisuc.criaDoutorado("Doutor Teste", "Tested@sapo.pt", data2) == 1)
+         //   System.out.println("ERRO A CRIAR DOUTORADO");
+        
+       // if (cisuc.criaEstudante("Teste", "Teste@sapo.pt", data2, "Docente Teste") == 1)
+          //  System.out.println("ERRO A CRIAR ESTUDANTE");
+
+        
+        //cisuc.printPessoas();
+        
         writeObjFiles(cisuc);
     }
 }
