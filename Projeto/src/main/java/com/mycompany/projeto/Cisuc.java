@@ -48,6 +48,15 @@ public class Cisuc {
         return null;
     }
    
+    public Docente getDocente(int index){
+        for(Docente docente: arrayDocentes) {
+           
+            if (arrayDocentes.indexOf(docente) == index)
+                return docente;
+        }
+        return null;
+    }
+    
     public Docente getDocente(String nome){
         for(Docente docente: arrayDocentes) {
            
@@ -74,8 +83,6 @@ public class Cisuc {
             arrayProjetos.remove(indice);
         else
             System.out.println("ERRO -- PROJETO NAO EXISTENTE");
-       
-        return null;
 
     }
     

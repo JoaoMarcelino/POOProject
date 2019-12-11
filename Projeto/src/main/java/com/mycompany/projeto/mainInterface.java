@@ -8,9 +8,13 @@ package com.mycompany.projeto;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import static java.util.Collections.list;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -27,7 +31,7 @@ public class mainInterface implements ActionListener {
     
     Cisuc cisuc;
     
-    int x =828;
+    int x = 822;
     int y = 466;
         
     JFrame frame;
@@ -44,29 +48,66 @@ public class mainInterface implements ActionListener {
     JMenuItem criarItemProjeto;
     JMenuItem eliminarItemProjeto;
 
-    JMenuItem itemDocente1;
     JMenuItem itemDocente2;
     JMenuItem itemDocente3;
 
-    JMenuItem itemBolseiro1;
     JMenuItem itemBolseiro2;
     JMenuItem itemBolseiro3;
 
     
     JButton buttonProjeto;
+    JButton buttonCriarProjeto;
     JButton buttonElProjeto;
     JButton buttonDocente;
+    JButton buttonCriarDocente;
     JButton buttonElDocente;
     JButton buttonBolseiro;
+    JButton buttonCriarBolseiro;
     JButton buttonElBolseiro;
-    JButton buttonCriarDocente;
+    
+
+    
+    JTextField email;
+    JTextField nmecan;
+    JTextField area;
+    
+    JTextField nome;
+    JTextField acronimo;
+    JComboBox jComboBoxAction, jComboBoxAction1;
+    JComboBox dia1;
+    JComboBox mes1;
+    JComboBox ano1;
+    JComboBox dia2;
+    JComboBox mes2;
+    JComboBox ano2;
+    
+    ArrayList<String> dia = new ArrayList();
+    ArrayList<String> mes = new ArrayList();
+    ArrayList<String> ano = new ArrayList();
+    ArrayList<String> lista = new ArrayList();
+
     
     mainInterface(Cisuc cisuc) throws IOException{
        
+        
+        for (int i =1; i<=31; i++){
+            dia.add(String.format("%d",i));
+        }
+        
+        for (int i =1; i<=12; i++){
+            mes.add(String.format("%d",i));
+        }
+        for (int i =1980; i<=2100; i++){
+            ano.add(String.format("%d",i));
+        }
+        
         this.cisuc = cisuc;
         frame = new JFrame();
         bar = new JMenuBar();
-    
+        
+        for (Docente docente: cisuc.arrayDocentes){
+            lista.add(docente.getNome());
+        }
 
         menu1 = new JMenu("Projetos");
         menu2 = new JMenu("Docentes");
@@ -76,11 +117,9 @@ public class mainInterface implements ActionListener {
         criarItemProjeto = new JMenuItem("Criar");
         eliminarItemProjeto = new JMenuItem("Eliminar");
 
-        itemDocente1 = new JMenuItem("Ver");
         itemDocente2 = new JMenuItem("Criar");
         itemDocente3 = new JMenuItem("Eliminar");
 
-        itemBolseiro1 = new JMenuItem("Ver");
         itemBolseiro2 = new JMenuItem("Criar");
         itemBolseiro3 = new JMenuItem("Eliminar");
         
@@ -91,10 +130,8 @@ public class mainInterface implements ActionListener {
         verItemProjeto.addActionListener(this);
         criarItemProjeto.addActionListener(this);
         eliminarItemProjeto.addActionListener(this);
-        itemDocente1.addActionListener(this);
         itemDocente2.addActionListener(this);
         itemDocente3.addActionListener(this);
-        itemBolseiro1.addActionListener(this);
         itemBolseiro2.addActionListener(this);
         itemBolseiro3.addActionListener(this);
         
@@ -110,11 +147,9 @@ public class mainInterface implements ActionListener {
         menu1.add(criarItemProjeto);
         menu1.add(eliminarItemProjeto);
         
-        menu2.add(itemDocente1);
         menu2.add(itemDocente2);
         menu2.add(itemDocente3);
         
-        menu3.add(itemBolseiro1);
         menu3.add(itemBolseiro2);
         menu3.add(itemBolseiro3);
 
@@ -141,7 +176,7 @@ public class mainInterface implements ActionListener {
         frame.setVisible(true);
     
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {  
         
@@ -160,30 +195,103 @@ public class mainInterface implements ActionListener {
         }
         
         else if(e.getSource()==criarItemProjeto){
+            
+            for (Docente docente: cisuc.arrayDocentes){
+                lista.add(docente.getNome());
+            }
             JPanel p1=new JPanel();
             p1.setLayout(null);
+            JLabel label1 = new JLabel("Nome");
+            JLabel label2 = new JLabel("Acronimo");
+            JLabel label3 = new JLabel ("Investigador Principal");
+            JLabel label4 = new JLabel("Data de Inicio");
+            JLabel label5 = new JLabel("Data Estimada");
+            buttonCriarProjeto = new JButton("Criar");
+            
+            nome = new JTextField(10);
+            acronimo = new JTextField(10);
+            jComboBoxAction = new JComboBox(lista.toArray());
+            dia1 = new JComboBox(dia.toArray());
+            mes1 = new JComboBox(mes.toArray());
+            ano1 = new JComboBox(ano.toArray());
+            dia2 = new JComboBox(dia.toArray());
+            mes2 = new JComboBox(mes.toArray());
+            ano2 = new JComboBox(ano.toArray());
+            
+            label1.setBounds(x/8,y/8,x/4,y/12);
+            label2.setBounds(x/8,y*2/8,x/4,y/12);
+            label3.setBounds(x/8,y*3/8,x/4,y/12);
+            label4.setBounds(x/8,y*4/8,x/4,y/12);
+            label5.setBounds(x/8,y*5/8,x/4,y/12);
+            
+            nome.setBounds(x/2+ x/8,y/8,x/4,y/12);
+            acronimo.setBounds(x/2+ x/8,y*2/8,x/4,y/12);
+            jComboBoxAction.setBounds(x/2+ x/8,y*3/8,x/4,y/12);
+            dia1.setBounds(x/2+ x/8,y*4/8,x/12,y/12);
+            mes1.setBounds(x/2+ x/8 +x/12,y*4/8,x/12,y/12);
+            ano1.setBounds(x/2+ x/8 +x*2/12,y*4/8,x/12,y/12);
+            dia2.setBounds(x/2+ x/8,y*5/8,x/12,y/12);
+            mes2.setBounds(x/2+ x/8 +x/12,y*5/8,x/12,y/12);
+            ano2.setBounds(x/2+ x/8 +x*2/12,y*5/8,x/12,y/12);
+            
+            buttonCriarProjeto.setBounds(x/8,y*6/8 + 10,x/2 + x/4,y/8);
+            buttonCriarProjeto.addActionListener(this);
+
+            p1.add(label1);
+            p1.add(label2);
+            p1.add(label3);
+            p1.add(label4);
+            p1.add(label5);
+            
+            p1.add(nome);
+            p1.add(acronimo);
+            p1.add(jComboBoxAction);
+            p1.add(dia1);
+            p1.add(mes1);
+            p1.add(ano1);
+            p1.add(dia2);
+            p1.add(mes2);
+            p1.add(ano2);
+            
+            p1.add(buttonCriarProjeto);
+            frame.getContentPane().removeAll();
+            frame.getContentPane().add(p1);
+            frame.setVisible(true);
+            
+        }
+        
+        else if(e.getSource()==eliminarItemProjeto){
+            EliminarProjetoMenu();
+        }
+        
+        else if(e.getSource()==itemDocente2){
+            JPanel p1=new JPanel();
+            p1.setLayout(null);
+            
             JLabel label1 = new JLabel("Nome");
             JLabel label2 = new JLabel("E-mail");
             JLabel label3 = new JLabel("Número Mecanográfico");
             JLabel label4 = new JLabel("Area de Investigação");
             buttonCriarDocente = new JButton("Criar");
             
-            JTextField nome = new JTextField(10);
-            JTextField email = new JTextField(10);
-            JTextField nmecan = new JTextField(10);
-            JTextField area = new JTextField(10);
+            nome = new JTextField(10);
+            email = new JTextField(10);
+            nmecan = new JTextField(10);
+            area = new JTextField(10);
             
-            label1.setBounds(x/8,0,x/4,y/8);
-            label2.setBounds(x/8,y/4,x/2,y/8);
-            label3.setBounds(x/8,2*y/4,x/2,y/8);
-            label4.setBounds(x/8,3*y/4,x/2,y/8);
+            label1.setBounds(x/8,y/8,x/4,y/12);
+            label2.setBounds(x/8,y*2/8,x/4,y/12);
+            label3.setBounds(x/8,y*3/8,x/4,y/12);
+            label4.setBounds(x/8,y*4/8,x/4,y/12);
             
-            nome.setBounds(x/2,0,x/2,y/8);
-            email.setBounds(x/2,y/4,x/2,y/8);
-            nmecan.setBounds(x/2,2*y/4,x/2,y/8);
-            area.setBounds(x/2,3*y/4,x/2,y/8);
+            nome.setBounds(x/2 + x/8,y/8,x/4,y/12);
+            email.setBounds(x/2+ x/8,y*2/8,x/4,y/12);
+            nmecan.setBounds(x/2+ x/8,y*3/8,x/4,y/12);
+            area.setBounds(x/2+ x/8,y*4/8,x/4,y/12);
             
-            buttonCriarDocente.setBounds(x/4,y*7/8,x/2,y/8);
+            buttonCriarDocente.setBounds(x/8,y*6/8 + 10,x/2 + x/4,y/8);
+            buttonCriarDocente.addActionListener(this);
+            
             p1.add(label1);
             p1.add(label2);
             p1.add(label3);
@@ -198,41 +306,82 @@ public class mainInterface implements ActionListener {
             frame.getContentPane().removeAll();
             frame.getContentPane().add(p1);
             frame.setVisible(true);
-            
-        }
-        
-        else if(e.getSource()==eliminarItemProjeto){
-            EliminarProjetoMenu();
-        }
-        
-        else if(e.getSource()==itemDocente1){
-            verDocenteMenu();
-        }
-        else if(e.getSource()==itemDocente2){
-            JPanel p1=new JPanel();
-            
-            JLabel label1 = new JLabel("Valor5");
-            p1.add(label1);
-            frame.getContentPane().removeAll();
-            frame.getContentPane().add(p1);
-            frame.setVisible(true);
-            System.out.printf("2");   
+              
         }
         else if(e.getSource()==itemDocente3){
             EliminarDocenteMenu();
         }
-        else if(e.getSource()==itemBolseiro1){
-            verBolseiroMenu();
-        }
         
         else if(e.getSource()==itemBolseiro2){
+            String[] types = {"Licenciado", "Mestrado", "Doutorado"};
+            
+            for (Docente docente: cisuc.arrayDocentes){
+                lista.add(docente.getNome());
+            }
             JPanel p1=new JPanel();
-            JLabel label1 = new JLabel("Valor8");
+            p1.setLayout(null);
+            JLabel label1 = new JLabel("Nome");
+            JLabel label2 = new JLabel("E-mail");
+            JLabel label3 = new JLabel("Ensino Superior");
+            JLabel label6 = new JLabel ("Docente Responsável **");
+            JLabel label4 = new JLabel("Dia de Inicio da Bolsa");
+            JLabel label5 = new JLabel("Dia de Fim da Bolsa");
+            buttonCriarBolseiro = new JButton("Criar");
+            
+            nome = new JTextField(10);
+            email = new JTextField(10);
+            jComboBoxAction = new JComboBox(types);
+            jComboBoxAction1 = new JComboBox(lista.toArray());
+            dia1 = new JComboBox(dia.toArray());
+            mes1 = new JComboBox(mes.toArray());
+            ano1 = new JComboBox(ano.toArray());
+            dia2 = new JComboBox(dia.toArray());
+            mes2 = new JComboBox(mes.toArray());
+            ano2 = new JComboBox(ano.toArray());
+            
+            label1.setBounds(x/8,y/8-y/12,x/4,y/12);
+            label2.setBounds(x/8,y*2/8-y/12,x/4,y/12);
+            label3.setBounds(x/8,y*3/8-y/12,x/4,y/12);
+            label6.setBounds(x/8,y*4/8-y/12,x/4,y/12);
+            label4.setBounds(x/8,y*5/8-y/12,x/4,y/12);
+            label5.setBounds(x/8,y*6/8-y/12,x/4,y/12);
+            
+            nome.setBounds(x/2 + x/8, y/8-y/12, x/4, y/12);
+            email.setBounds(x/2 + x/8, y*2/8-y/12, x/4, y/12);
+            jComboBoxAction.setBounds(x/2 + x/8, y*3/8-y/12, x/4, y/12);
+            jComboBoxAction1.setBounds(x/2 + x/8, y*4/8-y/12, x/4, y/12);
+            dia1.setBounds(x/2 + x/8, y*5/8-y/12, x/12, y/12);
+            mes1.setBounds(x/2 + x/8 + x/12,y*5/8-y/12, x/12, y/12);
+            ano1.setBounds(x/2 + x/8 + x*2/12, y*5/8-y/12, x/12, y/12);
+            dia2.setBounds(x/2 + x/8, y*6/8-y/12, x/12, y/12);
+            mes2.setBounds(x/2 + x/8 + x/12, y*6/8-y/12, x/12, y/12);
+            ano2.setBounds(x/2 + x/8 +x*2/12, y*6/8-y/12, x/12, y/12);
+            
+            buttonCriarBolseiro.setBounds(x/8,y*6/8 + 10,x/2 + x/4,y/8);
+            buttonCriarBolseiro.addActionListener(this);
             p1.add(label1);
+            p1.add(label2);
+            p1.add(label3);
+            p1.add(label4);
+            p1.add(label5);
+            p1.add(label6);
+            
+            p1.add(nome);
+            p1.add(email);
+            p1.add(jComboBoxAction);
+            p1.add(jComboBoxAction1);
+            p1.add(dia1);
+            p1.add(mes1);
+            p1.add(ano1);
+            p1.add(dia2);
+            p1.add(mes2);
+            p1.add(ano2);
+            
+            p1.add(buttonCriarBolseiro);
             frame.getContentPane().removeAll();
             frame.getContentPane().add(p1);
             frame.setVisible(true);
-            System.out.printf("2");   
+                 
         } 
         
         else if(e.getSource()==itemBolseiro3){
@@ -269,6 +418,46 @@ public class mainInterface implements ActionListener {
             Bolseiro bolseiro = cisuc.getBolseiro((String) list.getSelectedValue());
             cisuc.removeBolseiro(bolseiro);
             EliminarBolseiroMenu();
+        }
+        else if (e.getSource() == buttonCriarProjeto){
+           GregorianCalendar inicio = new GregorianCalendar();
+           GregorianCalendar fim = new GregorianCalendar();
+           
+           inicio.set(ano1.getSelectedIndex()+1980, mes1.getSelectedIndex()+1, dia1.getSelectedIndex()+1);
+           fim.set(ano2.getSelectedIndex()+1980,mes2.getSelectedIndex()+1, dia2.getSelectedIndex()+1);
+           
+           Projeto novo= new Projeto(nome.getText(),acronimo.getText(), inicio, fim, cisuc.getDocente(jComboBoxAction.getSelectedIndex()));
+           cisuc.addProjeto(novo); 
+           ProjetoInterface projetoInt = new ProjetoInterface(novo);
+        }
+        
+        else if (e.getSource() == buttonCriarDocente){
+            
+            Docente novo = new Docente(nome.getText(), email.getText(), Integer.parseInt(nmecan.getText()),area.getText());
+            cisuc.addDocente(novo);
+            DocenteInterface docenteInt = new DocenteInterface(novo);
+        }
+        
+        else if(e.getSource() == buttonCriarBolseiro){
+            GregorianCalendar inicio = new GregorianCalendar();
+            GregorianCalendar fim = new GregorianCalendar();
+            Bolseiro novo;
+            inicio.set(ano1.getSelectedIndex()+1980, mes1.getSelectedIndex()+1, dia1.getSelectedIndex()+1);
+            fim.set(ano2.getSelectedIndex()+1980,mes2.getSelectedIndex()+1, dia2.getSelectedIndex()+1);
+            
+            
+            if (jComboBoxAction.getSelectedIndex() == 0){
+                novo = new Licenciado(nome.getText(),email.getText(),inicio,fim,cisuc.getDocente(jComboBoxAction1.getSelectedIndex()));
+            }
+            else if (jComboBoxAction.getSelectedIndex() == 1){
+                novo = new Mestre(nome.getText(),email.getText(),inicio,fim,cisuc.getDocente(jComboBoxAction1.getSelectedIndex()));
+            }
+            else{
+                novo = new Doutorado(nome.getText(),email.getText(),inicio,fim);
+            }
+            
+            cisuc.addBolseiro(novo); 
+            BolseiroInterface bolseiroInt = new BolseiroInterface(novo);
         }
     }
     
