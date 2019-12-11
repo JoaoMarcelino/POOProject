@@ -74,8 +74,6 @@ public class Cisuc {
             arrayProjetos.remove(indice);
         else
             System.out.println("ERRO -- PROJETO NAO EXISTENTE");
-       
-        return null;
 
     }
     

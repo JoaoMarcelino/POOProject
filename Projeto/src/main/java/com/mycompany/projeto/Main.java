@@ -52,9 +52,9 @@ public class Main {
                                             Bolseiro bolseiro = new Doutorado(split[1],split[2],data1,data2);
                                             cisuc.addBolseiro(bolseiro);
                                             break;
-                                        case "BM":;
+                                        case "BM":
                                             for(Docente docente : cisuc.getArrayDocentes()){
-                                                if (docente.getNome().equals(split[4])){
+                                                if (docente.getNome().equals(split[5])){
                                                     Mestre mestre = new Mestre(split[1],split[2],data1,data2,docente);
                                                     docente.addEstudante(mestre);
                                                     cisuc.addBolseiro(mestre);
@@ -64,7 +64,7 @@ public class Main {
                                             break;
                                         default:
                                             for(Docente docente : cisuc.getArrayDocentes()){
-                                                if (docente.getNome().equals(split[4])){
+                                                if (docente.getNome().equals(split[5])){
                                                     Licenciado licenciado = new Licenciado(split[1],split[2],data1,data2,docente);
                                                     docente.addEstudante(licenciado);
                                                     cisuc.addBolseiro(licenciado);
@@ -230,10 +230,6 @@ public class Main {
         GregorianCalendar dataAtual = new GregorianCalendar();
         Cisuc cisuc = new Cisuc(dataAtual);
         
-        mainInterface mainInterface = new mainInterface(cisuc);
-        
-        readTextFiles(cisuc);
-
         File pFile = new File("Projetos.obj");
         File bFile = new File("Bolseiros.obj");
         File dFile = new File("Docentes.obj");
@@ -260,7 +256,7 @@ public class Main {
           //  System.out.println("ERRO A CRIAR ESTUDANTE");
 
         
-        //cisuc.printPessoas();
+        cisuc.printPessoas();
         
         writeObjFiles(cisuc);
     }
