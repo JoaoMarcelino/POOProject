@@ -82,7 +82,47 @@ public class Projeto implements Serializable{
         }
         return aux;
     }
+    
+    public Pessoa getPessoa(String nome) {
+        
+        
+        for(Bolseiro pessoa: arrayBolseiros) {
+            
+            if (pessoa.getNome().equals(nome))
+                return pessoa;
+        }
+        
+        for(Docente pessoa: arrayDocentes) {
 
+            if (pessoa.getNome().equals(nome))
+                return pessoa;
+        }
+        
+        return null;
+    }
+    
+    public Bolseiro getBolseiro(String nome) {
+        
+        
+        for(Bolseiro pessoa: arrayBolseiros) {
+            
+            if (pessoa.getNome().equals(nome))
+                return pessoa;
+        }
+        return null;
+    }
+    
+    public Docente getDocente(String nome){
+        
+        for(Docente pessoa: arrayDocentes) {
+
+            if (pessoa.getNome().equals(nome))
+                return pessoa;
+        }
+        
+        return null;
+    }
+    
     public void setInvestigadorPrincipal(Docente investigadorPrincipal) {
         this.investigadorPrincipal = investigadorPrincipal;
     }
@@ -95,21 +135,26 @@ public class Projeto implements Serializable{
         this.acabado = acabado;
     }
     
-    public void criaDocumentacao(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada){
+    public void criaDocumentacao(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa pessoa){
         
-        Tarefa tarefa = new Documentacao(nome, dataInicio, dataEstimada);
+        Tarefa tarefa = new Documentacao(nome, dataInicio, dataEstimada, pessoa);
+        pessoa.addTarefa(tarefa);
         addTarefa(tarefa);
     }
     
-    public void criaDesign(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada){
+    public void criaDesign(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa pessoa){
         
-        Tarefa tarefa = new Design(nome, dataInicio, dataEstimada);
-        addTarefa(tarefa);
+        //Pessoa pessoa = this.getPessoa(nomePessoa);
+        
+        Design tarefa = new Design(nome, dataInicio, dataEstimada, pessoa);
+        pessoa.addTarefa(tarefa);
+        this.addTarefa(tarefa);
     }
     
-    public void criaDesenvolvimento(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada){
+    public void criaDesenvolvimento(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa pessoa){
         
-        Tarefa tarefa = new Desenvolvimento(nome, dataInicio, dataEstimada);
+        Tarefa tarefa = new Desenvolvimento(nome, dataInicio, dataEstimada, pessoa);
+        pessoa.addTarefa(tarefa);
         addTarefa(tarefa);
     }
     
@@ -129,11 +174,24 @@ public class Projeto implements Serializable{
     public void eliminarTarefas(Tarefa tarefa){
         
         int indice = arrayTarefas.indexOf(tarefa);
+        String s = tarefa.getResponsavel().getNome();
         
-        if (indice != -1)
-            arrayTarefas.remove(indice);
+        if (indice != -1){
+            this.getPessoa(s).removeTarefa(tarefa);
+            arrayTarefas.remove(indice);      
+        }
         else
             System.out.println("ERRO -- TAREFA NAO EXISTENTE");
+    }
+    
+    public Tarefa getTarefa(String nome){
+        
+        for (Tarefa tarefa : arrayTarefas){
+            
+            if (tarefa.getNome().equals(nome))
+                return tarefa;
+        }
+        return null;
     }
     
     public void listarTarefas(){
