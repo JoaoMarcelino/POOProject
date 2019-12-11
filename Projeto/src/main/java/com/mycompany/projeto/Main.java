@@ -267,7 +267,7 @@ public class Main {
         Projeto projeto = cisuc.getProjeto("MMals");
         
         projeto.addBolseiro(b);
-        projeto.listarTarefas();
+        projeto.listarTarefas();            
         System.out.println(projeto.getPessoa("Mandy Zimmerman").getCarga());
         
         if (projeto.getPessoa("Mandy Zimmerman").getCarga() + 0.5 <= 1 && projeto.getPessoa("Mandy Zimmerman") != null){
