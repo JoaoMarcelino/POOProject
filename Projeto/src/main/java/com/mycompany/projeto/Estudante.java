@@ -16,8 +16,8 @@ public class Estudante extends Bolseiro{
     
     protected ArrayList<Docente> arrayDocentes = new ArrayList <>();
     
-    public Estudante(String nome, String email, GregorianCalendar contrato, Docente docente){
-        super(nome,email,contrato);
+    public Estudante(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa, Docente docente){
+        super(nome,email,inicioBolsa,fimBolsa);
         arrayDocentes.add(docente);
     }
     

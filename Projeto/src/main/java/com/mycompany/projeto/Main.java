@@ -20,7 +20,7 @@ import java.util.GregorianCalendar;
 public class Main {
     
     public static void readText(File f, int aux, Cisuc cisuc){
-           
+        
         if(f.exists() && f.isFile()) {
             
             try {
@@ -45,18 +45,19 @@ public class Main {
                                 }
                                 
                                 else{
-                                    Bolseiro pessoa;
                                     data1 = new GregorianCalendar(Integer.parseInt(split[3].split("-")[2]),Integer.parseInt(split[3].split("-")[1]),Integer.parseInt(split[3].split("-")[0]));
+                                    data2 = new GregorianCalendar(Integer.parseInt(split[4].split("-")[2]),Integer.parseInt(split[4].split("-")[1]),Integer.parseInt(split[4].split("-")[0]));
                                     switch (split[0]) {
                                         case "BD":
-                                            pessoa = new Doutorado(split[1],split[2],data1);
-                                            cisuc.addBolseiro(pessoa);
+                                            Bolseiro bolseiro = new Doutorado(split[1],split[2],data1,data2);
+                                            cisuc.addBolseiro(bolseiro);
                                             break;
                                         case "BM":;
                                             for(Docente docente : cisuc.getArrayDocentes()){
                                                 if (docente.getNome().equals(split[4])){
-                                                    pessoa = new Mestre(split[1],split[2],data1,docente);
-                                                    cisuc.addBolseiro(pessoa);
+                                                    Mestre mestre = new Mestre(split[1],split[2],data1,data2,docente);
+                                                    docente.addEstudante(mestre);
+                                                    cisuc.addBolseiro(mestre);
                                                     break;
                                                 }
                                             }
@@ -64,8 +65,9 @@ public class Main {
                                         default:
                                             for(Docente docente : cisuc.getArrayDocentes()){
                                                 if (docente.getNome().equals(split[4])){
-                                                    pessoa = new Licenciado(split[1],split[2],data1,docente);
-                                                    cisuc.addBolseiro(pessoa);
+                                                    Licenciado licenciado = new Licenciado(split[1],split[2],data1,data2,docente);
+                                                    docente.addEstudante(licenciado);
+                                                    cisuc.addBolseiro(licenciado);
                                                     break;
                                                 }
                                             }                                            
@@ -132,6 +134,7 @@ public class Main {
         readText(pessoas, 0, cisuc);
         readText(projetos, 1, cisuc);
         readText(tarefas, 2, cisuc);
+        
     }
     
     public static int readObjects(Cisuc cisuc, int aux, File f){

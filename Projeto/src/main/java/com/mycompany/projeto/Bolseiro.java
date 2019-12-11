@@ -14,17 +14,23 @@ import java.util.GregorianCalendar;
 public abstract class Bolseiro extends Pessoa{
    
     private int ordenado;
-    GregorianCalendar contrato;
+    GregorianCalendar inicioBolsa;
+    GregorianCalendar fimBolsa;
     
-    public Bolseiro(String nome, String email, GregorianCalendar contrato){
+    public Bolseiro(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa){
         super(nome,email);
-        this.contrato = contrato;
+        this.inicioBolsa = inicioBolsa;
+        this.fimBolsa = fimBolsa;
     }    
 
     public int getOrdenado() {
         return this.ordenado;
     }
-    public GregorianCalendar getContrato(){
-        return this.contrato;
+    public GregorianCalendar getInicioBolsa(){
+        return this.inicioBolsa;
+    }
+
+    public GregorianCalendar getFimBolsa() {
+        return fimBolsa;
     }
 }

@@ -15,8 +15,8 @@ public class Doutorado extends Bolseiro{
     
     private int ordenado;
     
-    public Doutorado(String nome, String email,GregorianCalendar contrato){
-        super(nome,email,contrato);
+    public Doutorado(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa){
+        super(nome,email,inicioBolsa,fimBolsa);
         this.ordenado = 1200;
     }
 }

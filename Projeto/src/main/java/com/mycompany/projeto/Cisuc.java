@@ -110,19 +110,19 @@ public class Cisuc {
         return 0;
     }
     
-    public int criaDoutorado(String nome, String email, GregorianCalendar contrato){
+    public int criaDoutorado(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa){
         
         for ( Bolseiro bolseiro : arrayBolseiros){
             if (bolseiro.getNome().equals(nome) || bolseiro.getEmail().equals(email))
                 return 1;
         }
         
-        Doutorado doutorado = new Doutorado(nome, email, contrato);
+        Doutorado doutorado = new Doutorado(nome, email, inicioBolsa, fimBolsa);
         this.addBolseiro(doutorado);
         return 0;
     }
     
-    public int criaEstudante(String nome, String email, GregorianCalendar contrato, String nomeDocente){
+    public int criaEstudante(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa, String nomeDocente){
         
         for (Bolseiro bolseiro : arrayBolseiros){
             if (bolseiro.getNome().equals(nome) || bolseiro.getEmail().equals(email))
@@ -131,7 +131,7 @@ public class Cisuc {
         
         for (Docente docente : arrayDocentes){
             if (docente.getNome().equals(nomeDocente)){
-                Doutorado doutorado = new Doutorado(nome, email, contrato);
+                Doutorado doutorado = new Doutorado(nome, email, inicioBolsa, fimBolsa);
                 this.addBolseiro(doutorado);
                 return 0;
             }
