@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package com.mycompany.projeto;
+import java.util.*;
+import java.awt.*;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,8 +35,8 @@ public class ProjetoInterface implements ActionListener{
     JMenuBar bar;
     
     JMenu menu1, menu2,menu3;
-    JMenuItem MainMenu, alterar, verTarefas, criarTarefa, eliminarTarefa,verDocente,eliminarDocente, verBolseiro, eliminarBolseiro;
-    JButton buttonRemoveDocente, buttonVerTarefas, buttonCriarTarefa, buttonRemoveTarefa, buttonRemoveBolseiro,buttonVerDocente,buttonVerBolseiro;
+    JMenuItem MainMenu, alterar, verTarefas, criarTarefa, eliminarTarefa,addDocente,verDocente,eliminarDocente, addBolseiro,verBolseiro, eliminarBolseiro;
+    JButton buttonRemoveDocente, buttonVerTarefas, buttonCriarTarefa, buttonRemoveTarefa, buttonRemoveBolseiro,buttonVerDocente,buttonVerBolseiro,buttonAddDocente,buttonAddBolseiro;
     
     JTextField nome;
     JTextField acronimo;
@@ -80,8 +82,10 @@ public class ProjetoInterface implements ActionListener{
         verTarefas = new JMenuItem("Ver");
         criarTarefa = new JMenuItem("Criar");
         eliminarTarefa = new JMenuItem("Eliminar");
+        addDocente = new JMenuItem("Adicionar Docente");
         verDocente = new JMenuItem("Ver Docente");
         eliminarDocente = new JMenuItem("Eliminar Docente");
+        addBolseiro = new JMenuItem("Adicionar Bolseiro");
         verBolseiro = new JMenuItem("Ver Bolseiro");
         eliminarBolseiro = new JMenuItem("Eliminar Bolseiro");
         
@@ -93,6 +97,8 @@ public class ProjetoInterface implements ActionListener{
         eliminarTarefa.addActionListener(this);
         verDocente.addActionListener(this);
         verBolseiro.addActionListener(this);
+        addDocente.addActionListener(this);
+        addBolseiro.addActionListener(this);
         eliminarDocente.addActionListener(this);
         eliminarBolseiro.addActionListener(this);
         
@@ -107,6 +113,8 @@ public class ProjetoInterface implements ActionListener{
         menu2.add(eliminarTarefa);
         menu3.add(verDocente);
         menu3.add(verBolseiro);
+        menu3.add(addDocente);
+        menu3.add(addBolseiro);
         menu3.add(eliminarDocente);
         menu3.add(eliminarBolseiro);
         
@@ -211,12 +219,18 @@ public class ProjetoInterface implements ActionListener{
         else if (e.getSource() == verDocente){
             verDocenteMenu();
         }
+        else if (e.getSource() == addDocente){
+            addDocenteMenu();
+        }
         else if (e.getSource() == eliminarDocente){
             eliminarDocenteMenu();
         }
         
         else if (e.getSource() == eliminarBolseiro){
             eliminarBolseiroMenu();
+        }
+        else if (e.getSource() == addBolseiro){
+            addBolseiroMenu();
         }
         else if (e.getSource() == verBolseiro){
             verBolseiroMenu();
@@ -238,28 +252,41 @@ public class ProjetoInterface implements ActionListener{
         else if (e.getSource() == buttonRemoveTarefa){
             Tarefa tarefa = projeto.getTarefa((String) list.getSelectedValue());
             projeto.removeTarefa(tarefa);
-            eliminarBolseiroMenu();
+            eliminarTarefasMenu();
         }
         else if (e.getSource() == buttonCriarTarefa){
             GregorianCalendar inicio = new GregorianCalendar();
             GregorianCalendar fim = new GregorianCalendar();
-            Tarefa novo;
-           
+            Tarefa novo = null;
+            
             inicio.set(ano1.getSelectedIndex()+1980, mes1.getSelectedIndex()+1, dia1.getSelectedIndex()+1);
             fim.set(ano2.getSelectedIndex()+1980,mes2.getSelectedIndex()+1, dia2.getSelectedIndex()+1);
             
-            if (jComboBoxAction.getSelectedIndex() == 0){
-                novo = new Design(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
-            }
-            else if (jComboBoxAction.getSelectedIndex() == 1){
-                novo = new Desenvolvimento(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
-            }
-            else{
-                novo = new Documentacao(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
+            switch (jComboBoxAction.getSelectedIndex()) {
+                case 0:
+                    if (projeto.getCargaPessoa(nome.getText(), inicio) + 0.5 <=1){
+                        novo = new Design(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
+                        break;
+                    }
+                case 1:
+                    if (projeto.getCargaPessoa(nome.getText(), inicio) + 1 <=1){
+                        novo = new Desenvolvimento(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
+                        break;
+                    }
+                default:
+                    if (projeto.getCargaPessoa(nome.getText(), inicio) + 0.25 <=1){
+                        novo = new Documentacao(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
+                        break;
+                    }
             }
             
-            projeto.addTarefa(novo); 
-            TarefaInterface tarefaInt = new TarefaInterface(novo, cisuc);
+            if (novo != null){
+                projeto.addTarefa(novo); 
+                TarefaInterface tarefaInt = new TarefaInterface(novo, cisuc);
+            }
+            else {
+                //DIALOG BOX
+            }
         }
         else if (e.getSource() == buttonVerDocente){
             Docente docente = projeto.getDocente((String) list.getSelectedValue());
@@ -269,6 +296,17 @@ public class ProjetoInterface implements ActionListener{
             Bolseiro bolseiro = projeto.getBolseiro((String) list.getSelectedValue());
             BolseiroInterface bolseiroInt =  new BolseiroInterface(bolseiro,cisuc);
         }
+        else if (e.getSource() == buttonAddDocente){
+            Docente docente = cisuc.getDocente((String) list.getSelectedValue());
+            projeto.addDocente(docente);
+            addDocenteMenu();
+        }
+        else if(e.getSource() == buttonAddBolseiro){
+            Bolseiro bolseiro = cisuc.getBolseiro((String) list.getSelectedValue());
+            projeto.addBolseiro(bolseiro);
+            addBolseiroMenu();
+        }
+        
     }
   
     
@@ -288,12 +326,12 @@ public class ProjetoInterface implements ActionListener{
         JLabel label5 = new JLabel(String.format("IP: %s",projeto.getInvestigadorPrincipal().getNome()));
         JLabel label6 = new JLabel(String.format("Custo do Projeto: %s",projeto.getCusto()));
         
-        label1.setBounds(x/8,y/8-y/12,x/4,y/12);
-        label2.setBounds(x/8 + x/2,y/8-y/12,x/4,y/12);
-        label6.setBounds(x/8,y*2/8-y/12,x/4,y/12);
-        label5.setBounds(x/8,y*3/8-y/12,x/4,y/12);
-        label3.setBounds(x/8,y*4/8-y/12,x/4,y/12);
-        label4.setBounds(x/8,y*5/8-y/12,x/4,y/12);
+        label1.setBounds(x/8,y/8-y/12,x*3/8,y/12);
+        label2.setBounds(x/8 + x/2,y/8-y/12,x*3/8,y/12);
+        label6.setBounds(x/8,y*2/8-y/12,x*3/8,y/12);
+        label5.setBounds(x/8,y*3/8-y/12,x*3/8,y/12);
+        label3.setBounds(x/8,y*4/8-y/12,x*3/8,y/12);
+        label4.setBounds(x/8,y*5/8-y/12,x*3/8,y/12);
         
 
         panel.add(label1);
@@ -465,6 +503,65 @@ public class ProjetoInterface implements ActionListener{
 
         p1.add(label);
         p1.add(buttonRemoveBolseiro);
+        p1.add(listScroller);
+        frame.getContentPane().removeAll();
+        frame.getContentPane().add(p1);
+        frame.setVisible(true);
+    }
+    void addDocenteMenu(){
+        
+        JPanel p1=new JPanel();
+        p1.setLayout(null);
+
+        DefaultListModel listValues = new DefaultListModel();
+        JLabel label = new JLabel("Adicionar Docente");
+        buttonAddDocente = new JButton("Adicionar");
+        label.setBounds(x/8,0,x/2,y/4);
+        buttonAddDocente.setBounds(x*6/8,y/16,x/8,y/8);
+        buttonAddDocente.addActionListener(this);
+        
+        for(Pessoa docente: cisuc.arrayDocentes){
+            if (projeto.getDocente(docente.getNome()) == null) {
+                listValues.addElement(docente.getNome());
+            }
+        }
+
+
+        list = new JList(listValues);
+        JScrollPane listScroller = new JScrollPane(list);
+        listScroller.setBounds(x/8,y/4, x*3/4, y/2);
+
+        p1.add(label);
+        p1.add(buttonAddDocente);
+        p1.add(listScroller);
+        frame.getContentPane().removeAll();
+        frame.getContentPane().add(p1);
+        frame.setVisible(true);
+    }
+    
+    void addBolseiroMenu(){
+        JPanel p1=new JPanel();
+        p1.setLayout(null);
+
+        DefaultListModel listValues = new DefaultListModel();
+        JLabel label = new JLabel("Adicionar Bolseiro");
+        buttonAddBolseiro = new JButton("Adicionar");
+        label.setBounds(x/8,0,x/2,y/4);
+        buttonAddBolseiro.setBounds(x*6/8,y/16,x/8,y/8);
+        buttonAddBolseiro.addActionListener(this);
+        
+        for(Bolseiro bolseiro: cisuc.arrayBolseiros){
+            if (bolseiro.getUsed() == 0)
+            listValues.addElement(bolseiro.getNome());
+        }
+
+
+        list = new JList(listValues);
+        JScrollPane listScroller = new JScrollPane(list);
+        listScroller.setBounds(x/8,y/4, x*3/4, y/2);
+
+        p1.add(label);
+        p1.add(buttonAddBolseiro);
         p1.add(listScroller);
         frame.getContentPane().removeAll();
         frame.getContentPane().add(p1);

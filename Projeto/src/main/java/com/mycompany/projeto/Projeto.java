@@ -187,6 +187,7 @@ public class Projeto implements Serializable{
     public void addBolseiro(Bolseiro bolseiro){
         arrayBolseiros.add(bolseiro);
         this.custo += bolseiro.getOrdenado();
+        bolseiro.setUsed();
     }
     
     public void eliminarTarefas(Tarefa tarefa){
@@ -295,4 +296,15 @@ public class Projeto implements Serializable{
             System.out.println("ERRO -- DOCENTE NAO EXISTENTE");
     }
     
+    public float getCargaPessoa(String nome, GregorianCalendar dataInicio){
+        
+        float aux = 0;
+        
+        for (Tarefa tarefa : arrayTarefas){
+            
+            if (dataInicio.compareTo(tarefa.getDataInicio()) <= 0 && tarefa.getProgesso() != 100 && nome.equals(tarefa.getResponsavel().getNome()))
+                aux += tarefa.getTaxaEsforco();
+        }
+        return aux;
+    }
 }

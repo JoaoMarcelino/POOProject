@@ -16,6 +16,8 @@ public abstract class Tarefa implements Serializable{
     
     private GregorianCalendar dataInicio;
     private GregorianCalendar dataEstimada;
+    private GregorianCalendar dataFinal;
+
     
     private int progesso;
     protected float taxaEsforco;
@@ -37,6 +39,20 @@ public abstract class Tarefa implements Serializable{
             System.out.println("ERRO -- PESSOA SOBRECARREGADA");
     }
 
+    public String getTipo(){
+        String tipo;
+        if(getTaxaEsforco() == 1){
+                tipo = "Desenvolvimento";
+        }
+        else if (getTaxaEsforco() == 0.5){
+                tipo = "Design";
+        }
+        else {
+                tipo = "Documentacao";
+        }
+        return tipo;
+    }
+    
     public GregorianCalendar getDataInicio() {
         return dataInicio;
     }
@@ -59,5 +75,17 @@ public abstract class Tarefa implements Serializable{
     
     public Pessoa getResponsavel() {
         return responsavel;
+    }
+    
+    public GregorianCalendar getDataFinal() {
+        return dataFinal;
+    }
+
+    public void setDataFinal(GregorianCalendar dataFinal) {
+        this.dataFinal = dataFinal;
+    }
+
+    public void setProgesso(int progesso) {
+        this.progesso = progesso;
     }
 }

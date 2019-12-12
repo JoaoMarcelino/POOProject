@@ -38,4 +38,9 @@ public abstract class Bolseiro extends Pessoa{
     public int getUsed() {
         return used;
     }
+
+    public void setUsed() {
+        this.used = 1;
+    }
+    
 }

@@ -15,5 +15,6 @@ public class Documentacao extends Tarefa{
     
     public Documentacao(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa responsavel) {
         super(nome, dataInicio, dataEstimada, responsavel);
+        this.taxaEsforco = (float) 0.25;
     }
 }
