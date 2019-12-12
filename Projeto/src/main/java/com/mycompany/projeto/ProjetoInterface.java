@@ -285,7 +285,8 @@ public class ProjetoInterface implements ActionListener{
                 TarefaInterface tarefaInt = new TarefaInterface(novo, cisuc);
             }
             else {
-                //DIALOG BOX
+                JOptionPane.showMessageDialog(null, "Erro a Criar Tarefa","ERRO", JOptionPane.PLAIN_MESSAGE);
+
             }
         }
         else if (e.getSource() == buttonVerDocente){
