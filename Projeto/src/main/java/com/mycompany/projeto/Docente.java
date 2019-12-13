@@ -40,7 +40,7 @@ public class Docente extends Pessoa{
         arrayEstudantes.add(estudante);
     }
     
-    public void removeDocente(Estudante estudante){
+    public void removeEstudante(Estudante estudante){
         
         int indice = arrayEstudantes.indexOf(estudante);
        

@@ -32,8 +32,8 @@ public class mainInterface implements ActionListener {
     
     Cisuc cisuc;
     
-    int x = 822;
-    int y = 466;
+    int x = 800;
+    int y = 450;
         
     JFrame frame;
     JList list;
@@ -49,6 +49,7 @@ public class mainInterface implements ActionListener {
     JMenuItem itemTodos;
     JMenuItem itemNConc;
     JMenuItem itemConc;
+    JMenuItem itemConcFora;
     JMenuItem criarItemProjeto;
     JMenuItem eliminarItemProjeto;
     
@@ -138,6 +139,7 @@ public class mainInterface implements ActionListener {
         itemTodos = new JMenuItem("Todos");
         itemNConc = new JMenuItem("Não Concluidos");
         itemConc = new JMenuItem("Concluidos");
+        itemConcFora =  new JMenuItem("Não Concluidos na Data");
         
         
         mainMenu.addActionListener(this);
@@ -155,6 +157,7 @@ public class mainInterface implements ActionListener {
         itemTodos.addActionListener(this);
         itemNConc.addActionListener(this);
         itemConc.addActionListener(this);
+        itemConcFora.addActionListener(this);
 
         bar.add(main);
         bar.add(menu1);
@@ -179,6 +182,7 @@ public class mainInterface implements ActionListener {
         verItemProjeto.add(itemTodos);
         verItemProjeto.add(itemNConc);
         verItemProjeto.add(itemConc);
+        verItemProjeto.add(itemConcFora);
         
         
         frame.setJMenuBar(bar);
@@ -220,6 +224,9 @@ public class mainInterface implements ActionListener {
         
         else if(e.getSource()==itemConc){
             verProjetoMenu(1);
+        }
+        else if (e.getSource()==itemConcFora){
+            verProjetoMenu(3);
         }
         
         else if(e.getSource()==criarItemProjeto){
@@ -292,8 +299,7 @@ public class mainInterface implements ActionListener {
             fim.set(ano2.getSelectedIndex()+1980,mes2.getSelectedIndex()+1, dia2.getSelectedIndex()+1);
            
             if (!nome.getText().equals("") && !acronimo.getText().equals("") && inicio.compareTo(fim) <= 0){
-                Projeto novo= new Projeto(nome.getText(),acronimo.getText(), inicio, fim, cisuc.getDocente(jComboBoxAction.getSelectedIndex()));
-                cisuc.addProjeto(novo); 
+                Projeto novo = cisuc.criaProjeto(nome.getText(),acronimo.getText(), inicio, fim, cisuc.getDocente(jComboBoxAction.getSelectedIndex()).getNome());
                 ProjetoInterface projetoInt = new ProjetoInterface(novo, cisuc);
             }
             else{
@@ -346,11 +352,16 @@ public class mainInterface implements ActionListener {
     
     void mainMenu() throws IOException{
         JPanel panel = new JPanel();
+        panel.setLayout(null);
+        JLabel  label0 = new JLabel("CISUC - Projeto POO");
+        JLabel  label1 = new JLabel("João Marcelino e José Esperança");
         
-        BufferedImage myPicture = ImageIO.read(new File("C:\\Users\\hp\\Desktop\\Universidade\\Memes\\1s8pvzd1bwv31.png"));
-        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-        panel.add(picLabel);
+
+        label0.setBounds(x/3,y*3/8,x/2,y/8);
+        label1.setBounds(x/3,y*4/8,x/2,y/8);
         
+        panel.add(label0);
+        panel.add(label1);
         frame.getContentPane().removeAll();
         frame.getContentPane().add(panel);
         frame.setVisible(true);
@@ -434,14 +445,23 @@ public class mainInterface implements ActionListener {
             for(Projeto projeto: cisuc.arrayProjetos)
                 listValues.addElement(projeto.getNome());
         }
-        else {
+        else if (num == 3){
+            tipo = "Concluidos fora da Data Estimada";
+            for(Projeto projeto: cisuc.arrayProjetos){
+                if (projeto.getAcabado() == 1 && projeto.getDataFinal().after(projeto.getDataEstimada()))
+                    listValues.addElement(projeto.getNome());
+            }
+        }
+        else{
             if (num ==1) tipo = "Concluidos";
+            
             else if (num == 0) tipo = "Não Concluidos";
             for(Projeto projeto: cisuc.arrayProjetos){
                 if (projeto.getAcabado() == num)
                     listValues.addElement(projeto.getNome());
             }
         }
+
         
         tipo =String.format("Ver Projetos %s",tipo);
         

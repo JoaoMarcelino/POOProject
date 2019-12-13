@@ -39,10 +39,7 @@ public class Projeto implements Serializable{
         this.dataEstimada = dataEstimada;
         this.investigadorPrincipal = investigadorPrincipal;
     }
-    
-    public Projeto(){
-        this.nome = "NONEXISTANT";
-    }
+
     
     public String getNome() {
         return this.nome;
@@ -129,6 +126,16 @@ public class Projeto implements Serializable{
         }
         return null;
     }
+    public Bolseiro getBolseiro(int index) {
+        
+        for(Bolseiro pessoa: arrayBolseiros) {
+
+            if (arrayDocentes.indexOf(pessoa)==index)
+                return pessoa;
+        }
+        
+        return null;
+    }
     
     public Docente getDocente(String nome){
         
@@ -156,23 +163,19 @@ public class Projeto implements Serializable{
     public void criaDocumentacao(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa pessoa){
         
         Tarefa tarefa = new Documentacao(nome, dataInicio, dataEstimada, pessoa);
-        pessoa.addTarefa(tarefa);
         addTarefa(tarefa);
     }
     
     public void criaDesign(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa pessoa){
         
-        //Pessoa pessoa = this.getPessoa(nomePessoa);
         
         Design tarefa = new Design(nome, dataInicio, dataEstimada, pessoa);
-        pessoa.addTarefa(tarefa);
         this.addTarefa(tarefa);
     }
     
     public void criaDesenvolvimento(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa pessoa){
         
         Tarefa tarefa = new Desenvolvimento(nome, dataInicio, dataEstimada, pessoa);
-        pessoa.addTarefa(tarefa);
         addTarefa(tarefa);
     }
     
@@ -195,8 +198,7 @@ public class Projeto implements Serializable{
         int indice = arrayTarefas.indexOf(tarefa);
         String s = tarefa.getResponsavel().getNome();
         
-        if (indice != -1){
-            this.getPessoa(s).removeTarefa(tarefa);
+        if (indice != -1){ 
             arrayTarefas.remove(indice);      
         }
         else
@@ -262,7 +264,7 @@ public class Projeto implements Serializable{
         this.custo += aux;
     }
     
-    public void endProjeto(Projeto projeto) {
+    public void endProjeto() {
         this.acabado = 1;
     }
     
@@ -304,6 +306,17 @@ public class Projeto implements Serializable{
             
             if (dataInicio.compareTo(tarefa.getDataInicio()) <= 0 && tarefa.getProgesso() != 100 && nome.equals(tarefa.getResponsavel().getNome()))
                 aux += tarefa.getTaxaEsforco();
+        }
+        return aux;
+    }
+    
+    public int checkTarefas(){
+        int aux =0;
+        for (Tarefa tarefa: arrayTarefas){
+            if (tarefa.getProgesso() != 100){
+                aux = 1;
+                break;
+            }
         }
         return aux;
     }

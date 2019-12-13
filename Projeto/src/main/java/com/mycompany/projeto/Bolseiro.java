@@ -15,8 +15,8 @@ public abstract class Bolseiro extends Pessoa{
    
     protected int ordenado;
     private int used;
-    GregorianCalendar inicioBolsa;
-    GregorianCalendar fimBolsa;
+    private GregorianCalendar inicioBolsa;
+    private GregorianCalendar fimBolsa;
     
     public Bolseiro(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa){
         super(nome,email);

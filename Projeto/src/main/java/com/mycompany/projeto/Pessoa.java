@@ -37,7 +37,7 @@ public abstract class Pessoa implements Serializable{
     public float getCarga(){
         return carga;
     }
-    
+    /*
     public void addTarefa(Tarefa tarefa){
         this.carga += tarefa.getTaxaEsforco();
     }
@@ -53,34 +53,6 @@ public abstract class Pessoa implements Serializable{
     public void removeCarga(float n){
         this.carga += n;
     }
+    */
     
-    /*
-    public int addTarefa(Tarefa tarefa){
-        if (this.getCarga() + tarefa.getTaxaEsforco() <= 1){
-            arrayTarefas.add(tarefa);
-            return 0;
-        }
-        return 1;
-    }
-    
-    public void eliminarTarefa(Tarefa tarefa){
-        int indice = arrayTarefas.indexOf(tarefa);
-        if (indice != -1)
-            arrayTarefas.remove(indice);
-        else
-            System.out.println("ERRO -- TAREFA NAO EXISTENTE!");
-    }
-   
-    
-    public void listarTarefa(){
-        
-        System.out.println("TAREFAS:");
-
-        for(Tarefa tarefa: arrayTarefas) {
-            System.out.println(tarefa);
-        }
-        System.out.println("----");
-    }
- */
-
 }    

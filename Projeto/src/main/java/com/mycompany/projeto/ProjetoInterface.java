@@ -34,8 +34,9 @@ public class ProjetoInterface implements ActionListener{
     JList list;
     JMenuBar bar;
     
-    JMenu menu1, menu2,menu3;
-    JMenuItem MainMenu, alterar, verTarefas, criarTarefa, eliminarTarefa,addDocente,verDocente,eliminarDocente, addBolseiro,verBolseiro, eliminarBolseiro;
+    JMenu menu1, menu2,menu3,verTarefas;
+    JMenuItem verTodas,verNaoIniciadas, Conc, NConc;
+    JMenuItem MainMenu, alterar, criarTarefa, eliminarTarefa,addDocente,verDocente,eliminarDocente, addBolseiro,verBolseiro, eliminarBolseiro;
     JButton buttonRemoveDocente, buttonVerTarefas, buttonCriarTarefa, buttonRemoveTarefa, buttonRemoveBolseiro,buttonVerDocente,buttonVerBolseiro,buttonAddDocente,buttonAddBolseiro;
     
     JTextField nome;
@@ -78,8 +79,13 @@ public class ProjetoInterface implements ActionListener{
         menu2 = new JMenu("Tarefas");
         menu3 = new JMenu("Pessoas");
         MainMenu = new JMenuItem("Main");
-        alterar = new JMenuItem("Alterar");
-        verTarefas = new JMenuItem("Ver");
+        alterar = new JMenuItem("Concluir Projeto");
+        verTarefas = new JMenu("Ver");
+        
+        verTodas = new JMenuItem("Todas");
+        verNaoIniciadas = new JMenuItem("Não Iniciadas");
+        Conc= new JMenuItem("Concluidas");
+        NConc= new JMenuItem("Não Concluidas na Data");
         criarTarefa = new JMenuItem("Criar");
         eliminarTarefa = new JMenuItem("Eliminar");
         addDocente = new JMenuItem("Adicionar Docente");
@@ -92,7 +98,10 @@ public class ProjetoInterface implements ActionListener{
         
         MainMenu.addActionListener(this);
         alterar.addActionListener(this);
-        verTarefas.addActionListener(this);
+        verTodas.addActionListener(this);
+        verNaoIniciadas.addActionListener(this);
+        Conc.addActionListener(this);
+        NConc.addActionListener(this);
         criarTarefa.addActionListener(this);
         eliminarTarefa.addActionListener(this);
         verDocente.addActionListener(this);
@@ -105,6 +114,11 @@ public class ProjetoInterface implements ActionListener{
         bar.add(menu1);
         bar.add(menu2);
         bar.add(menu3);
+        
+        verTarefas.add(verTodas);
+        verTarefas.add(verNaoIniciadas);
+        verTarefas.add(Conc);
+        verTarefas.add(NConc);
         
         menu1.add(MainMenu);
         menu1.add(alterar);
@@ -138,10 +152,32 @@ public class ProjetoInterface implements ActionListener{
         if (e.getSource() == MainMenu){
             MainMenu();
         }
-        else if (e.getSource() == verTarefas){
-            verTarefasMenu();
+        else if (e.getSource() == alterar ){
+            if (projeto.checkTarefas() == 0){
+                GregorianCalendar end = new GregorianCalendar();
+                JOptionPane.showMessageDialog(null, "Projeto Concluido","Projeto Concluido", JOptionPane.PLAIN_MESSAGE);
+                projeto.endProjeto();
+                projeto.setDataFinal(end);
+                MainMenu();
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "ERRO: Tarefas nao Concluidas","Erro", JOptionPane.PLAIN_MESSAGE);
+            }
         }
-        else if (e.getSource() == criarTarefa){
+        else if (e.getSource() == verTodas){
+            verTarefasMenu(0);
+        }
+        else if (e.getSource() == NConc){
+            verTarefasMenu(3);
+        }
+        else if (e.getSource() == Conc){
+            verTarefasMenu(2);
+        }
+        else if (e.getSource() == verNaoIniciadas){
+            verTarefasMenu(1);
+        }
+                
+        else if (e.getSource() == criarTarefa && projeto.getAcabado() == 0){
             String[] types = {"Design", "Desenvolvimento", "Documentação"};
             
             for (Docente pessoa: cisuc.arrayDocentes){
@@ -213,23 +249,23 @@ public class ProjetoInterface implements ActionListener{
             frame.getContentPane().add(p1);
             frame.setVisible(true);
         }
-        else if(e.getSource() == eliminarTarefa){
+        else if(e.getSource() == eliminarTarefa && projeto.getAcabado() == 0){
             eliminarTarefasMenu();
         }
-        else if (e.getSource() == verDocente){
+        else if (e.getSource() == verDocente ){
             verDocenteMenu();
         }
-        else if (e.getSource() == addDocente){
+        else if (e.getSource() == addDocente && projeto.getAcabado() == 0){
             addDocenteMenu();
         }
-        else if (e.getSource() == eliminarDocente){
+        else if (e.getSource() == eliminarDocente && projeto.getAcabado() == 0){
             eliminarDocenteMenu();
         }
         
-        else if (e.getSource() == eliminarBolseiro){
+        else if (e.getSource() == eliminarBolseiro && projeto.getAcabado() == 0){
             eliminarBolseiroMenu();
         }
-        else if (e.getSource() == addBolseiro){
+        else if (e.getSource() == addBolseiro && projeto.getAcabado() == 0){
             addBolseiroMenu();
         }
         else if (e.getSource() == verBolseiro){
@@ -264,30 +300,36 @@ public class ProjetoInterface implements ActionListener{
             
             if (!nome.getText().equals("") && inicio.compareTo(fim) <= 0){
                 
-                //ERRO 
-                System.out.printf("%s\n",projeto.getCargaPessoa(nome.getText(), inicio));
-                //ERRO
-                switch (jComboBoxAction.getSelectedIndex()) {
-                    case 0:
-                        if (projeto.getCargaPessoa(nome.getText(), inicio) + 0.5 <=1){
-                            novo = new Design(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
-                            break;
-                        }
-                    case 1:
-                        if (projeto.getCargaPessoa(nome.getText(), inicio) + 1 <=1){
-                            novo = new Desenvolvimento(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
-                            break;
-                        }
-                    default:
-                        if (projeto.getCargaPessoa(nome.getText(), inicio) + 0.25 <=1){
-                            novo = new Documentacao(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
-                            break;
-                        }
+                if ( projeto.getBolseiro(jComboBoxAction1.getSelectedIndex()) == null || projeto.getBolseiro(jComboBoxAction1.getSelectedIndex()).getFimBolsa().after(fim)){
+                    //ERRO 
+                    System.out.printf("%s\n",projeto.getCargaPessoa(nome.getText(), inicio));
+                    //ERRO
+                    switch (jComboBoxAction.getSelectedIndex()) {
+                        case 0:
+                            if (projeto.getCargaPessoa(nome.getText(), inicio) + 0.5 <=1){
+                                novo = new Design(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
+                                break;
+                            }
+                        case 1:
+                            if (projeto.getCargaPessoa(nome.getText(), inicio) + 1 <=1){
+                                novo = new Desenvolvimento(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
+                                break;
+                            }
+                        default:
+                            if (projeto.getCargaPessoa(nome.getText(), inicio) + 0.25 <=1){
+                                novo = new Documentacao(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
+                                break;
+                            }
+                    }
+
+                    projeto.addTarefa(novo); 
+                    TarefaInterface tarefaInt = new TarefaInterface(novo, cisuc);
                 }
-                
-                projeto.addTarefa(novo); 
-                TarefaInterface tarefaInt = new TarefaInterface(novo, cisuc);
+                else{
+                    JOptionPane.showMessageDialog(null, "Bolseiro Invalido","ERRO", JOptionPane.PLAIN_MESSAGE);
+                }
             }
+
             else {
                 JOptionPane.showMessageDialog(null, "Erro a Criar Tarefa","ERRO", JOptionPane.PLAIN_MESSAGE);
 
@@ -321,13 +363,13 @@ public class ProjetoInterface implements ActionListener{
         
         JLabel label1 = new JLabel(String.format("Nome: %s",projeto.getNome()));
         JLabel label2 = new JLabel(String.format("Acronimo: %s",projeto.getAcronimo()));
-        JLabel label4 = new JLabel(String.format("Data Estimada: %d-%d-%d",projeto.getDataEstimada().get(GregorianCalendar.YEAR),projeto.getDataEstimada().get(GregorianCalendar.MONTH),projeto.getDataEstimada().get(GregorianCalendar.DAY_OF_MONTH))); 
+        JLabel label4 = new JLabel(String.format("Data Estimada: %d-%d-%d",projeto.getDataEstimada().get(GregorianCalendar.YEAR),projeto.getDataEstimada().get(GregorianCalendar.MONTH)+1,projeto.getDataEstimada().get(GregorianCalendar.DAY_OF_MONTH))); 
         if (projeto.getAcabado() == 1){
-            JLabel label41 = new JLabel(String.format("Data Final: %d-%d-%d",projeto.getDataFinal().get(GregorianCalendar.YEAR),projeto.getDataFinal().get(GregorianCalendar.MONTH),projeto.getDataFinal().get(GregorianCalendar.DAY_OF_MONTH)));
-            label41.setBounds(x/2,y*5/8,x/2,y/12);
+            JLabel label41 = new JLabel(String.format("Data Final: %d-%d-%d",projeto.getDataFinal().get(GregorianCalendar.YEAR),projeto.getDataFinal().get(GregorianCalendar.MONTH)+1,projeto.getDataFinal().get(GregorianCalendar.DAY_OF_MONTH)));
+            label41.setBounds(x/8,y*6/8-y/12,x*3/8,y/12);
             panel.add(label41);
         }
-        JLabel label3 = new JLabel(String.format("Data Inicial: %d-%d-%d",projeto.getDataInicio().get(GregorianCalendar.YEAR),projeto.getDataInicio().get(GregorianCalendar.MONTH),projeto.getDataInicio().get(GregorianCalendar.DAY_OF_MONTH)));
+        JLabel label3 = new JLabel(String.format("Data Inicial: %d-%d-%d",projeto.getDataInicio().get(GregorianCalendar.YEAR),projeto.getDataInicio().get(GregorianCalendar.MONTH)+1,projeto.getDataInicio().get(GregorianCalendar.DAY_OF_MONTH)));
         JLabel label5 = new JLabel(String.format("IP: %s",projeto.getInvestigadorPrincipal().getNome()));
         JLabel label6 = new JLabel(String.format("Custo do Projeto: %s",projeto.getCusto()));
         
@@ -351,25 +393,56 @@ public class ProjetoInterface implements ActionListener{
         frame.setVisible(true);
     }
     
-    public void verTarefasMenu(){
+    public void verTarefasMenu(int num){
         JPanel p1=new JPanel();
         p1.setLayout(null);
+        //verTodas,verNaoIniciadas, Conc, NConc;
 
         DefaultListModel listValues = new DefaultListModel();
-        JLabel label = new JLabel("Lista de Tarefa");
+        if (num ==0){
+            JLabel label = new JLabel("Lista de Todas as Tarefas");
+            label.setBounds(x/8,0,x/2,y/4);
+            p1.add(label);
+            for(Tarefa tarefa: projeto.arrayTarefas){
+                listValues.addElement(tarefa.getNome());
+            }
+        }
+        else if (num == 1){
+            JLabel label = new JLabel("Lista de Todas as Tarefas Não Iniciadas");
+            label.setBounds(x/8,0,x/2,y/4);
+            p1.add(label);
+            for(Tarefa tarefa: projeto.arrayTarefas){
+                if (tarefa.getProgesso() == 0)
+                    listValues.addElement(tarefa.getNome());
+            }
+        }
+        else if (num == 2){
+            JLabel label = new JLabel("Lista de Todas de Tarefas Concluidas");
+            label.setBounds(x/8,0,x/2,y/4);
+            p1.add(label);
+            for(Tarefa tarefa: projeto.arrayTarefas){
+                if (tarefa.getProgesso() == 100)
+                listValues.addElement(tarefa.getNome());
+            }
+        }
+        else{
+            JLabel label = new JLabel("Lista de Todas de Tarefas Nao Concluidas na Data Estimada");
+            label.setBounds(x/8,0,x/2,y/4);
+            p1.add(label);
+            for(Tarefa tarefa: projeto.arrayTarefas){
+                if (tarefa.getProgesso() == 100 && tarefa.getDataFinal().after(tarefa.getDataEstimada()))
+                listValues.addElement(tarefa.getNome());
+            }
+        } 
         buttonVerTarefas = new JButton("Vizualizar");
         buttonVerTarefas.setBounds(x*6/8,y/16,x/8,y/8);
         buttonVerTarefas.addActionListener(this);
-        label.setBounds(x/8,0,x/2,y/4);
         
-        for(Tarefa tarefa: projeto.arrayTarefas){
-            listValues.addElement(tarefa.getNome());
-        }
         list = new JList(listValues);
         JScrollPane listScroller = new JScrollPane(list);
         listScroller.setBounds(x/8,y/4, x*3/4, y/2);
+
         
-        p1.add(label);
         p1.add(buttonVerTarefas);
         p1.add(listScroller);
         frame.getContentPane().removeAll();

@@ -122,7 +122,7 @@ public class Cisuc {
         arrayProjetos.add(projeto);
     }
     
-    public int criaProjeto(String nome, String acronimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, String investigadorPrincipal){
+    public Projeto criaProjeto(String nome, String acronimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, String investigadorPrincipal){
               
         for (Docente docente : arrayDocentes){
             
@@ -131,10 +131,10 @@ public class Cisuc {
                 arrayProjetos.add(projeto);
                 docente.setProjeto(projeto);
                 projeto.addDocente(docente);
-                return 0;
+                return projeto;
             }  
         }
-        return 1;
+        return null;
     }
     
     public int criaDocente(String nome, String email, int numero, String area){   

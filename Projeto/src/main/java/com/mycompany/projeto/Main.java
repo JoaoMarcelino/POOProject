@@ -80,7 +80,7 @@ public class Main {
                                 data1 = new GregorianCalendar(Integer.parseInt(split[2].split("-")[2]),Integer.parseInt(split[2].split("-")[1]),Integer.parseInt(split[2].split("-")[0]));
                                 data2 = new GregorianCalendar(Integer.parseInt(split[3].split("-")[2]),Integer.parseInt(split[3].split("-")[1]),Integer.parseInt(split[3].split("-")[0]));
                                 
-                                if (cisuc.criaProjeto(split[0],split[1],data1,data2,split[4]) == 1)
+                                if (cisuc.criaProjeto(split[0],split[1],data1,data2,split[4]) == null)
                                     System.out.println("Erro a criar projeto");
                                 break;
                                 
@@ -94,21 +94,21 @@ public class Main {
                                     case "Documentacao":
                                        if (p.getCarga() <= 0.75){
                                            tarefa = new Documentacao(split[0],data1,data2,p);
-                                           p.addTarefa(tarefa);
+                                           
                                            proj.addTarefa(tarefa);
                                         }
                                         break;
                                     case "Design":
                                         if (p.getCarga() <= 0.5){
                                             tarefa = new Design(split[0],data1,data2,p);
-                                            p.addTarefa(tarefa);
+                                            
                                             proj.addTarefa(tarefa);
                                         }
                                         break;
                                     default:
                                         if (p.getCarga() == 0){
                                             tarefa = new Desenvolvimento(split[0],data1,data2,p);
-                                            p.addTarefa(tarefa);
+                                           
                                             proj.addTarefa(tarefa);
                                         }
                                         break;

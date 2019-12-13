@@ -33,25 +33,9 @@ public abstract class Tarefa implements Serializable{
     }
 
     public void setResponsavel(Pessoa pessoa) {
-        if (pessoa.getCarga() + this.taxaEsforco <= 1)
-            this.responsavel = pessoa;
-        else
-            System.out.println("ERRO -- PESSOA SOBRECARREGADA");
+        this.responsavel = pessoa;
     }
 
-    public String getTipo(){
-        String tipo;
-        if(getTaxaEsforco() == 1){
-                tipo = "Desenvolvimento";
-        }
-        else if (getTaxaEsforco() == 0.5){
-                tipo = "Design";
-        }
-        else {
-                tipo = "Documentacao";
-        }
-        return tipo;
-    }
     
     public GregorianCalendar getDataInicio() {
         return dataInicio;
