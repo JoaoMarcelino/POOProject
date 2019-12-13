@@ -4,23 +4,17 @@
  * and open the template in the editor.
  */
 package com.mycompany.projeto;
-import java.util.*;
-import java.awt.*;
-import java.awt.Dimension;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 /**
  *
  * @author hp
  */
 public class DocenteInterface {
-    Docente docente;
-    Cisuc cisuc;
-    int x = 400;
-    int y = 300;
-    JFrame frame;
+    private Docente docente;
+    private Cisuc cisuc;
+    private int x = 400;
+    private int y = 300;
+    private JFrame frame;
     
     public DocenteInterface(Docente docente, Cisuc cisuc){
         

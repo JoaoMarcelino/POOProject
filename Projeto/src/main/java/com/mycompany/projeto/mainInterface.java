@@ -6,21 +6,10 @@
 
 package com.mycompany.projeto;
 import static com.mycompany.projeto.Main.writeObjFiles;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.GregorianCalendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
@@ -30,71 +19,52 @@ import javax.swing.*;
  */
 public class mainInterface implements ActionListener {  
     
-    Cisuc cisuc;
+    private Cisuc cisuc;
     
     int x = 800;
     int y = 450;
         
-    JFrame frame;
-    JList list;
-    JMenuBar bar;
-    JMenu menu1;
-    JMenu menu2;
-    JMenu menu3;
-    JMenu main;
-    
-    JMenu verItemProjeto;
-    JMenuItem save;
-    JMenuItem mainMenu;
-    JMenuItem itemTodos;
-    JMenuItem itemNConc;
-    JMenuItem itemConc;
-    JMenuItem itemConcFora;
-    JMenuItem criarItemProjeto;
-    JMenuItem eliminarItemProjeto;
-    
-    JMenuItem itemDocente1;
-    JMenuItem itemDocente2;
-    JMenuItem itemDocente3;
+    private JFrame frame;
+    private JList list;
+    private JMenuBar bar;
+    private JMenu menu1, menu2, menu3, main, verItemProjeto;
 
-    JMenuItem itemBolseiro1;
-    JMenuItem itemBolseiro2;
-    JMenuItem itemBolseiro3;
+    private JMenuItem save,mainMenu,itemTodos,itemNConc,itemConc,itemConcFora,criarItemProjeto,eliminarItemProjeto,itemDocente1,itemDocente2,itemDocente3,itemBolseiro1,itemBolseiro2,itemBolseiro3;
 
     
-    JButton buttonProjeto;
-    JButton buttonCriarProjeto;
-    JButton buttonElProjeto;
-    JButton buttonDocente;
-    JButton buttonCriarDocente;
-    JButton buttonElDocente;
-    JButton buttonBolseiro;
-    JButton buttonCriarBolseiro;
-    JButton buttonElBolseiro;
+    private JButton buttonProjeto;
+    private JButton buttonCriarProjeto;
+    private JButton buttonElProjeto;
+    private JButton buttonDocente;
+    private JButton buttonCriarDocente;
+    private JButton buttonElDocente;
+    private JButton buttonBolseiro;
+    private JButton buttonCriarBolseiro;
+    private JButton buttonElBolseiro;
     
 
     
-    JTextField email;
-    JTextField nmecan;
-    JTextField area;
+    private JTextField email;
+    private JTextField nmecan;
+    private JTextField area;
     
-    JTextField nome;
-    JTextField acronimo;
-    JComboBox jComboBoxAction, jComboBoxAction1;
-    JComboBox dia1;
-    JComboBox mes1;
-    JComboBox ano1;
-    JComboBox dia2;
-    JComboBox mes2;
-    JComboBox ano2;
+    private JTextField nome;
+    private JTextField acronimo;
+    private JComboBox jComboBoxAction, jComboBoxAction1;
+    private JComboBox dia1;
+    private JComboBox mes1;
+    private JComboBox ano1;
+    private JComboBox dia2;
+    private JComboBox mes2;
+    private JComboBox ano2;
     
-    ArrayList<String> dia = new ArrayList();
-    ArrayList<String> mes = new ArrayList();
-    ArrayList<String> ano = new ArrayList();
-    ArrayList<String> lista = new ArrayList();
+    private ArrayList<String> dia = new ArrayList();
+    private ArrayList<String> mes = new ArrayList();
+    private ArrayList<String> ano = new ArrayList();
+    private ArrayList<String> lista = new ArrayList();
 
     
-    mainInterface(Cisuc cisuc) throws IOException{
+    mainInterface(Cisuc cisuc){
        
         
         for (int i =1; i<=31; i++){
@@ -198,11 +168,8 @@ public class mainInterface implements ActionListener {
     public void actionPerformed(ActionEvent e) {  
         
         if (e.getSource() == mainMenu){
-            try {
-                mainMenu();
-            } catch (IOException ex) {
-                Logger.getLogger(mainInterface.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            mainMenu();
+
         }
         else if(e.getSource() == save){
             writeObjFiles(cisuc);
@@ -352,7 +319,7 @@ public class mainInterface implements ActionListener {
     
     
     
-    void mainMenu() throws IOException{
+    void mainMenu(){
         JPanel panel = new JPanel();
         panel.setLayout(null);
         JLabel  label0 = new JLabel("CISUC - Projeto POO");

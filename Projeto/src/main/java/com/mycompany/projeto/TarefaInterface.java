@@ -5,13 +5,8 @@
  */
 package com.mycompany.projeto;
 import java.util.*;
-import java.awt.*;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
@@ -20,14 +15,14 @@ import javax.swing.*;
  */
 public class TarefaInterface implements ActionListener {
     
-    Tarefa tarefa;
-    Cisuc cisuc;
-    String tipo;
-    int x = 400;
-    int y = 300;
-    JFrame frame;
-    JButton botao, botao2;
-    JTextField text;
+    private Tarefa tarefa;
+    private Cisuc cisuc;
+    private String tipo;
+    private int x = 400;
+    private int y = 300;
+    private JFrame frame;
+    private JButton botao, botao2;
+    private JTextField text;
     
     
     public TarefaInterface(Tarefa novo, Cisuc cisuc) {

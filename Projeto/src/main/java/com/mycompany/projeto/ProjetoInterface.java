@@ -4,23 +4,11 @@
  * and open the template in the editor.
  */
 package com.mycompany.projeto;
-import java.util.*;
-import java.awt.*;
-import java.awt.Dimension;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.GregorianCalendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 /**
  *
@@ -28,34 +16,34 @@ import javax.swing.*;
  */
 public class ProjetoInterface implements ActionListener{
     
-    Cisuc cisuc;
-    Projeto projeto;
-    JFrame frame;
-    JList list;
-    JMenuBar bar;
+    private Cisuc cisuc;
+    private Projeto projeto;
+    private JFrame frame;
+    private JList list;
+    private JMenuBar bar;
     
-    JMenu menu1, menu2,menu3,verTarefas;
-    JMenuItem verTodas,verNaoIniciadas, Conc, NConc;
-    JMenuItem MainMenu, alterar, criarTarefa, eliminarTarefa,addDocente,verDocente,eliminarDocente, addBolseiro,verBolseiro, eliminarBolseiro;
-    JButton buttonRemoveDocente, buttonVerTarefas, buttonCriarTarefa, buttonRemoveTarefa, buttonRemoveBolseiro,buttonVerDocente,buttonVerBolseiro,buttonAddDocente,buttonAddBolseiro;
+    private JMenu menu1, menu2,menu3,verTarefas;
+    private JMenuItem verTodas,verNaoIniciadas, Conc, NConc;
+    private JMenuItem MainMenu, alterar, criarTarefa, eliminarTarefa,addDocente,verDocente,eliminarDocente, addBolseiro,verBolseiro, eliminarBolseiro;
+    private JButton buttonRemoveDocente, buttonVerTarefas, buttonCriarTarefa, buttonRemoveTarefa, buttonRemoveBolseiro,buttonVerDocente,buttonVerBolseiro,buttonAddDocente,buttonAddBolseiro;
     
-    JTextField nome;
-    JTextField acronimo;
-    JComboBox jComboBoxAction, jComboBoxAction1;
-    JComboBox dia1;
-    JComboBox mes1;
-    JComboBox ano1;
-    JComboBox dia2;
-    JComboBox mes2;
-    JComboBox ano2;
+    private JTextField nome;
+    private JTextField acronimo;
+    private JComboBox jComboBoxAction, jComboBoxAction1;
+    private JComboBox dia1;
+    private JComboBox mes1;
+    private JComboBox ano1;
+    private JComboBox dia2;
+    private JComboBox mes2;
+    private JComboBox ano2;
     
-    ArrayList<String> dia = new ArrayList();
-    ArrayList<String> mes = new ArrayList();
-    ArrayList<String> ano = new ArrayList();
-    ArrayList<String> lista = new ArrayList();
+    private ArrayList<String> dia = new ArrayList();
+    private ArrayList<String> mes = new ArrayList();
+    private ArrayList<String> ano = new ArrayList();
+    private ArrayList<String> lista = new ArrayList();
     
-    int x =500;
-    int y =300;
+    private int x =500;
+    private int y =300;
     
     public ProjetoInterface(Projeto projeto, Cisuc cisuc){
         

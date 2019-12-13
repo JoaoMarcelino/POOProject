@@ -4,13 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.projeto;
-
 import java.util.*;
-import java.awt.*;
-import java.awt.Dimension;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
@@ -18,11 +12,11 @@ import javax.swing.*;
  * @author hp
  */
 public class BolseiroInterface {
-    Bolseiro bolseiro;
-    Cisuc cisuc;
-    int x = 400;
-    int y = 300;
-    JFrame frame;
+    private Bolseiro bolseiro;
+    private Cisuc cisuc;
+    private int x = 400;
+    private int y = 300;
+    private JFrame frame;
     
     public BolseiroInterface(Bolseiro bolseiro, Cisuc cisuc){
         this.bolseiro = bolseiro;
