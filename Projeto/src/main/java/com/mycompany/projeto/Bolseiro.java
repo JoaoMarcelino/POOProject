@@ -25,10 +25,10 @@ public abstract class Bolseiro extends Pessoa{
     
     /**
      * Construtor da classe Bolseiro
-     * @param nome
-     * @param email
-     * @param inicioBolsa
-     * @param fimBolsa
+     * @param nome nome do bolseiro
+     * @param email email do bolseiro
+     * @param inicioBolsa data inicio bolsa
+     * @param fimBolsa data fim bolsa
      */
     
     public Bolseiro(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa){

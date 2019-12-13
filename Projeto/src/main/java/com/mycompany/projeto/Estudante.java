@@ -21,11 +21,11 @@ public class Estudante extends Bolseiro{
     
     /**
      * Construtor do estudante
-     * @param nome
-     * @param email
-     * @param inicioBolsa
-     * @param fimBolsa
-     * @param docente
+     * @param nome nome da pessoa
+     * @param email email da pessoa
+     * @param inicioBolsa data de inicio da bolsa
+     * @param fimBolsa data de fim da bolsa
+     * @param docente docente do estudante
      */
     public Estudante(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa, Docente docente){
         super(nome,email,inicioBolsa,fimBolsa);
@@ -34,7 +34,7 @@ public class Estudante extends Bolseiro{
     
     /**
      * Adiciona um docente ao array no estudante
-     * @param docente
+     * @param docente objeto docente
      */
     public void addDocente(Docente docente){
         arrayDocentes.add(docente);
@@ -43,7 +43,7 @@ public class Estudante extends Bolseiro{
     
     /**
      * Remove um docente do array no estudante
-     * @param docente
+     * @param docente objeto docente
      */
     public void removeDocente(Docente docente){
         

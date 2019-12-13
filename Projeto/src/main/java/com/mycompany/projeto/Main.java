@@ -21,9 +21,9 @@ public class Main {
     
     /**
      * Funcao auxiliar para a leitura de ficheiros -- aux = 0 - pessoas | 1 - projetos | 2 - tarefas
-     * @param f
-     * @param aux
-     * @param cisuc
+     * @param f ficheiro
+     * @param aux aux = 0 pessoas, = 1 projetos, = 2 tarefas
+     * @param cisuc objeto da classe cisuc
      */
     public static void readText(File f, int aux, Cisuc cisuc){
         
@@ -141,7 +141,7 @@ public class Main {
     
     /**
      * le os ficheiros de texto
-     * @param cisuc
+     * @param cisuc objeto da classe cisuc
      */
     public static void readTextFiles(Cisuc cisuc){
         
@@ -157,9 +157,9 @@ public class Main {
     
     /**
      * funcao auxiliar para a leitura de object files
-     * @param cisuc
-     * @param aux
-     * @param f
+     * @param cisuc objeto da classe cisuc
+     * @param aux aux = 0 projetos, = 1 bolseiros, = 2 docentes
+     * @param f ficheiro
      * @return 1 if error, else 0
      */
     public static int readObjects(Cisuc cisuc, int aux, File f){
@@ -199,7 +199,7 @@ public class Main {
     
     /**
      * Le ficheiros de objetos
-     * @param cisuc
+     * @param cisuc objeto da classe cisuc
      */
     public static void readObjFiles(Cisuc cisuc){
         
@@ -214,7 +214,7 @@ public class Main {
     
     /**
      * Escreve ficheiros de obejtos
-     * @param cisuc
+     * @param cisuc objeto da classe cisuc
      */
     public static void writeObjFiles(Cisuc cisuc){
         
@@ -229,9 +229,9 @@ public class Main {
     
     /**
      * Funcao que escreve os ficheiros de objetos
-     * @param cisuc
-     * @param aux
-     * @param f
+     * @param cisuc objeto da classe cisuc
+     * @param aux aux = 0 projetos, = 1 bolseiros, = 2 docentes
+     * @param f ficheiro
      */
     public static void writeObjects(Cisuc cisuc, int aux, File f){
             
@@ -264,11 +264,6 @@ public class Main {
 
     }
     
-    /**
-     * Main function
-     * @param args
-     * @throws IOException
-     */
     public static void main(String[] args) throws IOException {
         
         GregorianCalendar dataAtual = new GregorianCalendar();

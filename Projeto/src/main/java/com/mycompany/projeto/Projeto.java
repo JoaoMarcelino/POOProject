@@ -43,11 +43,11 @@ public class Projeto implements Serializable{
     
     /**
      * Construtor do Projeto
-     * @param nome
-     * @param acronimo
-     * @param dataInicio
-     * @param dataEstimada
-     * @param investigadorPrincipal
+     * @param nome nome do projeto
+     * @param acronimo acronimo do projeto
+     * @param dataInicio data de inicio do projeto
+     * @param dataEstimada data estimada de fim do projeto
+     * @param investigadorPrincipal objeto tipo docente
      */
     public Projeto(String nome, String acronimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Docente investigadorPrincipal) {
         this.custo = 0;
@@ -105,7 +105,7 @@ public class Projeto implements Serializable{
     
     /**
      * Devolve uma pessoa pelo nome
-     * @param nome
+     * @param nome nome da pessoa
      * @return Pessoa
      */
     public Pessoa getPessoa(String nome) {
@@ -128,7 +128,7 @@ public class Projeto implements Serializable{
     
     /**
      * Devolve uma pessoa pelo indice
-     * @param index
+     * @param index indice da pessoa no array
      * @return Pessoa
      */
     public Pessoa getPessoa(int index) {
@@ -151,7 +151,7 @@ public class Projeto implements Serializable{
     
     /**
      * devolve um bolseiro pelo nome
-     * @param nome
+     * @param nome nome do bolseiro
      * @return Bolseiro
      */
     public Bolseiro getBolseiro(String nome) {
@@ -167,7 +167,7 @@ public class Projeto implements Serializable{
 
     /**
      * devolve um bolseiro pelo indice
-     * @param index
+     * @param index indice do bolseiro no array
      * @return bolseiro
      */
     public Bolseiro getBolseiro(int index) {
@@ -183,7 +183,7 @@ public class Projeto implements Serializable{
     
     /**
      * devolve um docente pelo nome
-     * @param nome
+     * @param nome nome do docente
      * @return docente
      */
     public Docente getDocente(String nome){
@@ -211,10 +211,10 @@ public class Projeto implements Serializable{
     
     /**
      * Cria uma nova tarefa de documentacao
-     * @param nome
-     * @param dataInicio
-     * @param dataEstimada
-     * @param pessoa
+     * @param nome nome da tarefa
+     * @param dataInicio data de inicio da tarefa
+     * @param dataEstimada data estimada de fim da tarefa
+     * @param pessoa objeto pessoa
      */
     public void criaDocumentacao(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa pessoa){
         
@@ -224,10 +224,10 @@ public class Projeto implements Serializable{
     
     /**
      * Cria uma nova tarefa de design
-     * @param nome
-     * @param dataInicio
-     * @param dataEstimada
-     * @param pessoa
+     * @param nome nome da tarefa
+     * @param dataInicio data de inicio da tarefa
+     * @param dataEstimada data estimada de fim da tarefa
+     * @param pessoa objeto pessoa
      */
     public void criaDesign(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa pessoa){
         
@@ -238,10 +238,10 @@ public class Projeto implements Serializable{
     
     /**
      * Cria uma nova tarefa de desenvolvimento
-     * @param nome
-     * @param dataInicio
-     * @param dataEstimada
-     * @param pessoa
+     * @param nome nome da tarefa
+     * @param dataInicio data de inicio da tarefa
+     * @param dataEstimada data estimada de fim da tarefa
+     * @param pessoa objeto pessoa
      */
     public void criaDesenvolvimento(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa pessoa){
         
@@ -251,7 +251,7 @@ public class Projeto implements Serializable{
     
     /**
      * adiciona uma tarefa ao array
-     * @param tarefa
+     * @param tarefa objeto tarefa
      */
     public void addTarefa(Tarefa tarefa){
         arrayTarefas.add(tarefa);
@@ -259,7 +259,7 @@ public class Projeto implements Serializable{
     
     /**
      * adiciona um docente ao array
-     * @param docente
+     * @param docente objeto docente
      */
     public void addDocente(Docente docente){
         arrayDocentes.add(docente);
@@ -267,7 +267,7 @@ public class Projeto implements Serializable{
     
     /**
      * adiciona um bolseiro ao array e mete used = 1 no bolseiro
-     * @param bolseiro
+     * @param bolseiro objeto bolseiro
      */
     public void addBolseiro(Bolseiro bolseiro){
         arrayBolseiros.add(bolseiro);
@@ -277,7 +277,7 @@ public class Projeto implements Serializable{
     
     /**
      * elimina uma tarefa
-     * @param tarefa
+     * @param tarefa objeto tarefa
      */
     public void eliminarTarefas(Tarefa tarefa){
         
@@ -293,7 +293,8 @@ public class Projeto implements Serializable{
     
     /**
      * devolve uma tarefa pelo nome
-     * @return tarefa
+     * @param nome nome da tarefa
+     * @return tarefa 
      */
     public Tarefa getTarefa(String nome){
         
@@ -363,7 +364,7 @@ public class Projeto implements Serializable{
     
     /**
      * adiciona custo ao proj
-     * @param aux
+     * @param aux custo
      */
     public void addCusto(int aux) {
         this.custo += aux;
@@ -378,7 +379,7 @@ public class Projeto implements Serializable{
     
     /**
      * remove um docente do array recebendo um docente
-     * @param pessoa
+     * @param pessoa objeto docente
      */
     public void removeDocente(Docente pessoa){
       
@@ -392,7 +393,7 @@ public class Projeto implements Serializable{
     
     /**
      * remove um bolseiro do array
-     * @param pessoa
+     * @param pessoa objeto bolseiro
      */
     public void removeBolseiro(Bolseiro pessoa){
         
@@ -406,7 +407,7 @@ public class Projeto implements Serializable{
     
     /**
      * remove uma tarefa
-     * @param tarefa
+     * @param tarefa objeto tarefa
      */
     public void removeTarefa(Tarefa tarefa){
       
@@ -420,8 +421,8 @@ public class Projeto implements Serializable{
     
     /**
      * devolve a carga de uma pessoa numa certa data
-     * @param nome
-     * @param dataInicio
+     * @param nome nome da pessoa
+     * @param dataInicio data
      * @return carga
      */
     public float getCargaPessoa(String nome, GregorianCalendar dataInicio){
@@ -438,7 +439,7 @@ public class Projeto implements Serializable{
     
     /**
      *
-     * @return
+     * @return aux int(0/1)
      */
     public int checkTarefas(){
         int aux =0;

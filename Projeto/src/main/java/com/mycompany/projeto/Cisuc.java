@@ -44,7 +44,7 @@ public class Cisuc {
     
     /**
      * Construtor da instituicao
-     * @param dataAtual
+     * @param dataAtual data atual
      */
     public Cisuc(GregorianCalendar dataAtual){
         this.dataAtual = dataAtual;
@@ -57,8 +57,8 @@ public class Cisuc {
 
     /**
      * Returns Projeto recebendo um nome
-     * @param nome
-     * @return
+     * @param nome nome do projeto
+     * @return projeto
      */
     public Projeto getProjeto(String nome) {
         
@@ -72,8 +72,8 @@ public class Cisuc {
    
     /**
      * Returns Docente recebendo um indice
-     * @param index
-     * @return
+     * @param index indice no arraydocentes
+     * @return docente, null if error
      */
     public Docente getDocente(int index){
         for(Docente docente: arrayDocentes) {
@@ -86,8 +86,8 @@ public class Cisuc {
     
     /**
      * Returns Projeto recebendo um indice e um num que indica se o docente esta num proj
-     * @param index
-     * @param num
+     * @param index indice no arraydocentes
+     * @param num indica se o docente esta num proj
      * @return Docente
      */
     public Docente getDocente(int index, int num){
@@ -104,7 +104,7 @@ public class Cisuc {
     
     /**
      * Returns Docente recebendo um nome
-     * @param nome
+     * @param nome nome do docente
      * @return Docente
      */
     public Docente getDocente(String nome){
@@ -118,7 +118,7 @@ public class Cisuc {
     
     /**
      * Returns Bolseiro recebendo um nome
-     * @param nome
+     * @param nome nome do bolseiro
      * @return Bolseiro
      */
     public Bolseiro getBolseiro(String nome){
@@ -132,7 +132,7 @@ public class Cisuc {
     
     /**
      * remove um projeto 
-     * @param projeto
+     * @param projeto objeto projeto
      */
     public void removeProjeto(Projeto projeto){
         
@@ -149,7 +149,7 @@ public class Cisuc {
     
     /**
      * Adicionam um docente 
-     * @param pessoa
+     * @param pessoa objeto pessoa
      */
     public void addDocente(Docente pessoa){
         arrayDocentes.add(pessoa);
@@ -157,7 +157,7 @@ public class Cisuc {
     
     /**
      * Remove um docente
-     * @param pessoa
+     * @param pessoa objeto Docente
      */
     public void removeDocente(Docente pessoa){
         
@@ -171,7 +171,7 @@ public class Cisuc {
     
     /**
      * Adiciona um bolseiro ao cisuc
-     * @param pessoa
+     * @param pessoa objeto Bolseiro
      */
     public void addBolseiro(Bolseiro pessoa){
         arrayBolseiros.add(pessoa);
@@ -179,7 +179,7 @@ public class Cisuc {
     
     /**
      * Remove um bolseiro do cisuc
-     * @param pessoa
+     * @param pessoa objeto Bolseiro
      */
     public void removeBolseiro(Bolseiro pessoa){
         
@@ -193,7 +193,7 @@ public class Cisuc {
     
     /**
      * Adiciona um projeto ao cisuc
-     * @param projeto
+     * @param projeto objeto Projeto
      */
     public void addProjeto(Projeto projeto){
         arrayProjetos.add(projeto);
@@ -201,11 +201,11 @@ public class Cisuc {
     
     /**
      * Cria um projeto a partir de dados iniciais
-     * @param nome
-     * @param acronimo
-     * @param dataInicio
-     * @param dataEstimada
-     * @param investigadorPrincipal
+     * @param nome nome do projeto
+     * @param acronimo acronimo do projeto
+     * @param dataInicio data de inicio do projeto
+     * @param dataEstimada data estimada do fim do projeto
+     * @param investigadorPrincipal nome do investigador principal
      * @return null if error, else the created project
      */
     
@@ -226,10 +226,10 @@ public class Cisuc {
     
     /**
      * Cria um docente a partir de dados iniciais
-     * @param nome
-     * @param email
-     * @param numero
-     * @param area
+     * @param nome nome do docente
+     * @param email email do docente
+     * @param numero numero mecanografico do docente
+     * @param area area de investigacao do docente
      * @return 1 if error, else 0
      */
     public int criaDocente(String nome, String email, int numero, String area){   
@@ -246,10 +246,10 @@ public class Cisuc {
     
     /**
      * Cria um doutorado a partir de dados iniciais
-     * @param nome
-     * @param email
-     * @param inicioBolsa
-     * @param fimBolsa
+     * @param nome nome do doutorado
+     * @param email email do doutorado
+     * @param inicioBolsa data de inicio da bolsa
+     * @param fimBolsa data de fim da bolsa
      * @return 1 if error, else 0
      */
     public int criaDoutorado(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa){
@@ -266,11 +266,11 @@ public class Cisuc {
     
     /**
      * Cria um estudante a partir de dados iniciais
-     * @param nome
-     * @param email
-     * @param inicioBolsa
-     * @param fimBolsa
-     * @param nomeDocente
+     * @param nome nome do estudante
+     * @param email email do estudante
+     * @param inicioBolsa data de inicio da bolsa
+     * @param fimBolsa data de fim da bolsa
+     * @param nomeDocente nome do seu docente
      * @return 1 if error, else 0
      */
     public int criaEstudante(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa, String nomeDocente){

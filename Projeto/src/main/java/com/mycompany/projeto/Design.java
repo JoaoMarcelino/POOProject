@@ -15,10 +15,10 @@ public class Design extends Tarefa{
         
     /**
      * Consturtor da classe Design
-     * @param nome
-     * @param dataInicio
-     * @param dataEstimada
-     * @param responsavel
+     * @param nome nome da tarefa
+     * @param dataInicio data de inicio da tarefa
+     * @param dataEstimada data estimada de fim da tarefa
+     * @param responsavel responsavel da tarefa
      */
     public Design(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa responsavel) {
         super(nome, dataInicio, dataEstimada,responsavel);

@@ -15,10 +15,10 @@ public class Doutorado extends Bolseiro{
     
     /**
      * Construtor da classe doutorado
-     * @param nome
-     * @param email
-     * @param inicioBolsa
-     * @param fimBolsa
+     * @param nome nome da pessoa
+     * @param email email da pessoa
+     * @param inicioBolsa data de inicio da bolsa
+     * @param fimBolsa data de fim da bolsa
      */
     public Doutorado(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa){
         super(nome,email,inicioBolsa,fimBolsa);

@@ -30,10 +30,10 @@ public abstract class Tarefa implements Serializable{
 
     /**
      * Construtor da tarefa
-     * @param nome
-     * @param dataInicio
-     * @param dataEstimada
-     * @param responsavel
+     * @param nome nome da tarefa
+     * @param dataInicio data de inicio da tarefa
+     * @param dataEstimada data estimada de fim da tarefa
+     * @param responsavel objeto do tipo pessoa
      */
     public Tarefa(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa responsavel) {
         this.progesso = 0;

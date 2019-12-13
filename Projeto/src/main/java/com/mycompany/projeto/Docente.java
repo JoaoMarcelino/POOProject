@@ -25,10 +25,10 @@ public class Docente extends Pessoa{
     
     /**
      * Construtor do Docente
-     * @param nome
-     * @param email
-     * @param numMecanografico
-     * @param areaInvestigacao
+     * @param nome nome do docente
+     * @param email email do docnete
+     * @param numMecanografico numero mecanografico do docente
+     * @param areaInvestigacao area da investigacao do docente
      */
     public Docente(String nome, String email, int numMecanografico, String areaInvestigacao){
         super(nome, email);
@@ -48,7 +48,7 @@ public class Docente extends Pessoa{
     
     /**
      * Adiciona um estudante ao array
-     * @param estudante
+     * @param estudante objeto estudante
      */
     public void addEstudante(Estudante estudante){
         arrayEstudantes.add(estudante);
@@ -56,7 +56,7 @@ public class Docente extends Pessoa{
     
     /**
      * Remove um estudante do array
-     * @param estudante
+     * @param estudante objeto estudante
      */
     public void removeEstudante(Estudante estudante){
         

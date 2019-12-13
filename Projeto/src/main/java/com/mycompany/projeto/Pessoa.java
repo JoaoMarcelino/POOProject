@@ -6,24 +6,21 @@
 package com.mycompany.projeto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * @author José Esperança 2018278596
  * @author João Marcelino 2018279700
  */
 public abstract class Pessoa implements Serializable{
-    
-    //protected ArrayList<Tarefa> arrayTarefas = new ArrayList <>();
-        
+           
     private String nome;
     private String email;
     private float carga;
     
     /**
      * Construtor da pessoa
-     * @param nome
-     * @param email
+     * @param nome nome da pessoa
+     * @param email email da pessoa
      */
     public Pessoa(String nome, String email){
         this.nome = nome;
@@ -41,23 +38,5 @@ public abstract class Pessoa implements Serializable{
     
     public float getCarga(){
         return carga;
-    }
-    /*
-    public void addTarefa(Tarefa tarefa){
-        this.carga += tarefa.getTaxaEsforco();
-    }
-    
-    public void addCarga(float n){
-        this.carga += n;
-    }
-    
-    public void removeTarefa(Tarefa tarefa){
-        this.carga -= tarefa.getTaxaEsforco();
-    }
-    
-    public void removeCarga(float n){
-        this.carga += n;
-    }
-    */
-    
+    }    
 }    
