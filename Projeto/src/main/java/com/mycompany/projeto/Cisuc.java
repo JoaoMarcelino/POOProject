@@ -57,6 +57,18 @@ public class Cisuc {
         return null;
     }
     
+    public Docente getDocente(int index, int num){
+        int aux = 0;
+        for(Docente docente: arrayDocentes) {
+            if (docente.getIP() == num){
+                if (aux == index)
+                    return docente; 
+                aux++;
+            }
+        }
+        return null;
+    }
+    
     public Docente getDocente(String nome){
         for(Docente docente: arrayDocentes) {
            
@@ -78,9 +90,11 @@ public class Cisuc {
      public void removeProjeto(Projeto projeto){
         
         int indice = arrayProjetos.indexOf(projeto);
-       
-        if (indice != -1)
+        getDocente(projeto.getInvestigadorPrincipal().getNome()).setIp(0);
+        if (indice != -1){
             arrayProjetos.remove(indice);
+            
+        }
         else
             System.out.println("ERRO -- PROJETO NAO EXISTENTE");
 
@@ -123,10 +137,10 @@ public class Cisuc {
     }
     
     public Projeto criaProjeto(String nome, String acronimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, String investigadorPrincipal){
-              
+        
         for (Docente docente : arrayDocentes){
-            
-            if (docente.getNome().equals(investigadorPrincipal) && docente.getIP() == 0){
+            System.out.printf("%s %s  %d\n",docente.getNome(),investigadorPrincipal,docente.getIP());
+            if (docente.getNome().equals(investigadorPrincipal) && docente.getIP() != 1){
                 Projeto projeto = new Projeto(nome, acronimo, dataInicio, dataEstimada, docente);
                 arrayProjetos.add(projeto);
                 docente.setProjeto(projeto);

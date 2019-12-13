@@ -136,6 +136,8 @@ public class ProjetoInterface implements ActionListener{
         
         frame.setJMenuBar(bar);
         frame.setResizable(false);
+        frame.setVisible(true);
+        System.out.printf("%s - %s",projeto.getAcronimo(),projeto.getNome());
         frame.setTitle(String.format("%s - %s",projeto.getAcronimo(),projeto.getNome()));
         frame.setSize(x, y + 60);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -180,10 +182,10 @@ public class ProjetoInterface implements ActionListener{
         else if (e.getSource() == criarTarefa && projeto.getAcabado() == 0){
             String[] types = {"Design", "Desenvolvimento", "Documentação"};
             
-            for (Docente pessoa: cisuc.arrayDocentes){
+            for (Docente pessoa: projeto.arrayDocentes){
                 lista.add(pessoa.getNome());
             }
-            for (Bolseiro pessoa: cisuc.arrayBolseiros){
+            for (Bolseiro pessoa: projeto.arrayBolseiros){
                 if (pessoa.getUsed() == 0){
                     lista.add(pessoa.getNome());
                     
@@ -295,8 +297,8 @@ public class ProjetoInterface implements ActionListener{
             GregorianCalendar fim = new GregorianCalendar();
             Tarefa novo = null;
             
-            inicio.set(ano1.getSelectedIndex()+1980, mes1.getSelectedIndex()+1, dia1.getSelectedIndex()+1);
-            fim.set(ano2.getSelectedIndex()+1980,mes2.getSelectedIndex()+1, dia2.getSelectedIndex()+1);
+            inicio.set(ano1.getSelectedIndex()+2010, mes1.getSelectedIndex()+1, dia1.getSelectedIndex()+1);
+            fim.set(ano2.getSelectedIndex()+2010,mes2.getSelectedIndex()+1, dia2.getSelectedIndex()+1);
             
             if (!nome.getText().equals("") && inicio.compareTo(fim) <= 0){
                 

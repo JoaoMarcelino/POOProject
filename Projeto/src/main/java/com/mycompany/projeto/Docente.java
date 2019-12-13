@@ -62,6 +62,10 @@ public class Docente extends Pessoa{
         this.projeto = projeto;
         this.ip = 1;
     }
+
+    public void setIp(int ip) {
+        this.ip = ip;
+    }
     
     public void delProjeto() {
 

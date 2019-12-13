@@ -52,6 +52,9 @@ public class TarefaInterface implements ActionListener {
         }
         else if (e.getSource() ==  botao2){
             tarefa.setProgesso(Integer.parseInt(text.getText()));
+            if (tarefa.getProgesso() > 100){
+                JOptionPane.showMessageDialog(null, "Progresso Invalido","ERRO", JOptionPane.PLAIN_MESSAGE);
+            }
             if (tarefa.getProgesso() == 100){
                 GregorianCalendar end = new GregorianCalendar();
                 tarefa.setDataFinal(end);

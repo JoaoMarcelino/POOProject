@@ -104,7 +104,7 @@ public class mainInterface implements ActionListener {
         for (int i =1; i<=12; i++){
             mes.add(String.format("%d",i));
         }
-        for (int i =1980; i<=2100; i++){
+        for (int i =2010; i<=2100; i++){
             ano.add(String.format("%d",i));
         }
         
@@ -112,9 +112,7 @@ public class mainInterface implements ActionListener {
         frame = new JFrame();
         bar = new JMenuBar();
         
-        for (Docente docente: cisuc.arrayDocentes){
-            lista.add(docente.getNome());
-        }
+        
         
         main = new JMenu("Main Menu");
         menu1 = new JMenu("Projetos");
@@ -295,16 +293,22 @@ public class mainInterface implements ActionListener {
             GregorianCalendar inicio = new GregorianCalendar();
             GregorianCalendar fim = new GregorianCalendar();
 
-            inicio.set(ano1.getSelectedIndex()+1980, mes1.getSelectedIndex()+1, dia1.getSelectedIndex()+1);
-            fim.set(ano2.getSelectedIndex()+1980,mes2.getSelectedIndex()+1, dia2.getSelectedIndex()+1);
+            inicio.set(ano1.getSelectedIndex()+2010, mes1.getSelectedIndex()+1, dia1.getSelectedIndex()+1);
+            fim.set(ano2.getSelectedIndex()+2010,mes2.getSelectedIndex()+1, dia2.getSelectedIndex()+1);
            
             if (!nome.getText().equals("") && !acronimo.getText().equals("") && inicio.compareTo(fim) <= 0){
-                Projeto novo = cisuc.criaProjeto(nome.getText(),acronimo.getText(), inicio, fim, cisuc.getDocente(jComboBoxAction.getSelectedIndex()).getNome());
-                ProjetoInterface projetoInt = new ProjetoInterface(novo, cisuc);
+                Projeto novo = cisuc.criaProjeto(nome.getText(),acronimo.getText(), inicio, fim, cisuc.getDocente(jComboBoxAction.getSelectedIndex(),0).getNome());
+                if (novo != null){
+                    ProjetoInterface projetoInt = new ProjetoInterface(novo, cisuc);
+                }
+                else{
+                   JOptionPane.showMessageDialog(null, "Erro na Criaçao de Projeto","You shouldn't be here", JOptionPane.PLAIN_MESSAGE); 
+                }  
             }
             else{
                 JOptionPane.showMessageDialog(null, "Dados Mal Inseridos","Erro", JOptionPane.PLAIN_MESSAGE);
             }
+            criarProjetoMenu();
         }
         
         else if (e.getSource() == buttonCriarDocente){
@@ -322,8 +326,8 @@ public class mainInterface implements ActionListener {
             GregorianCalendar inicio = new GregorianCalendar();
             GregorianCalendar fim = new GregorianCalendar();
             Bolseiro novo = null;
-            inicio.set(ano1.getSelectedIndex()+1980, mes1.getSelectedIndex()+1, dia1.getSelectedIndex()+1);
-            fim.set(ano2.getSelectedIndex()+1980,mes2.getSelectedIndex()+1, dia2.getSelectedIndex()+1);
+            inicio.set(ano1.getSelectedIndex()+2010, mes1.getSelectedIndex()+1, dia1.getSelectedIndex()+1);
+            fim.set(ano2.getSelectedIndex()+2010,mes2.getSelectedIndex()+1, dia2.getSelectedIndex()+1);
             
             if (!nome.getText().equals("") && !email.getText().equals("") && inicio.compareTo(fim) <= 0){
                 if (jComboBoxAction.getSelectedIndex() == 0){
@@ -342,9 +346,7 @@ public class mainInterface implements ActionListener {
             else {
                 JOptionPane.showMessageDialog(null, "Dados Mal Inseridos","Erro", JOptionPane.PLAIN_MESSAGE);
             }
-            
-            
-
+            criarBolseiroMenu();
         }
     }
     
@@ -369,7 +371,11 @@ public class mainInterface implements ActionListener {
     
     void criarProjetoMenu(){
         for (Docente docente: cisuc.arrayDocentes){
-            lista.add(docente.getNome());
+            System.out.printf("%d\n",docente.getIP());
+            if (docente.getIP() == 0){
+                lista.add(docente.getNome());
+                System.out.printf("PRINTED %s\n",docente.getNome());
+            }
         }
         JPanel p1=new JPanel();
         p1.setLayout(null);
@@ -383,6 +389,7 @@ public class mainInterface implements ActionListener {
         nome = new JTextField(10);
         acronimo = new JTextField(10);
         jComboBoxAction = new JComboBox(lista.toArray());
+        lista.clear();
         dia1 = new JComboBox(dia.toArray());
         mes1 = new JComboBox(mes.toArray());
         ano1 = new JComboBox(ano.toArray());
@@ -529,9 +536,10 @@ public class mainInterface implements ActionListener {
     void verDocenteMenu(){
         JPanel p1=new JPanel();
         p1.setLayout(null);
+        
 
         DefaultListModel listValues = new DefaultListModel();
-        JLabel label = new JLabel("Lista de valores ");
+        JLabel label = new JLabel("Lista de Docentes ");
         buttonDocente = new JButton("Selecionar");
         label.setBounds(x/8,0,x/2,y/4);
         buttonDocente.setBounds(x*6/8,y/16,x/8,y/8);
@@ -573,6 +581,7 @@ public class mainInterface implements ActionListener {
        email = new JTextField(10);
        jComboBoxAction = new JComboBox(types);
        jComboBoxAction1 = new JComboBox(lista.toArray());
+       lista.clear();
        dia1 = new JComboBox(dia.toArray());
        mes1 = new JComboBox(mes.toArray());
        ano1 = new JComboBox(ano.toArray());
@@ -630,7 +639,7 @@ public class mainInterface implements ActionListener {
         p1.setLayout(null);
 
         DefaultListModel listValues = new DefaultListModel();
-        JLabel label = new JLabel("Lista de valores ");
+        JLabel label = new JLabel("Lista de Bolseiro ");
         buttonBolseiro = new JButton("Selecionar");
         label.setBounds(x/8,0,x/2,y/4);
         buttonBolseiro.setBounds(x*6/8,y/16,x/8,y/8);
