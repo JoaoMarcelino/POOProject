@@ -19,6 +19,12 @@ import java.util.GregorianCalendar;
 
 public class Main {
     
+    /**
+     * Funcao auxiliar para a leitura de ficheiros -- aux = 0 - pessoas | 1 - projetos | 2 - tarefas
+     * @param f
+     * @param aux
+     * @param cisuc
+     */
     public static void readText(File f, int aux, Cisuc cisuc){
         
         if(f.exists() && f.isFile()) {
@@ -133,6 +139,10 @@ public class Main {
         }
     }
     
+    /**
+     * le os ficheiros de texto
+     * @param cisuc
+     */
     public static void readTextFiles(Cisuc cisuc){
         
         File tarefas = new File("Tarefas.txt");
@@ -145,6 +155,13 @@ public class Main {
         
     }
     
+    /**
+     * funcao auxiliar para a leitura de object files
+     * @param cisuc
+     * @param aux
+     * @param f
+     * @return 1 if error, else 0
+     */
     public static int readObjects(Cisuc cisuc, int aux, File f){
         
         try {
@@ -180,6 +197,10 @@ public class Main {
         return 1;
     }
     
+    /**
+     * Le ficheiros de objetos
+     * @param cisuc
+     */
     public static void readObjFiles(Cisuc cisuc){
         
         File projetos = new File("Projetos.obj");
@@ -191,6 +212,10 @@ public class Main {
         readObjects(cisuc, 2, docentes);
     }
     
+    /**
+     * Escreve ficheiros de obejtos
+     * @param cisuc
+     */
     public static void writeObjFiles(Cisuc cisuc){
         
         File projetos = new File("Projetos.obj");
@@ -202,6 +227,12 @@ public class Main {
         writeObjects(cisuc, 2, docentes);
     }
     
+    /**
+     * Funcao que escreve os ficheiros de objetos
+     * @param cisuc
+     * @param aux
+     * @param f
+     */
     public static void writeObjects(Cisuc cisuc, int aux, File f){
             
         try {
@@ -233,6 +264,11 @@ public class Main {
 
     }
     
+    /**
+     * Main function
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         
         GregorianCalendar dataAtual = new GregorianCalendar();
@@ -249,39 +285,7 @@ public class Main {
         else
             readTextFiles(cisuc);
         
-       // GregorianCalendar data1 = new GregorianCalendar();
-        //GregorianCalendar data2 = new GregorianCalendar(2020,2,20);
-        
-       // if (cisuc.criaProjeto("Projeto Teste", "PT", data1, data2, "Teste213") == 1)
-       //     System.out.println("Erro ao criar projeto");
-        
-      //  if (cisuc.criaDocente("Docente Teste", "DocenteTeste@sapo.pt",1273812,"AnimalCrossing") == 1)
-          //  System.out.println("ERRO A CRIAR DOCENTE");
-        
-      // if (cisuc.criaDoutorado("Doutor Teste", "Tested@sapo.pt", data2) == 1)
-         //   System.out.println("ERRO A CRIAR DOUTORADO");
-        
-       // if (cisuc.criaEstudante("Teste", "Teste@sapo.pt", data2, "Docente Teste") == 1)
-          //  System.out.println("ERRO A CRIAR ESTUDANTE");
-        /*
-        Bolseiro b = cisuc.getBolseiro("Mandy Zimmerman");
-        Projeto projeto = cisuc.getProjeto("MMals");
-        
-        projeto.addBolseiro(b);
-        projeto.listarTarefas();            
-        System.out.println(projeto.getPessoa("Mandy Zimmerman").getCarga());
-        
-        if (projeto.getPessoa("Mandy Zimmerman").getCarga() + 0.5 <= 1 && projeto.getPessoa("Mandy Zimmerman") != null){
-            projeto.criaDesign("TESTE12",data1,data2,projeto.getBolseiro("Mandy Zimmerman"));
-        }
-        ISTO E CRIAR TAREFAS REMOVER E ASSOCIAR PESSOAS A TAREFAS / PROJETOS
-        TEMOS DE USAR EM VEZ DESTE GET PESSOA UM GET BOLSEIRO/ GET DOCENTE, PQ 
-        TEMOS DE TER EM CONTA SE É DOCENTE OU BOLSEIRO, usamos o return null para 
-        ver se é bolseiro ou docente.(*/
-        //cisuc.printPessoas();
-        
         mainInterface mainInterface = new mainInterface(cisuc);
         
-        writeObjFiles(cisuc);
     }
 }

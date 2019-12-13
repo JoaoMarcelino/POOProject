@@ -8,11 +8,19 @@ package com.mycompany.projeto;
 import java.util.GregorianCalendar;
 
 /**
- *
- * @author hp
+ * @author José Esperança 2018278596
+ * @author João Marcelino 2018279700
  */
 public class Mestre extends Estudante{
 
+    /**
+     * Construtor do Mestre
+     * @param nome
+     * @param email
+     * @param inicioBolsa
+     * @param fimBolsa
+     * @param docente
+     */
     protected Mestre(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa, Docente docente){
         super(nome,email, inicioBolsa,fimBolsa, docente);
         this.ordenado = 1000;

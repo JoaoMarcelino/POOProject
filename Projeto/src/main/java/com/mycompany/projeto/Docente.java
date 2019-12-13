@@ -8,11 +8,14 @@ package com.mycompany.projeto;
 import java.util.ArrayList;
 
 /**
- *
- * @author hp
+ * @author José Esperança 2018278596
+ * @author João Marcelino 2018279700
  */
 public class Docente extends Pessoa{
     
+    /**
+     * array de estudantes do docente
+     */
     protected ArrayList<Estudante> arrayEstudantes = new ArrayList <>();
     
     private Projeto projeto;
@@ -20,6 +23,13 @@ public class Docente extends Pessoa{
     private int numMecanografico;
     private String areaInvestigacao;
     
+    /**
+     * Construtor do Docente
+     * @param nome
+     * @param email
+     * @param numMecanografico
+     * @param areaInvestigacao
+     */
     public Docente(String nome, String email, int numMecanografico, String areaInvestigacao){
         super(nome, email);
         this.ip = 0;
@@ -36,10 +46,18 @@ public class Docente extends Pessoa{
         return areaInvestigacao;
     }
     
+    /**
+     * Adiciona um estudante ao array
+     * @param estudante
+     */
     public void addEstudante(Estudante estudante){
         arrayEstudantes.add(estudante);
     }
     
+    /**
+     * Remove um estudante do array
+     * @param estudante
+     */
     public void removeEstudante(Estudante estudante){
         
         int indice = arrayEstudantes.indexOf(estudante);

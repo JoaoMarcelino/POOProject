@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- *
- * @author hp
+ * @author José Esperança 2018278596
+ * @author João Marcelino 2018279700
  */
 public abstract class Pessoa implements Serializable{
     
@@ -20,6 +20,11 @@ public abstract class Pessoa implements Serializable{
     private String email;
     private float carga;
     
+    /**
+     * Construtor da pessoa
+     * @param nome
+     * @param email
+     */
     public Pessoa(String nome, String email){
         this.nome = nome;
         this.email = email;

@@ -6,14 +6,27 @@
 package com.mycompany.projeto;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+
 /**
- *
- * @author hp
+ * @author José Esperança 2018278596
+ * @author João Marcelino 2018279700
  */
+
 public class Cisuc {
     
+    /**
+     * Array de docentes na instituicao
+     */
     protected ArrayList<Docente> arrayDocentes = new ArrayList <>();
+
+    /**
+     * Array de Bolseiros na instituicao
+     */
     protected ArrayList<Bolseiro> arrayBolseiros = new ArrayList <>();
+
+    /**
+     * Array de projetos na instituicao
+     */
     protected ArrayList<Projeto> arrayProjetos = new ArrayList <>();
     private GregorianCalendar dataAtual;     
    
@@ -29,6 +42,10 @@ public class Cisuc {
         return arrayProjetos;
     }
     
+    /**
+     * Construtor da instituicao
+     * @param dataAtual
+     */
     public Cisuc(GregorianCalendar dataAtual){
         this.dataAtual = dataAtual;
     }
@@ -38,6 +55,11 @@ public class Cisuc {
         return dataAtual;
     }
 
+    /**
+     * Returns Projeto recebendo um nome
+     * @param nome
+     * @return
+     */
     public Projeto getProjeto(String nome) {
         
         for(Projeto projeto: arrayProjetos) {
@@ -48,6 +70,11 @@ public class Cisuc {
         return null;
     }
    
+    /**
+     * Returns Docente recebendo um indice
+     * @param index
+     * @return
+     */
     public Docente getDocente(int index){
         for(Docente docente: arrayDocentes) {
            
@@ -57,6 +84,12 @@ public class Cisuc {
         return null;
     }
     
+    /**
+     * Returns Projeto recebendo um indice e um num que indica se o docente esta num proj
+     * @param index
+     * @param num
+     * @return Docente
+     */
     public Docente getDocente(int index, int num){
         int aux = 0;
         for(Docente docente: arrayDocentes) {
@@ -69,6 +102,11 @@ public class Cisuc {
         return null;
     }
     
+    /**
+     * Returns Docente recebendo um nome
+     * @param nome
+     * @return Docente
+     */
     public Docente getDocente(String nome){
         for(Docente docente: arrayDocentes) {
            
@@ -78,6 +116,11 @@ public class Cisuc {
         return null;
     }
     
+    /**
+     * Returns Bolseiro recebendo um nome
+     * @param nome
+     * @return Bolseiro
+     */
     public Bolseiro getBolseiro(String nome){
         for(Bolseiro bolseiro: arrayBolseiros) {
            
@@ -87,7 +130,11 @@ public class Cisuc {
         return null;
     }
     
-     public void removeProjeto(Projeto projeto){
+    /**
+     * remove um projeto 
+     * @param projeto
+     */
+    public void removeProjeto(Projeto projeto){
         
         int indice = arrayProjetos.indexOf(projeto);
         getDocente(projeto.getInvestigadorPrincipal().getNome()).setIp(0);
@@ -100,12 +147,18 @@ public class Cisuc {
 
     }
     
-    
+    /**
+     * Adicionam um docente 
+     * @param pessoa
+     */
     public void addDocente(Docente pessoa){
         arrayDocentes.add(pessoa);
     }
     
-    
+    /**
+     * Remove um docente
+     * @param pessoa
+     */
     public void removeDocente(Docente pessoa){
         
         int indice = arrayDocentes.indexOf(pessoa);
@@ -116,12 +169,18 @@ public class Cisuc {
             System.out.println("ERRO -- DOCENTE NAO EXISTENTE");
     }
     
-    
+    /**
+     * Adiciona um bolseiro ao cisuc
+     * @param pessoa
+     */
     public void addBolseiro(Bolseiro pessoa){
         arrayBolseiros.add(pessoa);
     }
     
-    
+    /**
+     * Remove um bolseiro do cisuc
+     * @param pessoa
+     */
     public void removeBolseiro(Bolseiro pessoa){
         
         int indice = arrayBolseiros.indexOf(pessoa);
@@ -132,9 +191,23 @@ public class Cisuc {
             System.out.println("ERRO -- BOLSEIRO NAO EXISTENTE");
     }
     
+    /**
+     * Adiciona um projeto ao cisuc
+     * @param projeto
+     */
     public void addProjeto(Projeto projeto){
         arrayProjetos.add(projeto);
     }
+    
+    /**
+     * Cria um projeto a partir de dados iniciais
+     * @param nome
+     * @param acronimo
+     * @param dataInicio
+     * @param dataEstimada
+     * @param investigadorPrincipal
+     * @return null if error, else the created project
+     */
     
     public Projeto criaProjeto(String nome, String acronimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, String investigadorPrincipal){
         
@@ -151,6 +224,14 @@ public class Cisuc {
         return null;
     }
     
+    /**
+     * Cria um docente a partir de dados iniciais
+     * @param nome
+     * @param email
+     * @param numero
+     * @param area
+     * @return 1 if error, else 0
+     */
     public int criaDocente(String nome, String email, int numero, String area){   
         
         for (Docente docente : arrayDocentes){
@@ -163,6 +244,14 @@ public class Cisuc {
         return 0;
     }
     
+    /**
+     * Cria um doutorado a partir de dados iniciais
+     * @param nome
+     * @param email
+     * @param inicioBolsa
+     * @param fimBolsa
+     * @return 1 if error, else 0
+     */
     public int criaDoutorado(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa){
         
         for ( Bolseiro bolseiro : arrayBolseiros){
@@ -175,6 +264,15 @@ public class Cisuc {
         return 0;
     }
     
+    /**
+     * Cria um estudante a partir de dados iniciais
+     * @param nome
+     * @param email
+     * @param inicioBolsa
+     * @param fimBolsa
+     * @param nomeDocente
+     * @return 1 if error, else 0
+     */
     public int criaEstudante(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa, String nomeDocente){
         
         for (Bolseiro bolseiro : arrayBolseiros){
@@ -192,6 +290,9 @@ public class Cisuc {
         return 1;
     }
     
+    /**
+     * Print todos os projetos nao concluidos
+     */
     public void naoConcluidos(){
         
         System.out.println("PROJETOS NAO CONCLUÍDOS:\n");
@@ -204,7 +305,9 @@ public class Cisuc {
         System.out.println("----\n");
     }
     
-    
+    /**
+     * Print todos os projetos concluidos
+     */
     public void concluidos(){
 
         System.out.println("PROJETOS CONCLUÍDOS:\n");
@@ -217,6 +320,9 @@ public class Cisuc {
         System.out.println("----");
     }
     
+    /**
+     * Print todas as pessoas no cisuc
+     */
     public void printPessoas(){
         
         System.out.println("PESSOAS:\n");
@@ -231,6 +337,9 @@ public class Cisuc {
         System.out.println("----\n");
     }
     
+    /**
+     * print todas as tarefas no cisuc
+     */
     public void printTarefas(){
 
         for(Projeto projeto: arrayProjetos) {
@@ -238,6 +347,9 @@ public class Cisuc {
         }
     }
     
+    /**
+     * print todas os IPS no cisuc
+     */
     public void printIP(){
         
         for(Projeto projeto: arrayProjetos) {

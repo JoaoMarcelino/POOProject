@@ -9,23 +9,42 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 /**
- *
- * @author hp
+ * @author José Esperança 2018278596
+ * @author João Marcelino 2018279700
  */
 public class Estudante extends Bolseiro{
     
+    /**
+     * array de docentes do estudante
+     */
     protected ArrayList<Docente> arrayDocentes = new ArrayList <>();
     
+    /**
+     * Construtor do estudante
+     * @param nome
+     * @param email
+     * @param inicioBolsa
+     * @param fimBolsa
+     * @param docente
+     */
     public Estudante(String nome, String email, GregorianCalendar inicioBolsa, GregorianCalendar fimBolsa, Docente docente){
         super(nome,email,inicioBolsa,fimBolsa);
         arrayDocentes.add(docente);
     }
     
+    /**
+     * Adiciona um docente ao array no estudante
+     * @param docente
+     */
     public void addDocente(Docente docente){
         arrayDocentes.add(docente);
         docente.addEstudante(this);
     }
     
+    /**
+     * Remove um docente do array no estudante
+     * @param docente
+     */
     public void removeDocente(Docente docente){
         
         int indice = arrayDocentes.indexOf(docente);

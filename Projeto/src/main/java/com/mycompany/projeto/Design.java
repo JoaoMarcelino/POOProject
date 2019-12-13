@@ -8,11 +8,18 @@ package com.mycompany.projeto;
 import java.util.GregorianCalendar;
 
 /**
- *
- * @author hp
+ * @author José Esperança 2018278596
+ * @author João Marcelino 2018279700
  */
 public class Design extends Tarefa{
         
+    /**
+     * Consturtor da classe Design
+     * @param nome
+     * @param dataInicio
+     * @param dataEstimada
+     * @param responsavel
+     */
     public Design(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa responsavel) {
         super(nome, dataInicio, dataEstimada,responsavel);
         this.taxaEsforco = (float) 0.5;

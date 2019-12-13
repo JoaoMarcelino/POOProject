@@ -10,13 +10,24 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 /**
- *
- * @author hp
+ * @author José Esperança 2018278596
+ * @author João Marcelino 2018279700
  */
 public class Projeto implements Serializable{
     
+    /**
+     * Array de tarefas no projeto
+     */
     protected ArrayList<Tarefa> arrayTarefas = new ArrayList <>();
+
+    /**
+     * Array de bolseiros no projeto
+     */
     protected ArrayList<Bolseiro> arrayBolseiros = new ArrayList <>();
+
+    /**
+     * Array de docentes no projeto
+     */
     protected ArrayList<Docente> arrayDocentes = new ArrayList <>();    
     
     private String nome;
@@ -30,6 +41,14 @@ public class Projeto implements Serializable{
     private int custo;
     private Docente investigadorPrincipal;
     
+    /**
+     * Construtor do Projeto
+     * @param nome
+     * @param acronimo
+     * @param dataInicio
+     * @param dataEstimada
+     * @param investigadorPrincipal
+     */
     public Projeto(String nome, String acronimo, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Docente investigadorPrincipal) {
         this.custo = 0;
         this.acabado = 0;
@@ -69,6 +88,10 @@ public class Projeto implements Serializable{
         return this.acabado;
     }
 
+    /**
+     * Devolve o custo do projeto
+     * @return custo
+     */
     public int getCusto(){
         
         int aux = 0;
@@ -80,6 +103,11 @@ public class Projeto implements Serializable{
         return aux;
     }
     
+    /**
+     * Devolve uma pessoa pelo nome
+     * @param nome
+     * @return Pessoa
+     */
     public Pessoa getPessoa(String nome) {
         
         
@@ -98,6 +126,11 @@ public class Projeto implements Serializable{
         return null;
     }
     
+    /**
+     * Devolve uma pessoa pelo indice
+     * @param index
+     * @return Pessoa
+     */
     public Pessoa getPessoa(int index) {
         
         
@@ -116,6 +149,11 @@ public class Projeto implements Serializable{
         return null;
     }
     
+    /**
+     * devolve um bolseiro pelo nome
+     * @param nome
+     * @return Bolseiro
+     */
     public Bolseiro getBolseiro(String nome) {
         
         
@@ -126,6 +164,12 @@ public class Projeto implements Serializable{
         }
         return null;
     }
+
+    /**
+     * devolve um bolseiro pelo indice
+     * @param index
+     * @return bolseiro
+     */
     public Bolseiro getBolseiro(int index) {
         
         for(Bolseiro pessoa: arrayBolseiros) {
@@ -137,6 +181,11 @@ public class Projeto implements Serializable{
         return null;
     }
     
+    /**
+     * devolve um docente pelo nome
+     * @param nome
+     * @return docente
+     */
     public Docente getDocente(String nome){
         
         for(Docente pessoa: arrayDocentes) {
@@ -160,12 +209,26 @@ public class Projeto implements Serializable{
         this.acabado = acabado;
     }
     
+    /**
+     * Cria uma nova tarefa de documentacao
+     * @param nome
+     * @param dataInicio
+     * @param dataEstimada
+     * @param pessoa
+     */
     public void criaDocumentacao(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa pessoa){
         
         Tarefa tarefa = new Documentacao(nome, dataInicio, dataEstimada, pessoa);
         addTarefa(tarefa);
     }
     
+    /**
+     * Cria uma nova tarefa de design
+     * @param nome
+     * @param dataInicio
+     * @param dataEstimada
+     * @param pessoa
+     */
     public void criaDesign(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa pessoa){
         
         
@@ -173,26 +236,49 @@ public class Projeto implements Serializable{
         this.addTarefa(tarefa);
     }
     
+    /**
+     * Cria uma nova tarefa de desenvolvimento
+     * @param nome
+     * @param dataInicio
+     * @param dataEstimada
+     * @param pessoa
+     */
     public void criaDesenvolvimento(String nome, GregorianCalendar dataInicio, GregorianCalendar dataEstimada, Pessoa pessoa){
         
         Tarefa tarefa = new Desenvolvimento(nome, dataInicio, dataEstimada, pessoa);
         addTarefa(tarefa);
     }
     
+    /**
+     * adiciona uma tarefa ao array
+     * @param tarefa
+     */
     public void addTarefa(Tarefa tarefa){
         arrayTarefas.add(tarefa);
     }
     
+    /**
+     * adiciona um docente ao array
+     * @param docente
+     */
     public void addDocente(Docente docente){
         arrayDocentes.add(docente);
     }
     
+    /**
+     * adiciona um bolseiro ao array e mete used = 1 no bolseiro
+     * @param bolseiro
+     */
     public void addBolseiro(Bolseiro bolseiro){
         arrayBolseiros.add(bolseiro);
         this.custo += bolseiro.getOrdenado();
         bolseiro.setUsed();
     }
     
+    /**
+     * elimina uma tarefa
+     * @param tarefa
+     */
     public void eliminarTarefas(Tarefa tarefa){
         
         int indice = arrayTarefas.indexOf(tarefa);
@@ -205,7 +291,10 @@ public class Projeto implements Serializable{
             System.out.println("ERRO -- TAREFA NAO EXISTENTE");
     }
     
-    
+    /**
+     * devolve uma tarefa pelo nome
+     * @return tarefa
+     */
     public Tarefa getTarefa(String nome){
         
         for (Tarefa tarefa : arrayTarefas){
@@ -216,6 +305,9 @@ public class Projeto implements Serializable{
         return null;
     }
     
+    /**
+     * print todas as tarefas
+     */
     public void listarTarefas(){
 
         System.out.println("TAREFAS:");
@@ -227,6 +319,9 @@ public class Projeto implements Serializable{
         System.out.println("----");
     }
     
+    /**
+     * print todas as tarefas nao iniciadas
+     */
     public void listarTarefasNaoIniciadas(){
 
         System.out.println("TAREFAS:");
@@ -238,6 +333,9 @@ public class Projeto implements Serializable{
         System.out.println("----");
     }
     
+    /**
+     * print todas as tarefas concluidas
+     */
     public void listarTarefasConcluidas(){
 
         System.out.printf("TAREFAS DO PROJETO %s:\n", this.nome);
@@ -249,6 +347,9 @@ public class Projeto implements Serializable{
         System.out.println("----");
     }
     
+    /**
+     * print todas as tarefas nao concluidas
+     */
     public void listarTarefasNaoConcluidas(){
 
         System.out.println("TAREFAS:");
@@ -260,14 +361,25 @@ public class Projeto implements Serializable{
         System.out.println("----");
     }
     
+    /**
+     * adiciona custo ao proj
+     * @param aux
+     */
     public void addCusto(int aux) {
         this.custo += aux;
     }
     
+    /**
+     * acaba o projeto
+     */
     public void endProjeto() {
         this.acabado = 1;
     }
     
+    /**
+     * remove um docente do array recebendo um docente
+     * @param pessoa
+     */
     public void removeDocente(Docente pessoa){
       
         int indice = arrayDocentes.indexOf(pessoa);
@@ -278,6 +390,10 @@ public class Projeto implements Serializable{
             System.out.println("ERRO -- DOCENTE NAO EXISTENTE");
     }
     
+    /**
+     * remove um bolseiro do array
+     * @param pessoa
+     */
     public void removeBolseiro(Bolseiro pessoa){
         
         int indice = arrayBolseiros.indexOf(pessoa);
@@ -288,6 +404,10 @@ public class Projeto implements Serializable{
             System.out.println("ERRO -- BOLSEIRO NAO EXISTENTE");
     }
     
+    /**
+     * remove uma tarefa
+     * @param tarefa
+     */
     public void removeTarefa(Tarefa tarefa){
       
         int indice = arrayTarefas.indexOf(tarefa);
@@ -298,6 +418,12 @@ public class Projeto implements Serializable{
             System.out.println("ERRO -- DOCENTE NAO EXISTENTE");
     }
     
+    /**
+     * devolve a carga de uma pessoa numa certa data
+     * @param nome
+     * @param dataInicio
+     * @return carga
+     */
     public float getCargaPessoa(String nome, GregorianCalendar dataInicio){
         
         float aux = 0;
@@ -310,6 +436,10 @@ public class Projeto implements Serializable{
         return aux;
     }
     
+    /**
+     *
+     * @return
+     */
     public int checkTarefas(){
         int aux =0;
         for (Tarefa tarefa: arrayTarefas){
