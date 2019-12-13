@@ -60,7 +60,7 @@ public class TarefaInterface implements ActionListener {
 
     }
     
-    public void Menu(){
+    private void Menu(){
         JPanel panel = new JPanel();
         panel.setLayout(null);
         
@@ -100,7 +100,7 @@ public class TarefaInterface implements ActionListener {
         frame.setVisible(true);
     }
     
-    public void ProgressoMenu(){
+    private void ProgressoMenu(){
         
         JPanel panel = new JPanel();
         panel.setLayout(null);

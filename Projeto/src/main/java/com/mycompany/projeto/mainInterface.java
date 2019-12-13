@@ -21,8 +21,8 @@ public class mainInterface implements ActionListener {
     
     private Cisuc cisuc;
     
-    int x = 800;
-    int y = 450;
+    private int x = 800;
+    private int y = 450;
         
     private JFrame frame;
     private JList list;
@@ -319,7 +319,7 @@ public class mainInterface implements ActionListener {
     
     
     
-    void mainMenu(){
+    private void mainMenu(){
         JPanel panel = new JPanel();
         panel.setLayout(null);
         JLabel  label0 = new JLabel("CISUC - Projeto POO");
@@ -336,7 +336,7 @@ public class mainInterface implements ActionListener {
         frame.setVisible(true);
     }
     
-    void criarProjetoMenu(){
+    private void criarProjetoMenu(){
         for (Docente docente: cisuc.arrayDocentes){
             System.out.printf("%d\n",docente.getIP());
             if (docente.getIP() == 0){
@@ -405,7 +405,7 @@ public class mainInterface implements ActionListener {
         frame.setVisible(true);
     }
     
-    void verProjetoMenu(int num){
+    private void verProjetoMenu(int num){
         String tipo="";
         JPanel p1=new JPanel();
         p1.setLayout(null);
@@ -456,7 +456,7 @@ public class mainInterface implements ActionListener {
     }
     
     
-    void criarDocenteMenu(){
+    private void criarDocenteMenu(){
         JPanel p1=new JPanel();
         p1.setLayout(null);
 
@@ -500,7 +500,7 @@ public class mainInterface implements ActionListener {
         frame.setVisible(true);
     }
     
-    void verDocenteMenu(){
+    private void verDocenteMenu(){
         JPanel p1=new JPanel();
         p1.setLayout(null);
         
@@ -528,7 +528,7 @@ public class mainInterface implements ActionListener {
         frame.setVisible(true);
     }
     
-    void criarBolseiroMenu(){
+    private void criarBolseiroMenu(){
         String[] types = {"Licenciado", "Mestrado", "Doutorado"};
 
        for (Docente docente: cisuc.arrayDocentes){
@@ -601,7 +601,7 @@ public class mainInterface implements ActionListener {
 
     }
     
-    void verBolseiroMenu(){
+    private void verBolseiroMenu(){
         JPanel p1=new JPanel();
         p1.setLayout(null);
 
@@ -629,7 +629,7 @@ public class mainInterface implements ActionListener {
 
     }
     
-    void EliminarProjetoMenu(){
+    private void EliminarProjetoMenu(){
         
         JPanel p1=new JPanel();
         p1.setLayout(null);
@@ -658,7 +658,7 @@ public class mainInterface implements ActionListener {
         frame.setVisible(true);
     }
     
-    void EliminarDocenteMenu(){
+    private  void EliminarDocenteMenu(){
         JPanel p1=new JPanel();
         p1.setLayout(null);
 
@@ -685,7 +685,7 @@ public class mainInterface implements ActionListener {
         frame.setVisible(true);
     }
     
-    void EliminarBolseiroMenu(){
+    private void EliminarBolseiroMenu(){
 
         JPanel p1=new JPanel();
         p1.setLayout(null);

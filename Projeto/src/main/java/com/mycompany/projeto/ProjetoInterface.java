@@ -347,7 +347,7 @@ public class ProjetoInterface implements ActionListener{
     }
   
     
-    public void MainMenu(){
+    private void MainMenu(){
         JPanel panel = new JPanel();
         panel.setLayout(null);
         
@@ -383,7 +383,7 @@ public class ProjetoInterface implements ActionListener{
         frame.setVisible(true);
     }
     
-    public void verTarefasMenu(int num){
+    private void verTarefasMenu(int num){
         JPanel p1=new JPanel();
         p1.setLayout(null);
         //verTodas,verNaoIniciadas, Conc, NConc;
@@ -440,7 +440,7 @@ public class ProjetoInterface implements ActionListener{
         frame.setVisible(true);
     }
     
-    public void eliminarTarefasMenu(){
+    private void eliminarTarefasMenu(){
         JPanel p1=new JPanel();
         p1.setLayout(null);
 
@@ -468,7 +468,7 @@ public class ProjetoInterface implements ActionListener{
         frame.setVisible(true);
     }
     
-    public void verDocenteMenu(){
+    private void verDocenteMenu(){
         JPanel p1=new JPanel();
         p1.setLayout(null);
 
@@ -494,7 +494,7 @@ public class ProjetoInterface implements ActionListener{
         frame.setVisible(true);
     }
     
-    public void eliminarDocenteMenu(){
+    private void eliminarDocenteMenu(){
         JPanel p1=new JPanel();
         p1.setLayout(null);
 
@@ -523,7 +523,7 @@ public class ProjetoInterface implements ActionListener{
     }
     
     
-    public void verBolseiroMenu(){
+    private void verBolseiroMenu(){
         JPanel p1=new JPanel();
         p1.setLayout(null);
 
@@ -549,7 +549,7 @@ public class ProjetoInterface implements ActionListener{
         frame.setVisible(true);
     }
     
-    public void eliminarBolseiroMenu(){
+    private void eliminarBolseiroMenu(){
         JPanel p1=new JPanel();
         p1.setLayout(null);
 
@@ -576,7 +576,7 @@ public class ProjetoInterface implements ActionListener{
         frame.getContentPane().add(p1);
         frame.setVisible(true);
     }
-    void addDocenteMenu(){
+    private void addDocenteMenu(){
         
         JPanel p1=new JPanel();
         p1.setLayout(null);
@@ -607,7 +607,7 @@ public class ProjetoInterface implements ActionListener{
         frame.setVisible(true);
     }
     
-    void addBolseiroMenu(){
+    private void addBolseiroMenu(){
         JPanel p1=new JPanel();
         p1.setLayout(null);
 
