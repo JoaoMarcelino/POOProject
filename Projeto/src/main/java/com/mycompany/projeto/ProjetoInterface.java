@@ -262,25 +262,29 @@ public class ProjetoInterface implements ActionListener{
             inicio.set(ano1.getSelectedIndex()+1980, mes1.getSelectedIndex()+1, dia1.getSelectedIndex()+1);
             fim.set(ano2.getSelectedIndex()+1980,mes2.getSelectedIndex()+1, dia2.getSelectedIndex()+1);
             
-            switch (jComboBoxAction.getSelectedIndex()) {
-                case 0:
-                    if (projeto.getCargaPessoa(nome.getText(), inicio) + 0.5 <=1){
-                        novo = new Design(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
-                        break;
-                    }
-                case 1:
-                    if (projeto.getCargaPessoa(nome.getText(), inicio) + 1 <=1){
-                        novo = new Desenvolvimento(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
-                        break;
-                    }
-                default:
-                    if (projeto.getCargaPessoa(nome.getText(), inicio) + 0.25 <=1){
-                        novo = new Documentacao(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
-                        break;
-                    }
-            }
-            
-            if (novo != null){
+            if (!nome.getText().equals("") && inicio.compareTo(fim) <= 0){
+                
+                //ERRO 
+                System.out.printf("%s\n",projeto.getCargaPessoa(nome.getText(), inicio));
+                //ERRO
+                switch (jComboBoxAction.getSelectedIndex()) {
+                    case 0:
+                        if (projeto.getCargaPessoa(nome.getText(), inicio) + 0.5 <=1){
+                            novo = new Design(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
+                            break;
+                        }
+                    case 1:
+                        if (projeto.getCargaPessoa(nome.getText(), inicio) + 1 <=1){
+                            novo = new Desenvolvimento(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
+                            break;
+                        }
+                    default:
+                        if (projeto.getCargaPessoa(nome.getText(), inicio) + 0.25 <=1){
+                            novo = new Documentacao(nome.getText(),inicio,fim,projeto.getPessoa(jComboBoxAction1.getSelectedIndex()));
+                            break;
+                        }
+                }
+                
                 projeto.addTarefa(novo); 
                 TarefaInterface tarefaInt = new TarefaInterface(novo, cisuc);
             }
